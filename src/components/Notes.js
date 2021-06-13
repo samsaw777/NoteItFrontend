@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
+import dotenv from "dotenv";
+
 function Notes() {
+  dotenv.config();
   const [val, setval] = useState("");
+  console.log(process.env.REACT_APP_DBNAME);
   console.log(val);
   const subvalue = (e) => {
     e.preventDefault();
