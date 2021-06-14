@@ -10,7 +10,7 @@ function Notes() {
   const subvalue = (e) => {
     e.preventDefault();
     axios
-      .post("/savenotes", {
+      .post("https://noteitappapi.herokuapp.com/savenotes", {
         text: val,
       })
       .then((res) => {
