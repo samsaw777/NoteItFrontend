@@ -1,7 +1,8 @@
 {
   "hosting": {
     "target": "user",
-    "public": "Frontend/build",
+    "public": "build",
+    "proxy": "https://noteitappapi.herokuapp.com",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
