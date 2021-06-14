@@ -1,0 +1,13 @@
+{
+  "hosting": {
+    "target": "user",
+    "public": "Frontend/build",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

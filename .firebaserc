@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "noteit-f4d6e"
+  },
+  "targets": {
+    "noteit-f4d6e": {
+      "hosting": {
+        "user": [
+          "samsawnoteapp"
+        ]
+      }
+    }
+  }
+}
