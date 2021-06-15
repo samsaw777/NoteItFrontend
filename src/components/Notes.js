@@ -15,6 +15,7 @@ function Notes() {
       })
       .then((res) => {
         console.log(res, "signature added!");
+        setval("");
       })
       .catch((err) => {
         console.log(err.message, "signature not added!");
