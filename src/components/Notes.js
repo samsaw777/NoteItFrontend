@@ -24,6 +24,7 @@ function Notes() {
   return (
     <div>
       <form onSubmit={subvalue}>
+        <h1>This is a signature.</h1>
         <input value={val} onChange={(e) => setval(e.target.value)} />
         <button type='submit'>Add notes</button>
       </form>
