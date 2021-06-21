@@ -1,9 +1,13 @@
 import "./App.css";
-import Notes from './components/Notes'
+import Login from "./components/authuser/Login";
+import Loading from "./components/Notes";
 function App() {
-  return <div className='App'>
-    <Notes />
-  </div>;
+  return (
+    <div className='App'>
+      {/* <Login /> */}
+      <Loading />
+    </div>
+  );
 }
 
 export default App;
