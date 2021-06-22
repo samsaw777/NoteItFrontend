@@ -31,21 +31,8 @@ function Notes() {
     };
 
     dispatchdata(addNotebook(newnotebook));
+    setval("");
   };
-  // const subvalue = (e) => {
-  //   e.preventDefault();
-  //   axios
-  //     .post("http://localhost:9000/savenotes", {
-  //       text: val,
-  //     })
-  //     .then((res) => {
-  //       console.log(res, "signature added!");
-  //       setval("");
-  //     })
-  //     .catch((err) => {
-  //       console.log(err.message, "signature not added!");
-  //     });
-  // };
 
   //returning the jsx element
   return (

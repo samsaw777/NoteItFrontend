@@ -3,6 +3,7 @@ import axios from "axios";
 export const getNotebooks = () => {
   let data;
   return (dispatch) => {
+    dispatch(setloading());
     axios.get("http://localhost:9000/getnotes").then((res) => {
       data = res.data;
       dispatch({
@@ -11,11 +12,6 @@ export const getNotebooks = () => {
       });
     });
   };
-
-  //   return {
-  //     type: GET_NOTEBOOK,
-  //     payload: data,
-  //   };
 };
 
 export const addNotebook = (notebook) => {
