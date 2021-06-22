@@ -4,12 +4,11 @@ const initialState = {};
 
 const errorreducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_ERROR:
+    case GET_ERRORS:
       return action.payload;
     default:
       return state;
   }
 };
 
-
-export default errorreducer
+export default errorreducer;
