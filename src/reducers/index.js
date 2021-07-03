@@ -5,6 +5,8 @@ import notebookreducer from "./notebookreducer";
 
 const rootreducer = combineReducers({
   notebook: notebookreducer,
+  errors: errorreducer,
+  auth: authuser,
 });
 
 export default rootreducer;

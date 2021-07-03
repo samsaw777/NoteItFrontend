@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import dotenv from "dotenv";
 import { useSelector, useDispatch } from "react-redux";
 import { getNotebooks, addNotebook } from "../actions/typeactions";
+import { loaduser } from "../actions/authtype";
+import Navbar from "./navbar/navbar";
+import Notebook from "./Notebook";
 function Notes() {
   //initialize the dispatch method with
   const dispatchdata = useDispatch();
@@ -10,6 +12,7 @@ function Notes() {
   //dispatching the get method
   useEffect(() => {
     dispatchdata(getNotebooks());
+    dispatchdata(loaduser());
     // };
     // return subscribe;
   }, []);
@@ -37,11 +40,18 @@ function Notes() {
   //returning the jsx element
   return (
     <div>
-      <form onSubmit={subvalue}>
+      <Navbar />
+      {/* <form onSubmit={subvalue}>
         <h1>This is a signature.</h1>
         <input value={val} onChange={(e) => setval(e.target.value)} />
-        <button type='submit'>Add notes</button>
-      </form>
+        <button type="submit">Add notes</button>
+      </form> */}
+
+      <div className="grid grid-rows-5 grid-flow-col gap-4 px-20 py-10">
+        {notebooks.map((notebook) => (
+          <Notebook id={notebook.id} title={notebook.text} />
+        ))}
+      </div>
     </div>
   );
 }
