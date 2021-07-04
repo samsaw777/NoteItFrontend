@@ -5,6 +5,7 @@ module.exports = {
     container: {
       center: true,
     },
+
     extend: {},
   },
   variants: {

@@ -2,17 +2,22 @@ import React from "react";
 import Button from "../components/rawcomponent/Button";
 import { logout } from "../../src/actions/authtype";
 import { useDispatch } from "react-redux";
-const Notebook = ({ id, title }) => {
+const Notebook = ({ id, title, color, weight }) => {
   const dispatch = useDispatch();
-  const submit = () => {
-    console.log("hello btn cliked");
-    dispatch(logout());
+  const open = () => {
+    console.log(`${title} is clicked`);
   };
   return (
-    <div className="border-2 border-gray-500 rounded p-5 h-96 w-96 ">
-      <p>{id}</p>
+    <div
+      className={`relative border-2 border-gray-500 rounded p-5 h-96 w-96 bg-${color}-${weight}`}
+      key={id}
+    >
+      {/* <p>{id}</p> */}
       <p>{title}</p>
-      <Button title="Open" submit={submit} />
+      {/* <button onClick={open}>Open</button> */}
+      <div className="absolute bottom-10 right-10">
+        <Button title="Open Notebook" submit={open} />
+      </div>
     </div>
   );
 };

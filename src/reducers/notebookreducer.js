@@ -1,8 +1,14 @@
-import { ADD_NOTEBOOK, GET_NOTEBOOK, SET_LOADING } from "../actions/types";
+import {
+  ADD_NOTEBOOK,
+  GET_NOTEBOOK,
+  SET_LOADING,
+  GET_RANDOM_COLOR,
+} from "../actions/types";
 
 const initialState = {
   notebook: [],
   loading: false,
+  color: [],
 };
 
 const notebookreducer = (state = initialState, action) => {
@@ -17,6 +23,11 @@ const notebookreducer = (state = initialState, action) => {
         ...state,
         notebook: action.payload,
         loading: false,
+      };
+    case GET_RANDOM_COLOR:
+      return {
+        ...state,
+        color: action.payload,
       };
     case SET_LOADING:
       return {
