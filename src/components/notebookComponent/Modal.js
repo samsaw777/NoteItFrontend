@@ -21,6 +21,8 @@ function ModalNotebook() {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const colors = useSelector((state) => state.notebook.color);
   console.log(colors);
+  const user = useSelector((state) => state.auth.user);
+  console.log(user);
   function openModal() {
     setIsOpen(true);
     const random = RandomColor();

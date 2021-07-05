@@ -23,6 +23,7 @@ export default function Example() {
   const dispatch = useDispatch();
   const Logout = () => {
     dispatch(logout());
+    history.push("/");
   };
 
   // useEffect(() => {
