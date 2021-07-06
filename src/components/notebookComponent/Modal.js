@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getNotebooks, addNotebook } from "../../actions/typeactions";
 import { getrandomColor } from "../../actions/typeactions";
 import { RandomColor } from "../Color/color";
+import { Link } from "react-router-dom";
 const customStyles = {
   content: {
     top: "50%",
@@ -65,6 +66,7 @@ function ModalNotebook() {
               onChange={(e) => setval(e.target.value)}
               className="border-2 border-gray-500"
             />
+
             <button type="submit">Add notes</button>
           </div>
         </form>

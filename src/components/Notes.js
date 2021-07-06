@@ -36,7 +36,7 @@ function Notes() {
         {/* <Modal /> */}
         {notebooks.map((notebook) => (
           <Notebook
-            id={notebook.id}
+            id={notebook._id}
             title={notebook.text}
             color={notebook.color}
             weight={notebook.weight}
