@@ -8,7 +8,7 @@ const Notebook = ({ id, title, color, weight }) => {
   const dispatch = useDispatch();
   return (
     <div
-      className={`relative border-2 border-gray-500 rounded p-5 h-96 w-96 bg-${color}-${weight}`}
+      className={`relative border-2 border-gray-500 rounded p-5 h-96 w-full bg-${color}-${weight}`}
       key={id}
     >
       <p>{title}</p>
