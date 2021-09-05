@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import { useSelector, useDispatch } from "react-redux";
 import { getNotebooks, addNotebook } from "../actions/typeactions";
 import { loaduser } from "../actions/authtype";
-import Navbar from "./navbar/navbar";
+import Navbar from "./navbar/Navbar";
 import Notebook from "./Notebook";
 import Modal from "../components/notebookComponent/Modal";
 function Notes() {
