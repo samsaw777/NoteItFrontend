@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./navbar/Navbar";
+
 function Landing() {
   return (
     <div>
@@ -8,9 +9,4 @@ function Landing() {
   );
 }
 
-/* 
-auth client id:-
-400731109120-o34mbbet9ni92eip3p1qog3ef0n64auo.apps.googleusercontent.com
-
-*/
 export default Landing;

@@ -70,6 +70,8 @@ export const register = ({ name, email, password }) => {
   };
 };
 
+//
+
 //Login user in the application
 
 export const Loginauth = ({ email, password }) => {
@@ -107,6 +109,41 @@ export const Loginauth = ({ email, password }) => {
   };
 };
 
+export const glogin = (token) => {
+  return (dispatch) => {
+    //user loading
+    dispatch({
+      type: USER_LOADING,
+    });
+
+    //request body
+    const data = { tokenId: token };
+
+    //post to route /signin
+    // fetch("http://localhost:9000/googlelogin", {
+    //   method: "POST", // or 'PUT'
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(data),
+    // })
+    axios
+      .post("http://localhost:9000/googlelogin", data)
+      .then((res) => {
+        dispatch({
+          type: LOGIN_SUCCESS,
+          payload: res.data,
+        });
+      })
+      .catch((err) => {
+        dispatch(errors(err.response.data));
+        dispatch({
+          type: LOGIN_FAILED,
+        });
+      });
+  };
+};
+
 //Logout User
 export const logout = () => {
   return {
@@ -133,3 +170,5 @@ export const tokenConfig = (getState) => {
 
   return config;
 };
+
+// Login with google

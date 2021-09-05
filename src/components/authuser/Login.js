@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Loginauth } from "../../actions/authtype";
 import { useDispatch, useSelector } from "react-redux";
+import GLogin from "./GLogin";
 const initialState = {
   email: "",
   password: "",
@@ -92,6 +93,8 @@ function Login() {
                       </svg>
                     </button>
                   </form>
+                  <p className="text-center w-full mt-2">OR</p>
+                  <GLogin />
                 </div>
                 <div class="py-5">
                   <div class="grid grid-cols-2 gap-1">
@@ -142,6 +145,7 @@ function Login() {
                         Back to your-app.com
                       </Link>
                     </button>
+                    {/* <GoogleLoginScreen /> */}
                   </div>
                 </div>
               </div>
