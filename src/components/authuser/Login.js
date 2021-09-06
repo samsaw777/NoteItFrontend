@@ -35,7 +35,7 @@ function Login() {
   //route to the default page if user exists
   useEffect(() => {
     if (Object.keys(userback).length !== 0) {
-      history.push("/notebook");
+      history.push("/landing");
     }
   }, [userback]);
 
