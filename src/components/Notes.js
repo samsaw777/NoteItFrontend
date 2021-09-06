@@ -28,12 +28,12 @@ function Notes() {
   return (
     <div className="relative">
       <Navbar />
-
-      <div className="absolute right-28">
+      This page is to create groups.
+      {/* <div className="absolute right-28">
         <Modal />
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-y-4 gap-x-2 px-20 py-10 mt-12">
-        {/* <Modal /> */}
+      </div> */}
+      {/* <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-y-4 gap-x-2 px-20 py-10 mt-12">
+       
         {notebooks.map((notebook) => (
           <Notebook
             id={notebook._id}
@@ -42,7 +42,7 @@ function Notes() {
             weight={notebook.weight}
           />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }

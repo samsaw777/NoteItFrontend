@@ -15,7 +15,7 @@ const Notebook = ({ id, title, color, weight }) => {
 
       <div className="absolute bottom-10 right-10">
         <Link to={{ pathname: `/notebook/${id}` }}>
-          <Button title="Open Notebook" />
+          <Button title="Open Group" />
         </Link>
       </div>
     </div>
