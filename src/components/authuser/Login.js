@@ -142,7 +142,7 @@ function Login() {
                         />
                       </svg>
                       <Link to="/" class="inline-block ml-1">
-                        Back to your-app.com
+                        Back to the app.
                       </Link>
                     </button>
                     {/* <GoogleLoginScreen /> */}
