@@ -11,11 +11,9 @@ const colorName = [
   "lime",
   "emerald",
   "teal",
-  "cyan",
-  "sky",
 ];
 
-const value = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
+const value = [500, 600, 700, 800, 900];
 
 export const RandomColor = () => {
   const rancol = Math.floor(Math.random() * colorName.length);

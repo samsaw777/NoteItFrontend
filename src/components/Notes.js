@@ -26,23 +26,25 @@ function Notes() {
 
   //returning the jsx element
   return (
-    <div className="relative">
+    <div className="">
       <Navbar />
-      This page is to create groups.
+
       {/* <div className="absolute right-28">
+     
+      </div> */}
+      <div className="h-sidebarHeight bg-sidebarBackgroundColor-color w-1/6">
+        <div className="flex flex-col">
+          {notebooks.map((notebook) => (
+            <Notebook
+              id={notebook._id}
+              title={notebook.text}
+              color={notebook.color}
+              weight={notebook.weight}
+            />
+          ))}
+        </div>
         <Modal />
-      </div> */}
-      {/* <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-y-4 gap-x-2 px-20 py-10 mt-12">
-       
-        {notebooks.map((notebook) => (
-          <Notebook
-            id={notebook._id}
-            title={notebook.text}
-            color={notebook.color}
-            weight={notebook.weight}
-          />
-        ))}
-      </div> */}
+      </div>
     </div>
   );
 }
