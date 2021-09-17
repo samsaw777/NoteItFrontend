@@ -21,6 +21,7 @@ module.exports = {
         chatBackgroundColor: {
           color: "#363a37",
         },
+        borderColor: "#26282c",
       },
       height: {
         sidebarHeight: "91.2vh",

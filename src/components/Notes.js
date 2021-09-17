@@ -29,7 +29,7 @@ function Notes() {
   return (
     <div className="h-viewHeight bg-sidebarBackgroundColor-color">
       {/* Show the user in the top */}
-      <div className="flex pl-5 pt-1 border-b-2 border-gray-600 pb-1">
+      <div className="flex pl-5 pt-1 border-b-4 border-borderColor pb-3">
         <div className="mr-5 pt-1">
           <p className="rounded-full w-10 h-10 bg-gray-100 block mx-auto"></p>
         </div>
@@ -38,7 +38,11 @@ function Notes() {
           <p className="text-xs text-gray-300">{user.email}</p>
         </div>
       </div>
-      {/* <div className="flex flex-col">
+      <div className="flex pl-3.5 pt-2 justify-between">
+        <span className="text-gray-400 text-lg">Your Groups</span>
+        <Modal />
+      </div>
+      <div className="flex flex-col">
         {notebooks.map((notebook) => (
           <Notebook
             id={notebook._id}
@@ -47,8 +51,7 @@ function Notes() {
             weight={notebook.weight}
           />
         ))}
-      </div> */}
-      {/* <Modal /> */}
+      </div>
     </div>
   );
 }

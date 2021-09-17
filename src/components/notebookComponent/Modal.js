@@ -9,11 +9,14 @@ import { Link } from "react-router-dom";
 const customStyles = {
   content: {
     top: "50%",
+    backgroundColor: "#2f3135",
     left: "50%",
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
+    width: "50%",
+    height: "50%",
   },
 };
 Modal.setAppElement("#root");
@@ -49,8 +52,8 @@ function ModalNotebook() {
   console.log(val);
   return (
     <div>
-      <p onClick={openModal}>
-        <PlusIcon className="w-20 h-20 cursor-pointer" />
+      <p onClick={openModal} className="pr-2.5 pt-2.5">
+        <PlusIcon className="w-5 h-5 cursor-pointer text-gray-400 rounded hover:text-white hover:bg-gray-600" />
       </p>
       <Modal
         isOpen={modalIsOpen}
@@ -60,14 +63,14 @@ function ModalNotebook() {
       >
         <form onSubmit={subvalue}>
           <div className="flex flex-col">
-            <h1>Add New Notebook.</h1>
+            <h1>Group Name.</h1>
             <input
               value={val}
               onChange={(e) => setval(e.target.value)}
               className="border-2 border-gray-500"
             />
 
-            <button type="submit">Add notes</button>
+            <button type="submit">Create</button>
           </div>
         </form>
       </Modal>

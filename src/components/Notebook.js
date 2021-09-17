@@ -8,16 +8,11 @@ const Notebook = ({ id, title, color, weight }) => {
   const dispatch = useDispatch();
   return (
     <div
-      className={`relative border-2 border-gray-500 rounded-full mt-3 h-16 w-16 bg-${color}-${weight}`}
+      className="w-full flex flex-row p-3.5 text-gray-400 cursor-pointer hover:bg-gray-600 hover:text-white"
       key={id}
     >
-      <p className="text-3xl text-center mt-2">{title.charAt(0)}</p>
-
-      {/* <div className="absolute bottom-10 right-10">
-        <Link to={{ pathname: `/notebook/${id}` }}>
-          <Button title="Open Group" />
-        </Link>
-      </div> */}
+      <span className="text-lg  pr-1">#</span>
+      <p className="text-lg text-center ">{title}</p>
     </div>
   );
 };
