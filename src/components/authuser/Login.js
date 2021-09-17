@@ -48,13 +48,17 @@ function Login() {
         </span>
       ) : (
         <>
-          <div class="min-h-screen bg-gray-100 flex flex-col justify-center sm:py-12">
+          <div class="h-viewheight bg-sidebarBackgroundColor-color flex flex-col justify-center sm:py-12">
             <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
-              <h1 class="font-bold text-center text-2xl mb-5">Note IT</h1>
+              <h1 class="font-bold text-center text-2xl mb-5 text-gray-300">
+                Note IT
+              </h1>
 
               <div class="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
                 <div class="px-5 py-7">
-                  <h1 class="mb-8 text-3xl text-center">Sign In</h1>
+                  <h1 class="mb-8 text-3xl text-center text-gray-700">
+                    Sign In
+                  </h1>
                   <form onSubmit={loginin}>
                     <input
                       type="text"
@@ -99,7 +103,7 @@ function Login() {
                 <div class="py-5">
                   <div class="grid grid-cols-2 gap-1">
                     <div class="text-center sm:text-left whitespace-nowrap">
-                      <button class="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
+                      <button class="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-500 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"

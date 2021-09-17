@@ -18,9 +18,16 @@ module.exports = {
         sidebarBackgroundColor: {
           color: "#2f3135",
         },
+        chatBackgroundColor: {
+          color: "#363a37",
+        },
       },
       height: {
         sidebarHeight: "91.2vh",
+        viewHeight: "100vh",
+      },
+      flex: {
+        2: "0.25 0.75 0%",
       },
     },
   },
