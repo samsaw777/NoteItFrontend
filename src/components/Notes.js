@@ -5,6 +5,7 @@ import { getNotebooks, addNotebook } from "../actions/typeactions";
 import { loaduser } from "../actions/authtype";
 import Notebook from "./Notebook";
 import Modal from "../components/notebookComponent/Modal";
+import { deleteGroup } from "../actions/typeactions";
 function Notes() {
   //initialize the dispatch method with
   const dispatchdata = useDispatch();
@@ -44,12 +45,14 @@ function Notes() {
       </div>
       <div className="flex flex-col">
         {notebooks.map((notebook) => (
-          <Notebook
-            id={notebook._id}
-            title={notebook.text}
-            color={notebook.color}
-            weight={notebook.weight}
-          />
+          <>
+            <Notebook
+              id={notebook._id}
+              title={notebook.text}
+              color={notebook.color}
+              weight={notebook.weight}
+            />
+          </>
         ))}
       </div>
     </div>

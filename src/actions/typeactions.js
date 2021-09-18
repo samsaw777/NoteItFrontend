@@ -3,6 +3,9 @@ import {
   GET_NOTEBOOK,
   SET_LOADING,
   GET_RANDOM_COLOR,
+  DELETING_GROUP,
+  DELETION_FAILED,
+  DELETION_SUCESS,
 } from "./types";
 import errors from "./errortype";
 import { tokenConfig } from "./authtype";
@@ -19,7 +22,7 @@ export const getNotebooks = () => {
         });
       })
       .catch((err) => {
-        dispatch(errors(err.response.data));
+        dispatch(errors(err));
       });
   };
 };
@@ -39,6 +42,21 @@ export const addNotebook = (notebook) => {
         dispatch(errors(err));
       });
   };
+};
+
+//delete group dispatch method
+export const deleteGroup = (id) => (dispatch) => {
+  axios
+    .delete(`http://localhost:9000/deletegroup/${id}`)
+    .then((res) => {
+      dispatch({
+        type: DELETION_SUCESS,
+        payload: id,
+      });
+    })
+    .catch((err) => {
+      dispatch(errors(err));
+    });
 };
 
 export const getrandomColor = (color) => {
