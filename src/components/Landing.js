@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 function Landing() {
+  const history = useHistory();
+  useEffect(() => {
+    const userToken = localStorage.getItem("token");
+    if (userToken) {
+      history.push("/landing");
+    } else {
+      history.push("/login");
+    }
+  });
   return (
     <div className="h-viewHeight bg-sidebarBackgroundColor-color ">
       {/* Header  */}

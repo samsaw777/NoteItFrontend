@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { Loginauth } from "../../actions/authtype";
 import { useDispatch, useSelector } from "react-redux";
 import GLogin from "./GLogin";
+
 const initialState = {
   email: "",
   password: "",
@@ -48,7 +49,7 @@ function Login() {
         </span>
       ) : (
         <>
-          <div class="h-viewheight bg-sidebarBackgroundColor-color flex flex-col justify-center sm:py-12">
+          <div class="h-viewHeight bg-sidebarBackgroundColor-color flex flex-col justify-center sm:py-12">
             <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
               <h1 class="font-bold text-center text-2xl mb-5 text-gray-300">
                 Note IT
@@ -118,7 +119,9 @@ function Login() {
                             d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"
                           />
                         </svg>
-                        <span class="inline-block ml-1">Forgot Password</span>
+                        <Link to="/reset">
+                          <span class="inline-block ml-1">Forgot Password</span>
+                        </Link>
                       </button>
                     </div>
                     <div class="text-center sm:text-right  whitespace-nowrap">

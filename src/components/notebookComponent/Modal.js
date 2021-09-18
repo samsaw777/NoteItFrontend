@@ -53,7 +53,7 @@ function ModalNotebook() {
   return (
     <div>
       <p onClick={openModal} className="pr-2.5 pt-2.5">
-        <PlusIcon className="w-5 h-5 cursor-pointer text-gray-400 rounded hover:text-white hover:bg-gray-600" />
+        <PlusIcon className="w-5 h-5 cursor-pointer text-blue-600 rounded  hover:bg-gray-600" />
       </p>
       <Modal
         isOpen={modalIsOpen}

@@ -3,8 +3,8 @@ import dotenv from "dotenv";
 import { useSelector, useDispatch } from "react-redux";
 import { getNotebooks, addNotebook } from "../actions/typeactions";
 import { loaduser } from "../actions/authtype";
-import Notebook from "./Notebook";
-import Modal from "../components/notebookComponent/Modal";
+import Notebook from "./Groupinfo";
+import Modal from "./notebookComponent/Modal";
 import { deleteGroup } from "../actions/typeactions";
 function Notes() {
   //initialize the dispatch method with

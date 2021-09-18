@@ -34,7 +34,7 @@ const Register = () => {
     e.preventDefault();
     if (password === registerinfo.password) {
       registeruser();
-      history.push("/notebook");
+      history.push("/landing");
       setRegisteInfo(initialState);
       setPassword("");
     } else {
