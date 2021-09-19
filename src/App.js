@@ -1,9 +1,10 @@
 import "./App.css";
 import Login from "./components/authuser/Login";
-import Loading from "./components/Notes";
+import Dashboard from "./components/notebookComponent/Sidebar";
 import Register from "./components/authuser/Register";
 import Landing from "./components/Landing";
-import Pages from "./components//notebookComponent/Pages";
+import ResetLink from "./components/authuser/ResetLink";
+import UpdatePassword from "./components/authuser/Updatepassword";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 function App() {
   return (
@@ -11,10 +12,11 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/" component={Landing} />
-          <Route exact path="/landing" component={Loading} />
+          <Route exact path="/landing" component={Dashboard} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
-          {/* <Route exact path="/notebook/:id" component={Pages} /> */}
+          <Route exact path="/reset" component={ResetLink} />
+          <Route exact path="/reset/:token" component={UpdatePassword} />
         </Switch>
       </div>
     </Router>

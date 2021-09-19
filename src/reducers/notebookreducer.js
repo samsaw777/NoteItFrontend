@@ -3,6 +3,9 @@ import {
   GET_NOTEBOOK,
   SET_LOADING,
   GET_RANDOM_COLOR,
+  DELETING_GROUP,
+  DELETION_FAILED,
+  DELETION_SUCESS,
 } from "../actions/types";
 
 const initialState = {
@@ -30,6 +33,18 @@ const notebookreducer = (state = initialState, action) => {
         color: action.payload,
       };
     case SET_LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case DELETION_SUCESS:
+      return {
+        ...state,
+        notebook: state.notebook.filter(
+          (notebook) => notebook._id !== action.payload
+        ),
+      };
+    case DELETING_GROUP:
       return {
         ...state,
         loading: true,

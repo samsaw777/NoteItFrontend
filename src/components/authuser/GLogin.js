@@ -3,7 +3,9 @@ import { useHistory } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import { glogin } from "../../actions/authtype";
 import { useDispatch, useSelector } from "react-redux";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 function GLogin() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -16,7 +18,16 @@ function GLogin() {
   };
   useEffect(() => {
     if (Object.keys(userback).length !== 0) {
-      history.push("/notebook");
+      toast.success("Logged In Sucessfully!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      history.push("/landing");
     }
   }, [userback]);
   return (
