@@ -10,8 +10,8 @@ const Sidebar = () => {
       <p className="flex-2">
         <SidebarComponent />
       </p>
-      <p className="flex-1">
-        <p>{chatinfo.chatname}</p>
+      <p className="flex-1 bg-chatBackgroundColor text-gray-300">
+        <p className="p-5 text-xl">#{chatinfo.chatname}</p>
       </p>
     </div>
   );
