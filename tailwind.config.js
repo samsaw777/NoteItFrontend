@@ -24,6 +24,7 @@ module.exports = {
       height: {
         sidebarHeight: "91.2vh",
         viewHeight: "100vh",
+        groupHeight: "80vh",
       },
       flex: {
         2: "0.25 0.75 0%",

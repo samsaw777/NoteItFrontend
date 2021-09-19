@@ -32,21 +32,21 @@ function Login() {
     const { email, password } = formdetails;
     console.log(formdetails);
     dispatch(Loginauth({ email, password }));
+    toast.success("Logged In Sucessfully!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    });
     setFormdetails(initialState);
   };
 
   //route to the default page if user exists
   useEffect(() => {
     if (Object.keys(userback).length !== 0) {
-      toast.success("Logged In Sucessfully!", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: true,
-        closeOnClick: false,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-      });
       history.push("/landing");
     }
   }, [userback]);
