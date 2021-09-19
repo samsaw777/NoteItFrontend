@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { register } from "../../actions/authtype";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 const initialState = {
   name: "",
   email: "",
@@ -35,6 +38,15 @@ const Register = () => {
     if (password === registerinfo.password) {
       registeruser();
       history.push("/landing");
+      toast.success("Registered Sucessfully", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       setRegisteInfo(initialState);
       setPassword("");
     } else {

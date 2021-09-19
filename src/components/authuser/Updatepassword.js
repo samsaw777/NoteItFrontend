@@ -1,27 +1,33 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 const UpdatePassword = () => {
+  const history = useHistory();
   const { token } = useParams();
   const [password, setPassword] = useState("");
   const updatePassword = (e) => {
     e.preventDefault();
-    // fetch("http://localhost:9000/resetpassword", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "applicatio/json" },
-    //   body: JSON.stringify({ password, token }),
-    // })
-    //   .then((response) => {
-    //     response.json();
-    //   })
-    //   .then((data) => {
-    //     console.log(data);
-    //   });
     const data = { password, token };
     axios
       .post("http://localhost:9000/resetpassword", data)
       .then((response) => {
         console.log(response);
+        if (response) {
+          toast.success("Password Changed!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+          setPassword("");
+          history.push("/login");
+        }
       })
       .catch((err) => {
         console.log(err);

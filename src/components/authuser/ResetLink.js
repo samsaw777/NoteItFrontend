@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 const ResetLink = () => {
   const [email, setEmail] = useState("");
   const resetlink = async (e) => {
@@ -8,22 +11,22 @@ const ResetLink = () => {
     axios
       .post("http://localhost:9000/resetp", data)
       .then((res) => {
-        console.log(res);
+        if (res) {
+          toast.info("Check Your Email", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+          setEmail("");
+        }
       })
       .catch((err) => {
         console.log(err);
       });
-    // await fetch("http://localhost:9000/resetp", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "applicatio/json" },
-    //   body: JSON.stringify({ email }),
-    // })
-    //   .then((response) => {
-    //     response.json();
-    //   })
-    //   .then((data) => {
-    //     console.log(data);
-    //   });
   };
   return (
     <div className="h-viewHeight bg-sidebarBackgroundColor-color">

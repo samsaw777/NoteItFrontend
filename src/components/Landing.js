@@ -6,8 +6,6 @@ function Landing() {
     const userToken = localStorage.getItem("token");
     if (userToken) {
       history.push("/landing");
-    } else {
-      history.push("/login");
     }
   });
   return (

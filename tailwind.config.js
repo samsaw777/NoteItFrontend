@@ -18,9 +18,7 @@ module.exports = {
         sidebarBackgroundColor: {
           color: "#2f3135",
         },
-        chatBackgroundColor: {
-          color: "#363a37",
-        },
+        chatBackgroundColor: "#363a37",
         borderColor: "#26282c",
       },
       height: {

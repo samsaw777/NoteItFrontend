@@ -3,7 +3,9 @@ import { Link, useHistory } from "react-router-dom";
 import { Loginauth } from "../../actions/authtype";
 import { useDispatch, useSelector } from "react-redux";
 import GLogin from "./GLogin";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 const initialState = {
   email: "",
   password: "",
@@ -36,6 +38,15 @@ function Login() {
   //route to the default page if user exists
   useEffect(() => {
     if (Object.keys(userback).length !== 0) {
+      toast.success("Logged In Sucessfully!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       history.push("/landing");
     }
   }, [userback]);
