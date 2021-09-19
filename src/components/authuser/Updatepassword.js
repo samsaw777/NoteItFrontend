@@ -17,7 +17,7 @@ const UpdatePassword = () => {
         console.log(response);
         if (response) {
           toast.success("Password Changed!", {
-            position: "top-right",
+            position: "top-center",
             autoClose: 5000,
             hideProgressBar: true,
             closeOnClick: true,
