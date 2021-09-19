@@ -23,7 +23,7 @@ function GLogin() {
         autoClose: 5000,
         hideProgressBar: true,
         closeOnClick: false,
-        pauseOnHover: true,
+        pauseOnHover: false,
         draggable: true,
         progress: undefined,
       });

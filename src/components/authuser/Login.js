@@ -42,8 +42,8 @@ function Login() {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
+        closeOnClick: false,
+        pauseOnHover: false,
         draggable: true,
         progress: undefined,
       });
