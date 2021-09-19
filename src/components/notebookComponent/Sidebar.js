@@ -1,16 +1,17 @@
 import React from "react";
-
+import { useSelector } from "react-redux";
 import SidebarComponent from "../Groups";
 import Logout from "../authuser/Logout";
 const Sidebar = () => {
+  const chatinfo = useSelector((state) => state.chat.chat);
+  console.log(chatinfo);
   return (
     <div className="h-viewHeight flex">
       <p className="flex-2">
         <SidebarComponent />
       </p>
       <p className="flex-1">
-        <p>hello world!</p>
-        <p>World</p>
+        <p>{chatinfo.chatname}</p>
       </p>
     </div>
   );

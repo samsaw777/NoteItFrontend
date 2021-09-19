@@ -25,6 +25,7 @@ function Notes() {
   //Load the user
   const user = useSelector((state) => state.auth.user);
   console.log(user);
+  const chatinfo = useSelector((state) => state.chat.chat);
   //posting the data to database
 
   //returning the jsx element
