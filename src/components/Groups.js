@@ -5,7 +5,8 @@ import { getNotebooks, addNotebook } from "../actions/typeactions";
 import { loaduser } from "../actions/authtype";
 import Notebook from "./Groupinfo";
 import Modal from "./notebookComponent/Modal";
-import { deleteGroup } from "../actions/typeactions";
+import Logout from "./authuser/Logout";
+
 function Notes() {
   //initialize the dispatch method with
   const dispatchdata = useDispatch();
@@ -39,22 +40,25 @@ function Notes() {
           <p className="text-xs text-gray-300">{user.email}</p>
         </div>
       </div>
-      <div className="flex pl-3.5 pt-2 justify-between">
-        <span className="text-gray-400 text-lg">Your Groups</span>
-        <Modal />
-      </div>
       <div className="flex flex-col">
-        {notebooks.map((notebook) => (
-          <>
-            <Notebook
-              id={notebook._id}
-              title={notebook.text}
-              color={notebook.color}
-              weight={notebook.weight}
-            />
-          </>
-        ))}
+        <div className="flex pl-3.5 pt-2 justify-between">
+          <span className="text-gray-400 text-lg">Your Groups</span>
+          <Modal />
+        </div>
+        <div className="flex flex-col  h-groupHeight overflow-y-scroll">
+          {notebooks.map((notebook) => (
+            <>
+              <Notebook
+                id={notebook._id}
+                title={notebook.text}
+                color={notebook.color}
+                weight={notebook.weight}
+              />
+            </>
+          ))}
+        </div>
       </div>
+      <Logout />
     </div>
   );
 }

@@ -1,12 +1,12 @@
 import React from "react";
 
-import Notes from "../Groups";
-
+import SidebarComponent from "../Groups";
+import Logout from "../authuser/Logout";
 const Sidebar = () => {
   return (
     <div className="h-viewHeight flex">
       <p className="flex-2">
-        <Notes />
+        <SidebarComponent />
       </p>
       <p className="flex-1">
         <p>hello world!</p>
