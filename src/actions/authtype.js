@@ -54,19 +54,19 @@ export const register = ({ name, email, password }) => {
 
     axios
       .post("http://localhost:9000/signup", body, config)
-      .then((res) =>
+      .then((res) => {
         dispatch({
           type: REGISTER_SUCCESS,
           payload: res.data,
-        })
-      )
-
+        });
+      })
       .catch((err) => {
-        dispatch(errors(err.response.data));
+        // dispatch(errors(err.response.data));
+
+        dispatch({
+          type: REGISTER_FAILED,
+        });
       });
-    dispatch({
-      type: REGISTER_FAILED,
-    });
   };
 };
 

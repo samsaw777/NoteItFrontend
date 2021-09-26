@@ -15,9 +15,7 @@ module.exports = {
 
     extend: {
       colors: {
-        sidebarBackgroundColor: {
-          color: "#2f3135",
-        },
+        sidebarBackgroundColor: "#2f3135",
         chatBackgroundColor: "#363a37",
         borderColor: "#26282c",
       },
@@ -25,9 +23,11 @@ module.exports = {
         sidebarHeight: "91.2vh",
         viewHeight: "100vh",
         groupHeight: "80vh",
+        searchHeight: "40vh",
       },
       flex: {
-        2: "0.25 0.75 0%",
+        2: "0.40 0.60 0%",
+        3: "0.40 0%",
       },
     },
   },

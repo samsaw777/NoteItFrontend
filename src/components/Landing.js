@@ -9,7 +9,7 @@ function Landing() {
     }
   });
   return (
-    <div className="h-viewHeight bg-sidebarBackgroundColor-color ">
+    <div className="h-viewHeight bg-sidebarBackgroundColor ">
       {/* Header  */}
       <div className="text-center pt-10 text-white">
         <h1 className="text-xl lg:text-3xl">Remote First Work Tracker</h1>

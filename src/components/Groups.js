@@ -30,7 +30,7 @@ function Notes() {
 
   //returning the jsx element
   return (
-    <div className="h-viewHeight bg-sidebarBackgroundColor-color">
+    <div className="h-viewHeight bg-sidebarBackgroundColor">
       {/* Show the user in the top */}
       <div className="flex pl-5 pt-1 border-b-4 border-borderColor pb-3">
         <div className="mr-5 pt-1">

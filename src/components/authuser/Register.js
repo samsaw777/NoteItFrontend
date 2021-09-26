@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { register } from "../../actions/authtype";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,7 +15,10 @@ const initialState = {
 const Register = () => {
   const [registerinfo, setRegisteInfo] = useState(initialState);
   const [password, setPassword] = useState("");
+  const [check, setCheck] = useState(false);
   const dispatch = useDispatch();
+  const [errors, setError] = useState("");
+  console.log(errors);
   const history = useHistory();
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,31 +27,43 @@ const Register = () => {
       [name]: value,
     });
   };
+  const error = useSelector((state) => state.errors.errors.msg);
+  // const CheckForError = () => {};
 
-  const registeruser = () => {
+  const registeruser = async () => {
     const { name, email, password } = registerinfo;
     //Create the user
     console.log(name, email, password);
     //Attempt to register
+
     dispatch(register({ name, email, password }));
+    // console.log(response);
+    history.push("/landing");
   };
 
-  const checkpassword = (e) => {
+  // useEffect(() => {
+  //   if (error) {
+  //     console.log("error");
+  //   } else {
+  //     console.log("no error");
+  //     history.push("/");
+  //   }
+  // }, [error]);
+  // const checkerror = () => {
+  //   if (error) {
+  //     console.log("errors");
+  //     console.log(error);
+  //     // setError(error);
+  //   } else {
+  //     console.log("no errors");
+  //     history.push("/landing");
+  //   }
+  // };
+  const checkpassword = async (e) => {
     e.preventDefault();
     if (password === registerinfo.password) {
       registeruser();
-      history.push("/landing");
-      toast.success("Registered Sucessfully", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: true,
-        closeOnClick: false,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-      });
-      setRegisteInfo(initialState);
-      setPassword("");
+      // checkerror();
     } else {
       alert("password not matched");
     }
@@ -60,6 +75,7 @@ const Register = () => {
           <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
             <form onSubmit={checkpassword}>
               <h1 class="mb-8 text-3xl text-center">Sign up</h1>
+              <div>{error}</div>
               <input
                 type="text"
                 class="block border border-grey-light w-full p-3 rounded mb-4"
