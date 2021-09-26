@@ -70,7 +70,9 @@ function ModalNotebook() {
               className="border-2 border-gray-500"
             />
 
-            <button type="submit">Create</button>
+            <button type="submit" className=" text-gray-100">
+              Create
+            </button>
           </div>
         </form>
       </Modal>

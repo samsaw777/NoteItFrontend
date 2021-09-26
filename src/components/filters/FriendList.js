@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { MinusIcon } from "@heroicons/react/outline";
 const FriendList = ({ friends, userid }) => {
+  const [Friends, setFriends] = useState([]);
+  console.log(friends);
   const removeUser = (id, email) => {
     const body = { userId: id, friendEmail: email };
     axios
@@ -11,12 +13,12 @@ const FriendList = ({ friends, userid }) => {
       })
       .catch((err) => console.log(err));
   };
-  // useEffect(() => {
-  //   console.log("this is loaded");
-  // }, [removeUser]);
+  useEffect(() => {
+    setFriends(friends);
+  }, []);
   return (
-    <div className="h-viewHeight overflow-y-scroll">
-      {friends ? (
+    <div className="h-groupHeight overflow-y-scroll">
+      {friends && friends.length ? (
         friends.map((user) => (
           <div
             className="border bg-chatBackgroundColor w-full p-3 flex mb-2 justify-between"
@@ -34,6 +36,9 @@ const FriendList = ({ friends, userid }) => {
       ) : (
         <div className="text-gray-200 p-2">You have no friends.</div>
       )}
+      {/* {!friends && (
+        <div className="text-gray-200 p-2">You have no friends.</div>
+      )} */}
     </div>
   );
 };
