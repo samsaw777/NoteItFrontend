@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Search from "./Search";
+import axios from "axios";
 import FriendsList from "./FriendList";
 import { useSelector } from "react-redux";
 const Tab = () => {
@@ -9,6 +10,16 @@ const Tab = () => {
   const changeToggleValue = (value) => {
     setToggleValue(value);
   };
+  // const removeUser = (id, email) => {
+  //   const body = { userId: id, friendEmail: email };
+  //   axios
+  //     .post("http://localhost:9000/removefriend", body)
+  //     .then((response) => {
+  //       console.log(response);
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
+
   return (
     <div className="h-viewHeight bg-sidebarBackgroundColor flex flex-col ">
       <div className="flex justify-between p-3">
@@ -27,7 +38,7 @@ const Tab = () => {
       </div>
       <div>
         <p className={toggleValue === 1 ? "block" : "hidden"}>
-          <FriendsList friends={loginuser.friends} />
+          <FriendsList friends={loginuser.friends} userid={loginuser._id} />
         </p>
         <p className={toggleValue === 2 ? "block" : "hidden"}>
           <Search />
