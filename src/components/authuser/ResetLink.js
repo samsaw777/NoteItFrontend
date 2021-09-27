@@ -12,15 +12,18 @@ const ResetLink = () => {
       .post("http://localhost:9000/resetp", data)
       .then((res) => {
         if (res) {
-          toast.info("Check Your Email", {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: true,
-            closeOnClick: false,
-            pauseOnHover: false,
-            draggable: true,
-            progress: undefined,
-          });
+          toast.info(
+            "Check Your Email.If not in Inbox then check your spam email box/.",
+            {
+              position: "top-center",
+              autoClose: 5000,
+              hideProgressBar: true,
+              closeOnClick: false,
+              pauseOnHover: false,
+              draggable: true,
+              progress: undefined,
+            }
+          );
           setEmail("");
         }
       })
