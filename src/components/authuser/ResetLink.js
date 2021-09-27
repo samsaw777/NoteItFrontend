@@ -13,7 +13,7 @@ const ResetLink = () => {
       .then((res) => {
         if (res) {
           toast.info(
-            "Check Your Email.If not in Inbox then check your spam email box/.",
+            "Check Your Email.If not in Inbox then check your spam email section.",
             {
               position: "top-center",
               autoClose: 5000,
