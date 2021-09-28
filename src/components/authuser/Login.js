@@ -63,7 +63,7 @@ function Login() {
         </span>
       ) : (
         <>
-          <div class="h-viewHeight bg-sidebarBackgroundColor-color flex flex-col justify-center sm:py-12">
+          <div class="h-viewHeight bg-sidebarBackgroundColor  flex flex-col justify-center sm:py-12">
             <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
               <h1 class="font-bold text-center text-2xl mb-5 text-gray-300">
                 Note IT
