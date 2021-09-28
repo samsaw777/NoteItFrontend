@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { PlusIcon } from "@heroicons/react/outline";
+import { loaduser } from "../../actions/authtype";
 function FriendRequest({ loginUser, loginuserid }) {
+  const dispatch = useDispatch();
   const addFriend = (email, id) => {
     const body = {
       userId: id,
       friendEmail: email,
     };
     axios
-      .post("http://localhost:9000/addfriend", body)
+      .post("https://noteitappapi.herokuapp.com/addfriend", body)
       .then((response) => {
         console.log(response);
       })
@@ -17,12 +19,19 @@ function FriendRequest({ loginUser, loginuserid }) {
         console.log(error);
       });
   };
+
+  useEffect(() => {
+    dispatch(loaduser());
+  }, []);
+  const user = useSelector((state) => state.auth.user);
+  console.log(user);
+  const friendRequest = useSelector((state) => state.friends.friendsRequest);
   return (
     <>
       <div className="text-gray-200 p-2">Friend Requests</div>
       <div className="h-searchHeight overflow-y-scroll">
-        {loginUser ? (
-          loginUser.map((user) => (
+        {user.followRequest ? (
+          user.followRequest.map((user) => (
             <div
               className="border bg-chatBackgroundColor w-full p-3 flex mb-2 justify-between"
               key={user}

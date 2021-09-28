@@ -3,11 +3,11 @@ import axios from "axios";
 import { MinusIcon } from "@heroicons/react/outline";
 const FriendList = ({ friends, userid }) => {
   const [Friends, setFriends] = useState([]);
-  console.log(friends);
+  // console.log(friends);
   const removeUser = (id, email) => {
     const body = { userId: id, friendEmail: email };
     axios
-      .post("http://localhost:9000/removefriend", body)
+      .post("https://noteitappapi.herokuapp.com/removefriend", body)
       .then((response) => {
         console.log(response);
       })

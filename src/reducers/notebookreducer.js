@@ -1,6 +1,7 @@
 import {
   ADD_NOTEBOOK,
   GET_NOTEBOOK,
+  GET_MEMBERS,
   SET_LOADING,
   GET_RANDOM_COLOR,
   DELETING_GROUP,
@@ -27,6 +28,12 @@ const notebookreducer = (state = initialState, action) => {
         notebook: action.payload,
         loading: false,
       };
+    // case GET_MEMBERS:
+    //   return {
+    //     ...state,
+    //     notebook: action.payload,
+    //     loading: false,
+    //   };
     case GET_RANDOM_COLOR:
       return {
         ...state,

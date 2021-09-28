@@ -25,7 +25,9 @@ module.exports = {
         viewHeight: "100vh",
         groupHeight: "80vh",
         searchHeight: "40vh",
+        chatheight: "80vh",
         footerHeight: "7vh",
+        memberheight: "75vh",
       },
       flex: {
         2: "0.40 0.60 0%",
@@ -33,7 +35,8 @@ module.exports = {
         4: "1.0 0%",
       },
       inset: {
-        chatTop: "83.5%",
+        chatTop: "3%",
+        chattop: "3%",
       },
     },
   },

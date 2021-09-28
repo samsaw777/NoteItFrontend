@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const customStyles = {
   content: {
     top: "50%",
-    backgroundColor: "#2f3135",
+    backgroundColor: "#363a37",
     left: "50%",
     right: "auto",
     bottom: "auto",
@@ -17,6 +17,7 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
     width: "50%",
     height: "50%",
+    color: "#fff",
   },
 };
 Modal.setAppElement("#root");
@@ -63,14 +64,19 @@ function ModalNotebook() {
       >
         <form onSubmit={subvalue}>
           <div className="flex flex-col">
-            <h1>Group Name.</h1>
+            <h1 className="text-center mb-5">Group Name.</h1>
             <input
               value={val}
               onChange={(e) => setval(e.target.value)}
-              className="border-2 border-gray-500"
+              className="appearance-none bg-transparent border-b-2 border-gray-400 w-11/12 text-gray-300 mr-3 py-1 px-2 leading-tight focus:outline-none"
+              placeholder="Enter group Name"
+              autoFocus
             />
 
-            <button type="submit" className=" text-gray-100">
+            <button
+              type="submit"
+              className="w-2/4 text-center block mx-auto mt-10 py-3 rounded bg-green-400 text-white hover:bg-green-600 focus:outline-none my-1"
+            >
               Create
             </button>
           </div>

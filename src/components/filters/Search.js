@@ -13,7 +13,7 @@ const Search = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:9000/allusers")
+      .get("https://noteitappapi.herokuapp.com/allusers")
       .then((users) => {
         setUsers(users.data);
       })

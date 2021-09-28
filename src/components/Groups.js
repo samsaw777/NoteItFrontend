@@ -21,13 +21,17 @@ function Notes() {
 
   //loading the state
   const notebooks = useSelector((state) => state.notebook.notebook);
-  console.log(notebooks);
+  // console.log(notebooks);
   //Load the user
   const user = useSelector((state) => state.auth.user);
-  console.log(user);
+  console.log(user.joinedGroup);
   const chatinfo = useSelector((state) => state.chat.chat);
   //posting the data to database
-
+  const [toggleValue, setToggleValue] = useState(1);
+  console.log(toggleValue);
+  const changeToggleValue = (value) => {
+    setToggleValue(value);
+  };
   //returning the jsx element
   return (
     <div className="h-viewHeight bg-sidebarBackgroundColor">
@@ -47,16 +51,51 @@ function Notes() {
           <Modal />
         </div>
         <div className="flex flex-col  h-groupHeight overflow-y-scroll">
-          {notebooks.map((notebook) => (
-            <>
-              <Notebook
-                id={notebook._id}
-                title={notebook.text}
-                color={notebook.color}
-                weight={notebook.weight}
-              />
-            </>
-          ))}
+          <div>
+            <div className=" bg-sidebarBackgroundColor flex flex-col ">
+              <div className="flex justify-between p-3">
+                <div
+                  onClick={() => changeToggleValue(1)}
+                  className="cursor-pointer text-gray-100"
+                >
+                  <p>Created</p>
+                </div>
+                <div
+                  onClick={() => changeToggleValue(2)}
+                  className="cursor-pointer text-gray-100"
+                >
+                  <p>Group Joined</p>
+                </div>
+              </div>
+              <div>
+                <p
+                  className={
+                    toggleValue === 1
+                      ? "block h-memberheight overflow-scroll"
+                      : "hidden"
+                  }
+                >
+                  {notebooks.map((notebook) => (
+                    <>
+                      <Notebook id={notebook._id} title={notebook.text} />
+                    </>
+                  ))}
+                </p>
+                <p
+                  className={
+                    toggleValue === 2
+                      ? "block h-memberheight overflow-scroll"
+                      : "hidden"
+                  }
+                >
+                  {user.joinedGroup &&
+                    user.joinedGroup.map((group) => (
+                      <Notebook id={group.Id} title={group.Name} />
+                    ))}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <Logout />

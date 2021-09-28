@@ -1,22 +1,17 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+
 import { PlusIcon } from "@heroicons/react/outline";
+import { sendRequest } from "../../actions/friendsType";
 const Users = ({ users, email }) => {
+  const dispatch = useDispatch();
   console.log(email);
   const sendFriendRequest = (id, userEmail) => {
     const body = {
       userEmail: userEmail,
       friendId: id,
     };
-    axios
-      .post("http://localhost:9000/sendrequest", body)
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    dispatch(sendRequest(body));
   };
 
   return (

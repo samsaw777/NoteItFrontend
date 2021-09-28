@@ -6,6 +6,7 @@ import {
   DELETING_GROUP,
   DELETION_FAILED,
   DELETION_SUCESS,
+  GET_MEMBERS,
 } from "./types";
 import errors from "./errortype";
 import { tokenConfig } from "./authtype";
@@ -14,7 +15,7 @@ export const getNotebooks = () => {
   return (dispatch, getState) => {
     dispatch(setloading());
     axios
-      .get("http://localhost:9000/getnotes", tokenConfig(getState))
+      .get("https://noteitappapi.herokuapp.com/getnotes", tokenConfig(getState))
       .then((res) => {
         dispatch({
           type: GET_NOTEBOOK,
@@ -30,7 +31,11 @@ export const getNotebooks = () => {
 export const addNotebook = (notebook) => {
   return (dispatch, getState) => {
     axios
-      .post("http://localhost:9000/savenotes", notebook, tokenConfig(getState))
+      .post(
+        "https://noteitappapi.herokuapp.com/savenotes",
+        notebook,
+        tokenConfig(getState)
+      )
       .then((res) => {
         console.log(res);
         dispatch({
@@ -47,7 +52,7 @@ export const addNotebook = (notebook) => {
 //delete group dispatch method
 export const deleteGroup = (id) => (dispatch) => {
   axios
-    .delete(`http://localhost:9000/deletegroup/${id}`)
+    .delete(`https://noteitappapi.herokuapp.com/deletegroup/${id}`)
     .then((res) => {
       dispatch({
         type: DELETION_SUCESS,

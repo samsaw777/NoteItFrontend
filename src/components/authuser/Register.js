@@ -4,6 +4,7 @@ import { register } from "../../actions/authtype";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
+import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 toast.configure();
 const initialState = {
@@ -14,11 +15,10 @@ const initialState = {
 
 const Register = () => {
   const [registerinfo, setRegisteInfo] = useState(initialState);
-  const [password, setPassword] = useState("");
+  const [cpassword, setPassword] = useState("");
   const [check, setCheck] = useState(false);
   const dispatch = useDispatch();
-  const [errors, setError] = useState("");
-  console.log(errors);
+  const [errors, setErrors] = useState("");
   const history = useHistory();
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,47 +27,69 @@ const Register = () => {
       [name]: value,
     });
   };
-  const error = useSelector((state) => state.errors.errors.msg);
-  // const CheckForError = () => {};
+  const [users, setUsers] = useState([]);
+  let userback = useSelector((state) => state.auth.user);
 
+  const error = useSelector((state) => state.errors.errors.msg);
+  useEffect(() => {
+    axios
+      .get("https://noteitappapi.herokuapp.com/allusers")
+      .then((users) => {
+        setUsers(users.data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
   const registeruser = async () => {
     const { name, email, password } = registerinfo;
     //Create the user
-    console.log(name, email, password);
-    //Attempt to register
 
     dispatch(register({ name, email, password }));
     // console.log(response);
-    history.push("/landing");
   };
 
-  // useEffect(() => {
-  //   if (error) {
-  //     console.log("error");
-  //   } else {
-  //     console.log("no error");
-  //     history.push("/");
-  //   }
-  // }, [error]);
-  // const checkerror = () => {
-  //   if (error) {
-  //     console.log("errors");
-  //     console.log(error);
-  //     // setError(error);
-  //   } else {
-  //     console.log("no errors");
-  //     history.push("/landing");
-  //   }
-  // };
-  const checkpassword = async (e) => {
-    e.preventDefault();
-    if (password === registerinfo.password) {
-      registeruser();
-      // checkerror();
+  const validate = () => {
+    if (
+      !registerinfo.name &&
+      !registerinfo.email &&
+      !registerinfo.password &&
+      !registerinfo.cpassword
+    ) {
+      setErrors("All the fields are empty");
+    } else if (!registerinfo.name) {
+      setErrors("Name cannot be empty");
+    } else if (!registerinfo.email) {
+      setErrors("Email cannot be empty");
+    } else if (!registerinfo.password) {
+      setErrors("Password cannot be empty");
+    } else if (!cpassword) {
+      setErrors("Confirm Password cannot be empty");
+    } else if (registerinfo.password.length < 6) {
+      setErrors("Password should be atleast 6 letters");
+    } else if (
+      !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(registerinfo.email)
+    ) {
+      setErrors("Invalid email address");
+    } else if (cpassword !== registerinfo.password) {
+      setErrors("Password not equal");
     } else {
-      alert("password not matched");
+      registeruser();
+      setRegisteInfo(initialState);
+      setPassword("");
+      setErrors("");
+      // checkerror();
     }
+    // return errors;
   };
+  const checkpassword = (e) => {
+    e.preventDefault();
+    validate();
+    //Create the user
+  };
+  useEffect(() => {
+    if (Object.keys(userback).length !== 0) {
+      history.push("/landing");
+    }
+  }, [userback]);
   return (
     <div className="h-viewheight bg-sidebarBackgroundColor-color">
       <div class="bg-grey-lighter min-h-screen flex flex-col">
@@ -75,7 +97,20 @@ const Register = () => {
           <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
             <form onSubmit={checkpassword}>
               <h1 class="mb-8 text-3xl text-center">Sign up</h1>
-              <div>{error}</div>
+              {errors ? (
+                <div class="w-full text-center bg-red-300 text-black p-3 rounded-lg mb-2">
+                  {errors}
+                </div>
+              ) : (
+                <div></div>
+              )}
+              {error ? (
+                <div class="w-full text-center bg-red-300 text-black p-3 rounded-lg mb-2">
+                  {error}
+                </div>
+              ) : (
+                <div></div>
+              )}
               <input
                 type="text"
                 class="block border border-grey-light w-full p-3 rounded mb-4"
@@ -107,7 +142,7 @@ const Register = () => {
                 class="block border border-grey-light w-full p-3 rounded mb-4"
                 name="confirm_password"
                 placeholder="Confirm Password"
-                value={password}
+                value={cpassword}
                 onChange={(e) => setPassword(e.target.value)}
               />
 

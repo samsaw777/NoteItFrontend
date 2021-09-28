@@ -12,7 +12,7 @@ const UpdatePassword = () => {
     e.preventDefault();
     const data = { password, token };
     axios
-      .post("http://localhost:9000/resetpassword", data)
+      .post("https://noteitappapi.herokuapp.com/resetpassword", data)
       .then((response) => {
         console.log(response);
         if (response) {

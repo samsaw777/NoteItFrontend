@@ -9,7 +9,7 @@ const ResetLink = () => {
     e.preventDefault();
     const data = { email };
     axios
-      .post("http://localhost:9000/resetp", data)
+      .post("https://noteitappapi.herokuapp.com/resetp", data)
       .then((res) => {
         if (res) {
           toast.info(

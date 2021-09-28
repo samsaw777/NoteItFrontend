@@ -10,15 +10,6 @@ const Tab = () => {
   const changeToggleValue = (value) => {
     setToggleValue(value);
   };
-  // const removeUser = (id, email) => {
-  //   const body = { userId: id, friendEmail: email };
-  //   axios
-  //     .post("http://localhost:9000/removefriend", body)
-  //     .then((response) => {
-  //       console.log(response);
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
 
   return (
     <div className="h-viewHeight bg-sidebarBackgroundColor flex flex-col ">

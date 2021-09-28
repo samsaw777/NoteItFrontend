@@ -17,7 +17,7 @@ function Login() {
   const history = useHistory();
   let userback = useSelector((state) => state.auth.user);
   const loading = useSelector((state) => state.auth.loading);
-  console.log(userback);
+  const error = useSelector((state) => state.errors.errors.msg);
   const handleInput = (e) => {
     const { name, value } = e.target;
     setFormdetails({
@@ -25,23 +25,26 @@ function Login() {
       [name]: value,
     });
   };
+  const [errors, setErrors] = useState("");
   //Login in to the application
   const loginin = (e) => {
     e.preventDefault();
     setRedirectuser(!redirectuser);
     const { email, password } = formdetails;
     console.log(formdetails);
-    dispatch(Loginauth({ email, password }));
-    toast.success("Logged In Sucessfully!", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: true,
-      closeOnClick: false,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-    });
-    setFormdetails(initialState);
+    if (!email && !password) {
+      setErrors("All fields are required");
+    } else if (!email) {
+      setErrors("Email is required");
+    } else if (!password) {
+      setErrors("Password cannot be empty");
+    } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      setErrors("Invalid email address");
+    } else {
+      dispatch(Loginauth({ email, password }));
+
+      setFormdetails(initialState);
+    }
   };
 
   //route to the default page if user exists
@@ -72,6 +75,20 @@ function Login() {
                     Sign In
                   </h1>
                   <form onSubmit={loginin}>
+                    {errors ? (
+                      <div class="w-full text-center bg-red-300 text-black p-3 rounded-lg mb-2">
+                        {errors}
+                      </div>
+                    ) : (
+                      <div></div>
+                    )}
+                    {error ? (
+                      <div class="w-full text-center bg-red-300 text-black p-3 rounded-lg mb-2">
+                        {error}
+                      </div>
+                    ) : (
+                      <div></div>
+                    )}
                     <input
                       type="text"
                       class="border border-grey-light rounded-lg px-3 py-3 mt-1 mb-5 text-sm w-full"

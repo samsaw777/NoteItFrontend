@@ -1,6 +1,6 @@
 import axios from "axios";
 import errors from "./errortype";
-import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 import {
   USER_LOADED,
   USER_LOADING,
@@ -22,7 +22,7 @@ export const loaduser = () => {
 
     // fetch the user
     axios
-      .get("http://localhost:9000/loguser", tokenConfig(getState))
+      .get("https://noteitappapi.herokuapp.com/loguser", tokenConfig(getState))
       .then((res) =>
         dispatch({
           type: USER_LOADED,
@@ -53,7 +53,7 @@ export const register = ({ name, email, password }) => {
     const body = JSON.stringify({ name, email, password });
 
     axios
-      .post("http://localhost:9000/signup", body, config)
+      .post("https://noteitappapi.herokuapp.com/signup", body, config)
       .then((res) => {
         dispatch({
           type: REGISTER_SUCCESS,
@@ -61,7 +61,7 @@ export const register = ({ name, email, password }) => {
         });
       })
       .catch((err) => {
-        // dispatch(errors(err.response.data));
+        dispatch(errors(err.response.data));
 
         dispatch({
           type: REGISTER_FAILED,
@@ -93,13 +93,22 @@ export const Loginauth = ({ email, password }) => {
 
     //post to route /signin
     axios
-      .post("http://localhost:9000/signin", body, config)
-      .then((res) =>
+      .post("https://noteitappapi.herokuapp.com/signin", body, config)
+      .then((res) => {
         dispatch({
           type: LOGIN_SUCCESS,
           payload: res.data,
-        })
-      )
+        });
+        toast.success("Logged In Sucessfully!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: false,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+        });
+      })
       .catch((err) => {
         dispatch(errors(err.response.data));
         dispatch({
@@ -119,16 +128,8 @@ export const glogin = (token) => {
     //request body
     const data = { tokenId: token };
 
-    //post to route /signin
-    // fetch("http://localhost:9000/googlelogin", {
-    //   method: "POST", // or 'PUT'
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(data),
-    // })
     axios
-      .post("http://localhost:9000/googlelogin", data)
+      .post("https://noteitappapi.herokuapp.com/googlelogin", data)
       .then((res) => {
         dispatch({
           type: LOGIN_SUCCESS,

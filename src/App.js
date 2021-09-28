@@ -5,6 +5,7 @@ import Register from "./components/authuser/Register";
 import Landing from "./components/Landing";
 import ResetLink from "./components/authuser/ResetLink";
 import UpdatePassword from "./components/authuser/Updatepassword";
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/reset" component={ResetLink} />
+
           <Route exact path="/reset/:token" component={UpdatePassword} />
         </Switch>
       </div>
