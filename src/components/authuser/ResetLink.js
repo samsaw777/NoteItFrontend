@@ -2,34 +2,43 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useDispatch, useSelector } from "react-redux";
 toast.configure();
 const ResetLink = () => {
   const [email, setEmail] = useState("");
+  const [errors, setErrors] = useState("");
+  const error = useSelector((state) => state.errors.errors.msg);
   const resetlink = async (e) => {
     e.preventDefault();
-    const data = { email };
-    axios
-      .post("https://noteitappapi.herokuapp.com/resetp", data)
-      .then((res) => {
-        if (res) {
-          toast.info(
-            "Check Your Email.If not in Inbox then check your spam email section.",
-            {
-              position: "top-center",
-              autoClose: 5000,
-              hideProgressBar: true,
-              closeOnClick: false,
-              pauseOnHover: false,
-              draggable: true,
-              progress: undefined,
-            }
-          );
-          setEmail("");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (!email) {
+      setErrors("Email cannot be empty!");
+    } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      setErrors("Invalid email address");
+    } else {
+      const data = { email };
+      axios
+        .post("https://noteitappapi.herokuapp.com/resetp", data)
+        .then((res) => {
+          if (res) {
+            toast.info(
+              "Check Your Email.If not in Inbox then check your spam email section.",
+              {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: false,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+              }
+            );
+            setEmail("");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
   return (
     <div className="h-viewHeight bg-sidebarBackgroundColor-color">
@@ -45,6 +54,20 @@ const ResetLink = () => {
                 Enter email to get the reset link.
               </h1>
               <form onSubmit={resetlink}>
+                {errors ? (
+                  <div class="w-full text-center bg-red-300 text-black p-3 rounded-lg mb-2">
+                    {errors}
+                  </div>
+                ) : (
+                  <div></div>
+                )}
+                {error ? (
+                  <div class="w-full text-center bg-red-300 text-black p-3 rounded-lg mb-2">
+                    {error}
+                  </div>
+                ) : (
+                  <div></div>
+                )}
                 <input
                   type="text"
                   class="border border-grey-light rounded-lg px-3 py-3 mt-1 mb-5 text-sm w-full"

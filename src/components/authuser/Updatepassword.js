@@ -2,36 +2,45 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
 toast.configure();
 const UpdatePassword = () => {
   const history = useHistory();
   const { token } = useParams();
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState("");
+  const error = useSelector((state) => state.errors.errors.msg);
   const updatePassword = (e) => {
     e.preventDefault();
-    const data = { password, token };
-    axios
-      .post("https://noteitappapi.herokuapp.com/resetpassword", data)
-      .then((response) => {
-        console.log(response);
-        if (response) {
-          toast.success("Password Changed!", {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: true,
-            closeOnClick: false,
-            pauseOnHover: false,
-            draggable: true,
-            progress: undefined,
-          });
-          setPassword("");
-          history.push("/login");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (!password) {
+      setErrors("Password is required");
+    } else if (password.length < 0) {
+      setErrors("Password should be atleast of 6 characters");
+    } else {
+      const data = { password, token };
+      axios
+        .post("https://noteitappapi.herokuapp.com/resetpassword", data)
+        .then((response) => {
+          console.log(response);
+          if (response) {
+            toast.success("Password Changed!", {
+              position: "top-center",
+              autoClose: 5000,
+              hideProgressBar: true,
+              closeOnClick: false,
+              pauseOnHover: false,
+              draggable: true,
+              progress: undefined,
+            });
+            setPassword("");
+            history.push("/login");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
   return (
     <div className="h-viewHeight bg-sidebarBackgroundColor-color">
@@ -47,6 +56,20 @@ const UpdatePassword = () => {
                 Enter your password.
               </h1>
               <form onSubmit={updatePassword}>
+                {errors ? (
+                  <div class="w-full text-center bg-red-300 text-black p-3 rounded-lg mb-2">
+                    {errors}
+                  </div>
+                ) : (
+                  <div></div>
+                )}
+                {error ? (
+                  <div class="w-full text-center bg-red-300 text-black p-3 rounded-lg mb-2">
+                    {error}
+                  </div>
+                ) : (
+                  <div></div>
+                )}
                 <input
                   type="password"
                   class="border border-grey-light rounded-lg px-3 py-3 mt-1 mb-5 text-sm w-full"

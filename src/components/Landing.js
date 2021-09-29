@@ -7,8 +7,10 @@ function Landing() {
     const userToken = localStorage.getItem("token");
     if (userToken) {
       history.push("/landing");
+    } else {
+      history.push("/");
     }
-  });
+  }, []);
   return (
     <div className="h-viewHeight bg-sidebarBackgroundColor ">
       <div className="w-full">
