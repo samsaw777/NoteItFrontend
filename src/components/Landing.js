@@ -3,14 +3,14 @@ import { Link, useHistory } from "react-router-dom";
 import Logo from "../images/RFWT.png";
 function Landing() {
   const history = useHistory();
-  useEffect(() => {
-    const userToken = localStorage.getItem("token");
-    if (userToken) {
-      history.push("/landing");
-    } else {
-      history.push("/");
-    }
-  }, []);
+  // useEffect(() => {
+  //   const userToken = localStorage.getItem("token");
+  //   if (userToken) {
+  //     history.push("/landing");
+  //   } else {
+  //     history.push("/");
+  //   }
+  // }, []);
   return (
     <div className="h-viewHeight bg-sidebarBackgroundColor ">
       <div className="w-full">
