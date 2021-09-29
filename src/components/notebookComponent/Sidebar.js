@@ -10,7 +10,7 @@ const Sidebar = () => {
       <p className="flex-2">
         <SidebarComponent />
       </p>
-      <p className="flex-4 bg-chatBackgroundColor text-gray-300">
+      <p className="flex-4 bg-buttonColor text-gray-300">
         {/*  */}
         <Chat />
       </p>

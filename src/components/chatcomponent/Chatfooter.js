@@ -6,8 +6,8 @@ const Chatfooter = ({ show }) => {
       <div
         className={
           show
-            ? "relative top-chatTop  text-gray-100 h-footerHeight border-2 border-gray-200"
-            : "relative top-chattop  text-gray-100 h-footerHeight border-2 border-gray-200"
+            ? "relative top-chatTop  text-gray-100 h-footerHeight border-2 border-gray-200 bg-buttonColor"
+            : "relative top-chattop  text-gray-100 h-footerHeight border-2 border-gray-200 bg-borderColor"
         }
       >
         <div className="w-3/6 pl-5">

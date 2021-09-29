@@ -28,12 +28,12 @@ function FriendRequest({ loginUser, loginuserid }) {
   const friendRequest = useSelector((state) => state.friends.friendsRequest);
   return (
     <>
-      <div className="text-gray-200 p-2">Friend Requests</div>
+      <div className="text-buttonColor p-2">Friend Requests</div>
       <div className="h-searchHeight overflow-y-scroll">
         {user.followRequest ? (
           user.followRequest.map((user) => (
             <div
-              className="border bg-chatBackgroundColor w-full p-3 flex mb-2 justify-between"
+              className="border bg-buttonColor w-full p-3 flex mb-2 justify-between"
               key={user}
             >
               <div className="pt-1 mr-3">

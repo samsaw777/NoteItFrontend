@@ -91,12 +91,12 @@ const Register = () => {
     }
   }, [userback]);
   return (
-    <div className="h-viewheight bg-sidebarBackgroundColor ">
+    <div className="h-viewheight background ">
       <div class="bg-grey-lighter min-h-screen flex flex-col">
         <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-          <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+          <div class="bg-buttonColor px-6 py-8 rounded shadow-md text-black w-full">
             <form onSubmit={checkpassword}>
-              <h1 class="mb-8 text-3xl text-center">Sign up</h1>
+              <h1 class="mb-8 text-3xl text-center text-gray-100">Sign up</h1>
               {errors ? (
                 <div class="w-full text-center bg-red-300 text-black p-3 rounded-lg mb-2">
                   {errors}
@@ -153,30 +153,21 @@ const Register = () => {
                 Create Account
               </button>
             </form>
-            <div class="text-center text-sm text-grey-300 mt-4">
+            <div class="text-center text-sm text-gray-100 mt-4">
               By signing up, you agree to the
-              <a
-                class="no-underline border-b border-grey-dark text-grey-dark"
-                href="/"
-              >
+              <a class="no-underline border-grey-dark pr-2 pl-2" href="/">
                 Terms of Service
               </a>{" "}
               and
-              <a
-                class="no-underline border-b border-grey-dark text-grey-dark"
-                href="/"
-              >
+              <a class="no-underline border-grey-dark pl-2" href="/">
                 Privacy Policy
               </a>
             </div>
           </div>
 
-          <div class="text-gray-400 mt-6">
+          <div class="text-buttonColor mt-6">
             Already have an account?
-            <Link
-              class="no-underline border-b border-blue text-gray-400"
-              to="/login"
-            >
+            <Link class="no-underline border-b  text-buttonColor" to="/login">
               Log in
             </Link>
             .

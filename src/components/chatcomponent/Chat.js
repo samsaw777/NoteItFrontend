@@ -78,17 +78,25 @@ const Chat = () => {
             </div>
           ) : (
             <div className={!show ? "block h-chatheight " : "hidden"}>
-              <div className=" bg-chatBackgroundColor flex flex-col ">
+              <div className=" bg-buttonColor flex flex-col ">
                 <div className="flex justify-between p-3 pl-20 pr-20">
                   <div
                     onClick={() => changeToggleValue(1)}
-                    className="cursor-pointer text-gray-100"
+                    className={
+                      toggleValue === 1
+                        ? "cursor-pointer text-gray-100 border-b-2 border-gray-100"
+                        : "cursor-pointer text-gray-100"
+                    }
                   >
                     <p>Messages</p>
                   </div>
                   <div
                     onClick={() => changeToggleValue(2)}
-                    className="cursor-pointer text-gray-100"
+                    className={
+                      toggleValue === 2
+                        ? "cursor-pointer text-gray-100 border-b-2 border-gray-100"
+                        : "cursor-pointer text-gray-100"
+                    }
                   >
                     <p>Group Members</p>
                   </div>
@@ -122,7 +130,7 @@ const Chat = () => {
           <ChatFooter show={show} />
         </>
       ) : (
-        <p className="pt-72 h-groupHeight pl-72">
+        <p className="pt-72 h-groupHeight pl-72 bg-buttonColor">
           Click on the group to open the chat.
         </p>
       )}

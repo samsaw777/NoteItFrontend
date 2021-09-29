@@ -21,7 +21,7 @@ const FriendList = ({ friends, userid }) => {
       {friends && friends.length ? (
         friends.map((user) => (
           <div
-            className="border bg-chatBackgroundColor w-full p-3 flex mb-2 justify-between"
+            className="border bg-buttonColor w-full p-3 flex mb-2 justify-between"
             key={user}
           >
             <div className="pt-1 mr-3">

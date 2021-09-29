@@ -42,7 +42,7 @@ const Search = () => {
             value={search}
             placeholder="Search Friends"
             onChange={(e) => searchItem(e.target.value)}
-            className="appearance-none bg-transparent border-b-2 border-gray-400 w-11/12 text-gray-300 mr-3 py-1 px-2 leading-tight focus:outline-none"
+            className="appearance-none bg-transparent border-b-2 border-buttonColor w-11/12 text-buttonColor mr-3 py-1 px-2 leading-tight focus:outline-none"
           />
         </form>
       </div>

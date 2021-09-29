@@ -63,15 +63,15 @@ function Login() {
         </span>
       ) : (
         <>
-          <div class="h-viewHeight bg-sidebarBackgroundColor  flex flex-col justify-center sm:py-12">
+          <div class="h-viewHeight background flex flex-col justify-center sm:py-12">
             <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
-              <h1 class="font-bold text-center text-2xl mb-5 text-gray-300">
+              <h1 class="font-bold text-center text-2xl mb-5 text-buttonColor">
                 Note IT
               </h1>
 
-              <div class="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
+              <div class="bg-buttonColor shadow w-full rounded-lg divide-y divide-gray-200">
                 <div class="px-5 py-7">
-                  <h1 class="mb-8 text-3xl text-center text-gray-700">
+                  <h1 class="mb-8 text-3xl text-center text-gray-100">
                     Sign In
                   </h1>
                   <form onSubmit={loginin}>
@@ -126,13 +126,13 @@ function Login() {
                       </svg>
                     </button>
                   </form>
-                  <p className="text-center w-full mt-2">OR</p>
+                  <p className="text-center w-full mt-2 text-gray-100">OR</p>
                   <GLogin />
                 </div>
                 <div class="py-5">
                   <div class="grid grid-cols-2 gap-1">
-                    <div class="text-center sm:text-left whitespace-nowrap">
-                      <button class="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-500 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
+                    <div class="text-center sm:text-left whitespace-nowrap group">
+                      <button class="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-100 group-hover:bg-gray-200 group-hover:text-black focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
@@ -148,7 +148,9 @@ function Login() {
                           />
                         </svg>
                         <Link to="/reset">
-                          <span class="inline-block ml-1">Forgot Password</span>
+                          <span class="inline-block ml-1 text-gray-100 group-hover:text-black">
+                            Forgot Password
+                          </span>
                         </Link>
                       </button>
                     </div>

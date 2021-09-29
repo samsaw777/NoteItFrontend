@@ -11,7 +11,7 @@ const Logoutuser = () => {
   };
   return (
     <div
-      className="w-10/12 h-10 bg-green-400 block mx-auto rounded pt-2 cursor-pointer"
+      className="lg:w-80 sm:w-32 md:w-32 h-10 bg-buttonColor hover:bg-gray-600 hover:text-gray-100  text-white font-bold py-2 px-4 rounded m-1 cursor-pointer"
       onClick={() => logoutuser()}
     >
       <p className="block mx-auto w-min text-lg text-white">Logout</p>

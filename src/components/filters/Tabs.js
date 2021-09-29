@@ -12,23 +12,31 @@ const Tab = () => {
   };
 
   return (
-    <div className="h-viewHeight bg-sidebarBackgroundColor flex flex-col ">
-      <div className="flex justify-between p-3">
+    <div className="h-viewHeight bg-sideBar flex flex-col ">
+      <div className="flex justify-between p-3 bg-buttonColor">
         <div
           onClick={() => changeToggleValue(1)}
-          className="cursor-pointer text-gray-100"
+          className={
+            toggleValue === 1
+              ? "cursor-pointer text-gray-100 border-b-2 border-gray-100"
+              : "cursor-pointer text-gray-100"
+          }
         >
           <p>Friends</p>
         </div>
         <div
           onClick={() => changeToggleValue(2)}
-          className="cursor-pointer text-gray-100"
+          className={
+            toggleValue === 2
+              ? "cursor-pointer text-gray-100 border-b-2 border-gray-100"
+              : "cursor-pointer text-gray-100"
+          }
         >
           <p>Serach Friends</p>
         </div>
       </div>
       <div>
-        <p className={toggleValue === 1 ? "block" : "hidden"}>
+        <p className={toggleValue === 1 ? "block pt-1" : "hidden"}>
           <FriendsList friends={loginuser.friends} userid={loginuser._id} />
         </p>
         <p className={toggleValue === 2 ? "block" : "hidden"}>

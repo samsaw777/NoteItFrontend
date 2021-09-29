@@ -41,16 +41,16 @@ const ResetLink = () => {
     }
   };
   return (
-    <div className="h-viewHeight bg-sidebarBackgroundColor">
+    <div className="h-viewHeight background">
       <div class=" flex flex-col justify-center sm:py-12">
         <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
-          <h1 class="font-bold text-center text-2xl mb-5 text-gray-300">
+          <h1 class="font-bold text-center text-2xl mb-5 text-buttonColor">
             Note IT
           </h1>
 
-          <div class="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
+          <div class="bg-buttonColor shadow w-full rounded-lg divide-y divide-gray-200">
             <div class="px-5 py-7">
-              <h1 class="mb-8 text-xl text-center text-gray-700">
+              <h1 class="mb-8 text-xl text-center text-gray-100">
                 Enter email to get the reset link.
               </h1>
               <form onSubmit={resetlink}>

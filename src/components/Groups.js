@@ -34,35 +34,43 @@ function Notes() {
   };
   //returning the jsx element
   return (
-    <div className="h-viewHeight bg-sidebarBackgroundColor">
+    <div className="h-viewHeight bg-sideBar">
       {/* Show the user in the top */}
-      <div className="flex pl-5 pt-1 border-b-4 border-borderColor pb-3">
+      <div className="flex pl-5 pt-1 border-b-4 border-borderColor pb-3 bg-borderColor">
         <div className="mr-5 pt-1">
           <p className="rounded-full w-10 h-10 bg-gray-100 block mx-auto"></p>
         </div>
         <div className="flex flex-col ">
-          <p className="text-lg text-gray-200">{user.name}</p>
-          <p className="text-xs text-gray-300">{user.email}</p>
+          <p className="text-lg text-gray-100">{user.name}</p>
+          <p className="text-xs text-gray-100">{user.email}</p>
         </div>
       </div>
       <div className="flex flex-col">
         <div className="flex pl-3.5 pt-2 justify-between">
-          <span className="text-gray-400 text-lg">Your Groups</span>
+          <span className="text-buttonColor text-lg">Your Groups</span>
           <Modal />
         </div>
         <div className="flex flex-col  h-groupHeight overflow-y-scroll">
           <div>
-            <div className=" bg-sidebarBackgroundColor flex flex-col ">
+            <div className=" bg-sideBar flex flex-col ">
               <div className="flex justify-between p-3">
                 <div
                   onClick={() => changeToggleValue(1)}
-                  className="cursor-pointer text-gray-100"
+                  className={
+                    toggleValue === 1
+                      ? "cursor-pointer text-buttonColor border-b-2 border-buttonColor"
+                      : "cursor-pointer text-buttonColor"
+                  }
                 >
                   <p>Created</p>
                 </div>
                 <div
                   onClick={() => changeToggleValue(2)}
-                  className="cursor-pointer text-gray-100"
+                  className={
+                    toggleValue === 2
+                      ? "cursor-pointer text-buttonColor border-b-2 border-buttonColor"
+                      : "cursor-pointer text-buttonColor"
+                  }
                 >
                   <p>Group Joined</p>
                 </div>

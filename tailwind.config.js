@@ -15,10 +15,13 @@ module.exports = {
 
     extend: {
       colors: {
-        sidebarBackgroundColor: "#2f3135",
+        sidebarBackgroundColor: "#89ff74",
         chatBackgroundColor: "#363a37",
         borderColor: "#26282c",
         chatBg: "#777777",
+        buttonColor: "#2f3135",
+        textcolor: "#2f3135",
+        sideBar: "#6cf08f",
       },
       height: {
         sidebarHeight: "91.2vh",
@@ -28,6 +31,9 @@ module.exports = {
         chatheight: "80vh",
         footerHeight: "7vh",
         memberheight: "75vh",
+      },
+      width: {
+        groupName: "270px",
       },
       flex: {
         2: "0.40 0.60 0%",
