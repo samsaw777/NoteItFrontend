@@ -21,7 +21,14 @@ function Landing() {
         <h1 className="text-xl lg:text-3xl">Remote First Work Tracker</h1>
       </div>
       {/* Information about the app */}
-
+      <div className="text-center pt-16 w-full px-64">
+        <p className="text-lg text-gray-300 px-24">
+          RFWT help you to track your work which you are doing or done
+          previously. You can also share the work with the team to get help from
+          the team if required any now with <strong>Loom</strong> support, which
+          allow user to record video and send it as message.
+        </p>
+      </div>
       {/* Login and Sign in */}
       <div className="flex justify-center pt-16">
         <Link to="/login">
