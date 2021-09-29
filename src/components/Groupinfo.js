@@ -21,8 +21,8 @@ const Notebook = ({ id, title }) => {
       key={id}
     >
       <div className="flex" onClick={() => sendchatinfo(id, title, member)}>
-        <span className="text-md  pr-1">#</span>
-        <p className="text-md w-groupName">{title}</p>
+        <span className="text-md  pr-1 font-bold">#</span>
+        <p className="text-md w-groupName font-bold">{title}</p>
       </div>
       <p onClick={() => dispatchdata(deleteGroup(id))} className="pt-2">
         <TrashIcon className="w-5 h-5 cursor-pointer text-red-500 rounded  hover:bg-gray-600" />

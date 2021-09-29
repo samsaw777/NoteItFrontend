@@ -28,7 +28,7 @@ function FriendRequest({ loginUser, loginuserid }) {
   const friendRequest = useSelector((state) => state.friends.friendsRequest);
   return (
     <>
-      <div className="text-buttonColor p-2">Friend Requests</div>
+      <div className="text-buttonColor p-2 font-bold">Friend Requests</div>
       <div className="h-searchHeight overflow-y-scroll">
         {user.followRequest ? (
           user.followRequest.map((user) => (

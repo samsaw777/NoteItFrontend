@@ -36,7 +36,7 @@ function Notes() {
   return (
     <div className="h-viewHeight bg-sideBar">
       {/* Show the user in the top */}
-      <div className="flex pl-5 pt-1 border-b-4 border-borderColor pb-3 bg-borderColor">
+      <div className="flex pl-5 pt-1 border-b-4 border-borderColor pb-3 bg-buttonColor">
         <div className="mr-5 pt-1">
           <p className="rounded-full w-10 h-10 bg-gray-100 block mx-auto"></p>
         </div>
@@ -47,7 +47,9 @@ function Notes() {
       </div>
       <div className="flex flex-col">
         <div className="flex pl-3.5 pt-2 justify-between">
-          <span className="text-buttonColor text-lg">Your Groups</span>
+          <span className="text-buttonColor text-lg font-bold">
+            Your Groups
+          </span>
           <Modal />
         </div>
         <div className="flex flex-col  h-groupHeight overflow-y-scroll">
@@ -58,8 +60,8 @@ function Notes() {
                   onClick={() => changeToggleValue(1)}
                   className={
                     toggleValue === 1
-                      ? "cursor-pointer text-buttonColor border-b-2 border-buttonColor"
-                      : "cursor-pointer text-buttonColor"
+                      ? "cursor-pointer text-buttonColor border-b-2 border-buttonColor font-bold"
+                      : "cursor-pointer text-buttonColor font-bold"
                   }
                 >
                   <p>Created</p>
@@ -68,8 +70,8 @@ function Notes() {
                   onClick={() => changeToggleValue(2)}
                   className={
                     toggleValue === 2
-                      ? "cursor-pointer text-buttonColor border-b-2 border-buttonColor"
-                      : "cursor-pointer text-buttonColor"
+                      ? "cursor-pointer text-buttonColor border-b-2 border-buttonColor font-bold"
+                      : "cursor-pointer text-buttonColor font-bold"
                   }
                 >
                   <p>Group Joined</p>

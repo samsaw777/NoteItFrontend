@@ -34,7 +34,9 @@ const FriendList = ({ friends, userid }) => {
           </div>
         ))
       ) : (
-        <div className="text-gray-200 p-2">You have no friends.</div>
+        <div className="text-buttonColor font-bold p-2">
+          You have no friends.
+        </div>
       )}
       {/* {!friends && (
         <div className="text-gray-200 p-2">You have no friends.</div>

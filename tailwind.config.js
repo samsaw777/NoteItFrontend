@@ -26,11 +26,11 @@ module.exports = {
       height: {
         sidebarHeight: "91.2vh",
         viewHeight: "100vh",
-        groupHeight: "80vh",
+        groupHeight: "79vh",
         searchHeight: "40vh",
         chatheight: "80vh",
         footerHeight: "7vh",
-        memberheight: "75vh",
+        memberheight: "70vh",
       },
       width: {
         groupName: "270px",
