@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
+import Pusher from "pusher-js";
 import { PlusIcon } from "@heroicons/react/outline";
 import { loaduser } from "../../actions/authtype";
 function FriendRequest({ loginUser, loginuserid }) {
+  const user = useSelector((state) => state.auth.user);
+  const [followRequest, setFollowRequest] = useState([]);
+  console.log(followRequest);
   const dispatch = useDispatch();
   const addFriend = (email, id) => {
     const body = {
@@ -22,9 +26,24 @@ function FriendRequest({ loginUser, loginuserid }) {
 
   useEffect(() => {
     dispatch(loaduser());
-  }, []);
-  const user = useSelector((state) => state.auth.user);
-  console.log(user);
+  }, [dispatch]);
+
+  // useEffect(() => {
+  //   setFollowRequest(user.followRequest);
+  // }, [user]);
+
+  // useEffect(() => {
+  //   const pusher = new Pusher("b389d6daa22bf8adf416", {
+  //     cluster: "ap2",
+  //   });
+
+  //   const channel = pusher.subscribe("friendrequest");
+  //   channel.bind("updated", function (data) {
+  //     // alert(JSON.stringify());
+  //     setFollowRequest([...followRequest, data.friendRequest]);
+  //   });
+  // }, [followRequest]);
+
   const friendRequest = useSelector((state) => state.friends.friendsRequest);
   return (
     <>

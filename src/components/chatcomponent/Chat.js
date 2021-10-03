@@ -11,6 +11,7 @@ import ChatFooter from "./Chatfooter";
 import { joingroup } from "../../actions/joinedGroup";
 const Chat = () => {
   const dispatch = useDispatch();
+  const [fetchData, setFetchData] = useState(true);
   const addMemberToGroup = (emial, id, groupname) => {
     const body = { memberEmail: emial, groupId: id, groupName: groupname };
     axios
@@ -29,7 +30,7 @@ const Chat = () => {
   };
   const [show, setShow] = useState(false);
   const chatinfo = useSelector((state) => state.chat.chat);
-  console.log(chatinfo);
+  // console.log(chatinfo.id);
   const user = useSelector((state) => state.auth.user);
   // console.log(user);
   return (
@@ -109,7 +110,7 @@ const Chat = () => {
                         : "hidden"
                     }
                   >
-                    <Chatmessage />
+                    <Chatmessage groupID={chatinfo.id} fetchData={fetchData} />
                   </p>
                   <p
                     className={
@@ -127,7 +128,11 @@ const Chat = () => {
               </div>
             </div>
           )}
-          <ChatFooter show={show} />
+          <ChatFooter
+            show={show}
+            setFetchData={setFetchData}
+            fetchData={fetchData}
+          />
         </>
       ) : (
         <p className="pt-72 h-groupHeight pl-72 bg-buttonColor">
