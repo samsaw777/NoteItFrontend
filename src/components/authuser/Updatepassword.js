@@ -43,7 +43,7 @@ const UpdatePassword = () => {
     }
   };
   return (
-    <div className="h-viewHeight bg-sidebarBackgroundColor">
+    <div className="h-viewHeight background">
       <div class=" flex flex-col justify-center sm:py-12">
         <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
           <h1 class="font-bold text-center text-2xl mb-5 text-gray-300">
