@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Chatheader from "./Chatheader";
 import { toast } from "react-toastify";
@@ -10,6 +10,9 @@ import ChatFooter from "./Chatfooter";
 
 import { joingroup } from "../../actions/joinedGroup";
 const Chat = () => {
+  const [getMessages, setGetMessage] = useState([]);
+  // const sideref = useRef();
+  // console.log(sideref);
   const dispatch = useDispatch();
   const [fetchData, setFetchData] = useState(true);
   const addMemberToGroup = (emial, id, groupname) => {
@@ -33,6 +36,9 @@ const Chat = () => {
   // console.log(chatinfo.id);
   const user = useSelector((state) => state.auth.user);
   // console.log(user);
+  // useEffect(() => {
+  //   sideref.current?.scrollIntoView({ behavior: "smooth" });
+  // }, [getMessages]);
   return (
     <>
       {Object.entries(chatinfo).length !== 0 ? (
@@ -106,11 +112,15 @@ const Chat = () => {
                   <p
                     className={
                       toggleValue === 1
-                        ? "block h-memberheight overflow-scroll"
+                        ? "block h-memberheight overflow-scroll "
                         : "hidden"
                     }
                   >
-                    <Chatmessage groupID={chatinfo.id} fetchData={fetchData} />
+                    <Chatmessage
+                      groupID={chatinfo.id}
+                      fetchData={fetchData}
+                      setGetMessage={setGetMessage}
+                    />
                   </p>
                   <p
                     className={

@@ -15,23 +15,27 @@ const Chatfooter = ({ show, fetchData, setFetchData }) => {
   const user = useSelector((state) => state.auth.user);
   const sendChat = (e) => {
     e.preventDefault();
-    db.collection("messages")
-      .add({
-        message: text,
-        postedBy: user._id,
-        postedByEmail: user.email,
-        onGroup: chatinfo.id,
-        // date: date,
-        time: current,
-      })
-      .then(() => {
-        // alert("Documents added sucessfully");
-        setText("");
-        setFetchData(!fetchData);
-      })
-      .catch((e) => {
-        console.error("Error while sending", e);
-      });
+    if (text) {
+      db.collection("messages")
+        .add({
+          message: text,
+          postedBy: user._id,
+          postedByEmail: user.email,
+          onGroup: chatinfo.id,
+          // date: date,
+          time: current,
+        })
+        .then(() => {
+          // alert("Documents added sucessfully");
+          setText("");
+          setFetchData(!fetchData);
+        })
+        .catch((e) => {
+          console.error("Error while sending", e);
+        });
+    } else {
+      console.log("Enter text first");
+    }
   };
   return (
     <>
