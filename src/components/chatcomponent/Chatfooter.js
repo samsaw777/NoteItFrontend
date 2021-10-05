@@ -8,35 +8,11 @@ import * as firebase from "firebase/compat";
 import { db } from "../../firebase";
 // import { db } from "../../firebase";
 const Chatfooter = ({ show, fetchData, setFetchData }) => {
-  const current = new Date().toTimeString();
   // console.log(current);
   const [text, setText] = useState("");
   const chatinfo = useSelector((state) => state.chat.chat);
   const user = useSelector((state) => state.auth.user);
-  const sendChat = (e) => {
-    e.preventDefault();
-    if (text) {
-      db.collection("messages")
-        .add({
-          message: text,
-          postedBy: user._id,
-          postedByEmail: user.email,
-          onGroup: chatinfo.id,
-          // date: date,
-          time: current,
-        })
-        .then(() => {
-          // alert("Documents added sucessfully");
-          setText("");
-          setFetchData(!fetchData);
-        })
-        .catch((e) => {
-          console.error("Error while sending", e);
-        });
-    } else {
-      console.log("Enter text first");
-    }
-  };
+
   return (
     <>
       <div
@@ -46,7 +22,7 @@ const Chatfooter = ({ show, fetchData, setFetchData }) => {
             : "relative top-chattop  text-gray-100 h-footerHeight border-2 border-gray-200 bg-borderColor"
         }
       >
-        <Chatmodal />
+        <Chatmodal setFetchData={setFetchData} fetchData={fetchData} />
         {/* <div className="w-3/6 pl-5">
           <form
             className="flex justify-between w-full pt-3"

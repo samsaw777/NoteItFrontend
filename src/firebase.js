@@ -52,4 +52,4 @@ const firebaseapp = firebase.initializeApp({
 });
 
 const db = firebaseapp.firestore();
-export { db };
+export { db, firebaseapp };
