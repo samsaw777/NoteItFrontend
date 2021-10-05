@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { ArrowRightIcon } from "@heroicons/react/outline";
 import { useSelector } from "react-redux";
-
+import Chatmodal from "./Chatmodel";
 import "firebase/firestore";
 import * as firebase from "firebase/compat";
 import { db } from "../../firebase";
@@ -46,7 +46,8 @@ const Chatfooter = ({ show, fetchData, setFetchData }) => {
             : "relative top-chattop  text-gray-100 h-footerHeight border-2 border-gray-200 bg-borderColor"
         }
       >
-        <div className="w-3/6 pl-5">
+        <Chatmodal />
+        {/* <div className="w-3/6 pl-5">
           <form
             className="flex justify-between w-full pt-3"
             onSubmit={sendChat}
@@ -61,7 +62,7 @@ const Chatfooter = ({ show, fetchData, setFetchData }) => {
               <ArrowRightIcon className="w-5 h-5 cursor-pointer" />
             </button>
           </form>
-        </div>
+        </div> */}
       </div>
     </>
   );
