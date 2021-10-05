@@ -1,18 +1,9 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { ArrowRightIcon } from "@heroicons/react/outline";
-import { useSelector } from "react-redux";
+
 import Chatmodal from "./Chatmodel";
 import "firebase/firestore";
-import * as firebase from "firebase/compat";
-import { db } from "../../firebase";
-// import { db } from "../../firebase";
-const Chatfooter = ({ show, fetchData, setFetchData }) => {
-  // console.log(current);
-  const [text, setText] = useState("");
-  const chatinfo = useSelector((state) => state.chat.chat);
-  const user = useSelector((state) => state.auth.user);
 
+const Chatfooter = ({ show, fetchData, setFetchData }) => {
   return (
     <>
       <div
