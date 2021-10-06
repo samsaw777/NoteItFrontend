@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import { firebaseapp, db } from "../../firebase";
+import { store, db } from "../../firebase";
 import { useSelector } from "react-redux";
+
 const customStyles = {
   content: {
     top: "50%",
@@ -41,7 +42,7 @@ const Chatmodel = ({ setFetchData, fetchData }) => {
     var file = e.target.files[0];
     setFileName(file);
     console.log(file);
-    const storageRef = firebaseapp.storage().ref();
+    const storageRef = store.ref();
     const fileRef = storageRef.child(file.name);
     console.log(fileRef);
     await fileRef.put(file);
