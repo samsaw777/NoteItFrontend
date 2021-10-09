@@ -25,3 +25,7 @@ export const SENT_REQUEST = "SENT_REQUEST";
 export const ADD_FRIEND = "ADD_FRIEND";
 export const REMOVE_FRIEND = "REMOVE_FRIEND";
 export const GET_MEMBERS = "GET_MEMBERS";
+export const MENU_INFO = "MENU_INFO";
+export const MENU_LOADING = "MENU_LOADING";
+export const CHATMENU_INFO = "CHATMENU_INFO";
+export const CHATMENU_INFO_LOADING = "CHATMENU_INFO_LOADING";
