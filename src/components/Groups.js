@@ -6,6 +6,8 @@ import { loaduser } from "../actions/authtype";
 import Notebook from "./Groupinfo";
 import Modal from "./notebookComponent/Modal";
 import Logout from "./authuser/Logout";
+import MenuList from "./rawcomponent/MenuList";
+import { sidebarDropDown } from "../Assets/Data";
 
 function Notes() {
   //initialize the dispatch method with
@@ -36,13 +38,16 @@ function Notes() {
   return (
     <div className="h-viewHeight bg-sideBar">
       {/* Show the user in the top */}
-      <div className="flex pl-5 pt-1 border-b-4 border-borderColor pb-3 bg-buttonColor">
+      <div className="flex pl-5 pt-1 border-b-4 border-borderColor pb-3 bg-buttonColor relative">
         <div className="mr-5 pt-1">
           <p className="rounded-full w-10 h-10 bg-gray-100 block mx-auto"></p>
         </div>
         <div className="flex flex-col ">
           <p className="text-lg text-gray-100">{user.name}</p>
           <p className="text-xs text-gray-100">{user.email}</p>
+        </div>
+        <div className="ml-auto pt-3">
+          <MenuList options={sidebarDropDown} />
         </div>
       </div>
       <div className="flex flex-col">

@@ -29,7 +29,7 @@ const Expandmessage = ({ title, description, file, tag, time, postedBy }) => {
   };
   return (
     <>
-      <div className="w-4 h-5 cursor-pointer" onClick={openModal}>
+      <div className="w-4 h-4 cursor-pointer ml-auto" onClick={openModal}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-4 w-4 text-gray-200"

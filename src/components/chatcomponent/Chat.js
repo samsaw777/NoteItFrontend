@@ -14,7 +14,7 @@ const Chat = () => {
   // const sideref = useRef();
   // console.log(sideref);
   const dispatch = useDispatch();
-  const [fetchData, setFetchData] = useState(true);
+ 
   const addMemberToGroup = (emial, id, groupname) => {
     const body = { memberEmail: emial, groupId: id, groupName: groupname };
     axios
@@ -118,8 +118,7 @@ const Chat = () => {
                   >
                     <Chatmessage
                       groupID={chatinfo.id}
-                      fetchData={fetchData}
-                      setGetMessage={setGetMessage}
+                     
                     />
                   </p>
                   <p
@@ -140,8 +139,7 @@ const Chat = () => {
           )}
           <ChatFooter
             show={show}
-            setFetchData={setFetchData}
-            fetchData={fetchData}
+          
           />
         </>
       ) : (
