@@ -65,7 +65,7 @@ const Chatmessage = () => {
             className={
               message.postedBy === user._id
                 ? `w-1/2 bg-newsidebarcolor text-buttonColor p-2 mb-6 rounded-xl relative ml-auto mr-1 border-t-8 border-${message.tag}-500`
-                : `w-1/2 bg-newsidebarcolor text-buttonColor p-2 mb-6 rounded-xl relative ml-1 border-${message.tag}-500 border-t-8`
+                : `w-1/2 bg-newsidebarcolor text-buttonColor p-2 mb-6 rounded-xl relative ml-1  border-t-8 border-${message.tag}-500 border-t-8`
             }
             key={message.id}
           >
