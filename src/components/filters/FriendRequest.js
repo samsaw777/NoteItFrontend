@@ -47,20 +47,27 @@ function FriendRequest({ loginUser, loginuserid }) {
   const friendRequest = useSelector((state) => state.friends.friendsRequest);
   return (
     <>
-      <div className="text-buttonColor p-2 font-bold">Friend Requests</div>
       <div className="h-searchHeight overflow-y-scroll">
+        <div className="text-center text-lg text-gray-300 mt-2 mb-3 p-2 w-11/12 rounded mx-auto bg-tabbackgroundcolor">
+          <div className="flex justify-center w-11/12">
+            Friends Request
+            <span className="bg-red-600 text-gray-100 w-6 h-6 text-sm ml-1 mt-1 rounded-full">
+              {user.followRequest.length}
+            </span>
+          </div>
+        </div>
         {user.followRequest ? (
           user.followRequest.map((user) => (
             <div
-              className="border bg-buttonColor w-full p-3 flex mb-2 justify-between"
+              className=" bg-newchatbackground w-11/12 mx-auto p-3 flex mb-2 justify-between rounded-lg"
               key={user}
             >
-              <div className="pt-1 mr-3">
+              <div className="pt-1 mr-2">
                 <p className="rounded-full w-5 h-5 bg-gray-100 block mx-auto"></p>
               </div>
               <div className="text-gray-200">{user}</div>
-              <p className="pt-1" onClick={() => addFriend(user, loginuserid)}>
-                <PlusIcon className="w-5 h-5 cursor-pointer text-blue-600 rounded  hover:bg-gray-600" />
+              <p onClick={() => addFriend(user, loginuserid)}>
+                <PlusIcon className="w-5 h-5 cursor-pointer text-tabbackgroundcolor rounded  hover:bg-newsidebarcolor" />
               </p>
             </div>
           ))

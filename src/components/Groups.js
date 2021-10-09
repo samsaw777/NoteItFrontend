@@ -6,9 +6,9 @@ import { loaduser } from "../actions/authtype";
 import Notebook from "./Groupinfo";
 import Modal from "./notebookComponent/Modal";
 import Logout from "./authuser/Logout";
-import MenuList from "./rawcomponent/MenuList";
-import { sidebarDropDown } from "../Assets/Data";
-
+import FriendList from "../components/filters/FriendList";
+import SearchFriend from "../components/filters/Search";
+import FriendRequest from "../components/filters/FriendRequest";
 function Notes() {
   //initialize the dispatch method with
   const dispatchdata = useDispatch();
@@ -23,6 +23,7 @@ function Notes() {
 
   //loading the state
   const notebooks = useSelector((state) => state.notebook.notebook);
+  const menu = useSelector((state) => state.menu.menu);
   // console.log(notebooks);
   //Load the user
   const user = useSelector((state) => state.auth.user);
@@ -36,84 +37,78 @@ function Notes() {
   };
   //returning the jsx element
   return (
-    <div className="h-viewHeight bg-sideBar">
+    <div className="h-viewHeight bg-newsidebarcolor">
       {/* Show the user in the top */}
-      <div className="flex pl-5 pt-1 border-b-4 border-borderColor pb-3 bg-buttonColor relative">
-        <div className="mr-5 pt-1">
-          <p className="rounded-full w-10 h-10 bg-gray-100 block mx-auto"></p>
-        </div>
-        <div className="flex flex-col ">
-          <p className="text-lg text-gray-100">{user.name}</p>
-          <p className="text-xs text-gray-100">{user.email}</p>
-        </div>
-        <div className="ml-auto pt-3">
-          <MenuList options={sidebarDropDown} />
-        </div>
-      </div>
-      <div className="flex flex-col">
-        <div className="flex pl-3.5 pt-2 justify-between">
-          <span className="text-buttonColor text-lg font-bold">
-            Your Groups
-          </span>
-          <Modal />
-        </div>
-        <div className="flex flex-col  h-groupHeight overflow-y-scroll">
-          <div>
-            <div className=" bg-sideBar flex flex-col ">
-              <div className="flex justify-between p-3">
-                <div
-                  onClick={() => changeToggleValue(1)}
-                  className={
-                    toggleValue === 1
-                      ? "cursor-pointer text-buttonColor border-b-2 border-buttonColor font-bold"
-                      : "cursor-pointer text-buttonColor font-bold"
-                  }
-                >
-                  <p>Created</p>
+
+      {menu.value === "Groups" && (
+        <div className="flex flex-col">
+          <div className="flex pl-3.5 pt-4 pb-2 justify-between">
+            <span className="text-gray-300 text-lg font-bold">Your Groups</span>
+            <Modal />
+          </div>
+          <div className="flex flex-col  h-groupHeight">
+            <div>
+              <div className=" bg-newsidebarcolor flex flex-col ">
+                <div className="flex w-11/12 mt-1  mx-auto ">
+                  <div
+                    onClick={() => changeToggleValue(1)}
+                    className={
+                      toggleValue === 1
+                        ? "cursor-pointer  text-center  font-bold w-1/2 p-2 bg-tabbackgroundcolor text-white rounded-l-lg"
+                        : "cursor-pointer  font-bold w-1/2 p-2 text-center bg-newchatbackground text-gray-300  rounded-l-lg"
+                    }
+                  >
+                    <p>Created</p>
+                  </div>
+                  <div
+                    onClick={() => changeToggleValue(2)}
+                    className={
+                      toggleValue === 2
+                        ? "cursor-pointer bg-tabbackgroundcolor text-white text-center font-bold w-1/2 p-2 rounded-r-lg"
+                        : "cursor-pointer  font-bold w-1/2 p-2 text-center bg-newchatbackground text-gray-300  rounded-r-lg"
+                    }
+                  >
+                    <p>Group Joined</p>
+                  </div>
                 </div>
-                <div
-                  onClick={() => changeToggleValue(2)}
-                  className={
-                    toggleValue === 2
-                      ? "cursor-pointer text-buttonColor border-b-2 border-buttonColor font-bold"
-                      : "cursor-pointer text-buttonColor font-bold"
-                  }
-                >
-                  <p>Group Joined</p>
-                </div>
-              </div>
-              <div>
-                <p
-                  className={
-                    toggleValue === 1
-                      ? "block h-memberheight overflow-scroll"
-                      : "hidden"
-                  }
-                >
-                  {notebooks.map((notebook) => (
-                    <>
-                      <Notebook id={notebook._id} title={notebook.text} />
-                    </>
-                  ))}
-                </p>
-                <p
-                  className={
-                    toggleValue === 2
-                      ? "block h-memberheight overflow-scroll"
-                      : "hidden"
-                  }
-                >
-                  {user.joinedGroup &&
-                    user.joinedGroup.map((group) => (
-                      <Notebook id={group.Id} title={group.Name} />
+                <div className="block">
+                  <p
+                    className={
+                      toggleValue === 1
+                        ? "block h-groupHeight overflow-y-scroll "
+                        : "hidden"
+                    }
+                  >
+                    {notebooks.map((notebook) => (
+                      <>
+                        <Notebook id={notebook._id} title={notebook.text} />
+                      </>
                     ))}
-                </p>
+                  </p>
+                  <p
+                    className={
+                      toggleValue === 2
+                        ? "block h-groupHeight overflow-y-scroll"
+                        : "hidden"
+                    }
+                  >
+                    {user.joinedGroup &&
+                      user.joinedGroup.map((group) => (
+                        <Notebook id={group.Id} title={group.Name} />
+                      ))}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <Logout />
+      )}
+      {menu.value === "Friends" && <FriendList />}
+      {menu.value === "FindFriends" && <SearchFriend />}
+      {menu.value === "FriendRequests" && (
+        <FriendRequest friends={user.friends} userid={user._id} />
+      )}
+      {/* <Logout /> */}
     </div>
   );
 }

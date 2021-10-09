@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const customStyles = {
   content: {
     top: "50%",
-    backgroundColor: "#363a37",
+    backgroundColor: "#15191C",
     left: "50%",
     right: "auto",
     bottom: "auto",
@@ -29,7 +29,7 @@ const EditChat = ({ id, refetch, setRefetch }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [tag, setTag] = useState("");
-
+  const [time, setTime] = useState("");
   const chatinfo = useSelector((state) => state.chat.chat);
   const user = useSelector((state) => state.auth.user);
   function openModal() {
@@ -54,6 +54,7 @@ const EditChat = ({ id, refetch, setRefetch }) => {
     setTitle(getData?.title);
     setTag(getData?.tag);
     setFileUrl(getData?.file);
+    setTime(getData?.time);
   }, [getData]);
 
   const handleInputChnage = async (e) => {
@@ -84,7 +85,7 @@ const EditChat = ({ id, refetch, setRefetch }) => {
           onGroup: chatinfo.id,
           tag: tag,
           file: fileUrl,
-          time: current,
+          time: time,
         })
         .then(() => {
           // alert("Documents added sucessfully");
@@ -109,7 +110,7 @@ const EditChat = ({ id, refetch, setRefetch }) => {
         <div className="cursor-pointer ml-auto mr-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4 text-gray-100"
+            className="h-4 w-4 text-tabbackgroundcolor"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -131,7 +132,7 @@ const EditChat = ({ id, refetch, setRefetch }) => {
       >
         <form onSubmit={sendChat}>
           <div className="flex flex-col">
-            <h1 className="text-center mb-5">Enter Your Task</h1>
+            <h1 className="text-center mb-5">Update Your Task.</h1>
             <div className="w-full flex mb-5 mt-5">
               <input
                 value={title}

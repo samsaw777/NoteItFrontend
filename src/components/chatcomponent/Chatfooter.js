@@ -9,8 +9,8 @@ const Chatfooter = ({ show, fetchData, setFetchData }) => {
       <div
         className={
           show
-            ? "relative top-chatTop  text-gray-100 h-footerHeight border-2 border-gray-200 bg-buttonColor"
-            : "relative top-chattop  text-gray-100 h-footerHeight border-2 border-gray-200 bg-borderColor"
+            ? "relative top-chatTop  text-gray-100 h-footerHeight  bg-newchatbackground"
+            : "relative top-chattop  text-gray-100 h-footerHeight  bg-newchatbackground"
         }
       >
         <Chatmodal setFetchData={setFetchData} fetchData={fetchData} />

@@ -15,22 +15,19 @@ const Users = ({ users, email }) => {
   };
 
   return (
-    <div className="h-searchHeight overflow-y-scroll">
+    <div className="h-sidebarHeight overflow-y-scroll">
       {users ? (
         users.map((user) => (
           <div
-            className="border bg-chatBackgroundColor w-full p-3 flex mb-2 justify-between"
+            className="bg-newchatbackground w-11/12 p-3 flex mb-2 justify-between mx-auto rounded-lg"
             key={user._id}
           >
             <div className="pt-1 mr-3">
               <p className="rounded-full w-5 h-5 bg-gray-100 block mx-auto"></p>
             </div>
-            <div className="text-gray-200">{user.email}</div>
-            <p
-              className="pt-1"
-              onClick={() => sendFriendRequest(user._id, email)}
-            >
-              <PlusIcon className="w-5 h-5 cursor-pointer text-blue-600 rounded  hover:bg-gray-600" />
+            <div className="text-gray-200 text-xs max-w-xl">{user.email}</div>
+            <p onClick={() => sendFriendRequest(user._id, email)}>
+              <PlusIcon className="w-5 h-5 cursor-pointer text-tabbackgroundcolor rounded  hover:bg-gray-600" />
             </p>
           </div>
         ))

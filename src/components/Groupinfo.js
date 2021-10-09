@@ -11,13 +11,19 @@ const Notebook = ({ id, title }) => {
   //initialize the dispatch method with
   const groupMember = useSelector((state) => state.notebook.notebook);
   const member = groupMember.filter((member) => member._id === id);
+  const chatinfo = useSelector((state) => state.chat.chat);
+  console.log(chatinfo);
   const dispatchdata = useDispatch();
   const sendchatinfo = (id, name, member) => {
     dispatchdata(chatinfodata(id, name, member));
   };
   return (
     <div
-      className=" flex flex-row p-3 justify-between text-buttonColor cursor-pointer hover:bg-buttonColor hover:text-white"
+      className={
+        chatinfo?.chatname === title
+          ? " flex flex-row p-3 justify-between text-gray-300 cursor-pointer ml-3 mr-2 rounded mt-2 bg-newchatbackground "
+          : " flex flex-row p-3 justify-between text-gray-300 cursor-pointer ml-3 mr-2 rounded mt-2 hover:bg-newchatbackground hover:text-white"
+      }
       key={id}
     >
       <div className="flex" onClick={() => sendchatinfo(id, title, member)}>

@@ -7,7 +7,7 @@ const Expandmessage = ({ title, description, file, tag, time, postedBy }) => {
   const customStyles = {
     content: {
       top: "50%",
-      backgroundColor: "#363a37",
+      backgroundColor: "#15191C",
       left: "50%",
       right: "auto",
       bottom: "auto",

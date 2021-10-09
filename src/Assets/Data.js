@@ -24,4 +24,23 @@ export const sidebarDropDown = [
     name: "Find Friends",
     value: "FindFriends",
   },
+  {
+    name: "Friend Requests",
+    value: "FriendRequests",
+  },
+];
+
+export const chatmenu = [
+  {
+    name: "Messages",
+    value: "Messages",
+  },
+  {
+    name: "Members",
+    value: "Members",
+  },
+  {
+    name: "Add Members",
+    value: "AddMembers",
+  },
 ];

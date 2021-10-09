@@ -57,19 +57,25 @@ const Chatmessage = () => {
   };
 
   return (
-    <div className="pt-5 mr-1">
+    <div className="pt-5 mr-1 h-chatheight overflow-y-scroll">
       {chatmessages &&
         chatmessages.map((message) => (
           <div
             ref={sideref}
             className={
               message.postedBy === user._id
-                ? `w-3/5 bg-gray-700 text-buttonColor p-2 mb-6 rounded-xl relative ml-auto mr-1 border-t-8 border-${message.tag}-500`
-                : `w-3/5 bg-gray-700 text-buttonColor p-2 mb-6 rounded-xl relative ml-1 border-${message.tag}-500 border-t-8`
+                ? `w-1/2 bg-newsidebarcolor text-buttonColor p-2 mb-6 rounded-xl relative ml-auto mr-1 border-t-8 border-${message.tag}-500`
+                : `w-1/2 bg-newsidebarcolor text-buttonColor p-2 mb-6 rounded-xl relative ml-1 border-${message.tag}-500 border-t-8`
             }
             key={message.id}
           >
-            <div className="text-xs mb-1 absolute -top-6 text-gray-100">
+            <div
+              className={
+                message.postedByEmail === user.email
+                  ? "text-xs mb-1 absolute -top-6 text-gray-100"
+                  : "text-xs mb-1 absolute -top-6 text-gray-100"
+              }
+            >
               {message.postedByEmail}
             </div>
 
@@ -122,12 +128,21 @@ const Chatmessage = () => {
                 {message.description}
               </p>
               {message.file && (
-                <p className="w-full h-20">
-                  <img
-                    src={message.file}
-                    alt="Attachment"
-                    className="h-20 w-full"
-                  />
+                <p className="w-full text-gray-100">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-10 w-10"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    />
+                  </svg>
                 </p>
               )}
               <p className="text-sm ml-auto text-gray-100">{message.time}</p>

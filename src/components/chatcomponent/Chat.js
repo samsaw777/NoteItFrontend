@@ -14,7 +14,7 @@ const Chat = () => {
   // const sideref = useRef();
   // console.log(sideref);
   const dispatch = useDispatch();
- 
+
   const addMemberToGroup = (emial, id, groupname) => {
     const body = { memberEmail: emial, groupId: id, groupName: groupname };
     axios
@@ -35,6 +35,7 @@ const Chat = () => {
   const chatinfo = useSelector((state) => state.chat.chat);
   // console.log(chatinfo.id);
   const user = useSelector((state) => state.auth.user);
+  const chatmenu = useSelector((state) => state.chatmenu.menu);
   // console.log(user);
   // useEffect(() => {
   //   sideref.current?.scrollIntoView({ behavior: "smooth" });
@@ -49,18 +50,12 @@ const Chat = () => {
             groupID={chatinfo.id}
             groupMember={chatinfo.member}
           />
-          {show ? (
-            <div className={show ? "block h-chatheight " : "hidden"}>
-              <div
-                className="w-full cursor-pointer"
-                onClick={() => setShow(false)}
-              >
-                close
-              </div>
-              {user && user.friends.length ? (
+          {chatmenu.value === "AddMembers" && (
+            <div className=" grid  grid-cols-2 gap-2">
+              {user.friends?.length ? (
                 user.friends.map((user) => (
                   <div
-                    className="border bg-chatBackgroundColor w-full p-3 flex mb-2 justify-between"
+                    className="rounded-lg bg-newsidebarcolor  w-11/12 mx-auto p-3 flex mb-2 justify-between"
                     key={user}
                   >
                     <div className="pt-1 mr-3">
@@ -83,67 +78,20 @@ const Chat = () => {
                 </div>
               )}
             </div>
-          ) : (
-            <div className={!show ? "block h-chatheight " : "hidden"}>
-              <div className=" bg-buttonColor flex flex-col ">
-                <div className="flex justify-between p-3 pl-20 pr-20">
-                  <div
-                    onClick={() => changeToggleValue(1)}
-                    className={
-                      toggleValue === 1
-                        ? "cursor-pointer text-gray-100 border-b-2 border-gray-100"
-                        : "cursor-pointer text-gray-100"
-                    }
-                  >
-                    <p>Messages</p>
-                  </div>
-                  <div
-                    onClick={() => changeToggleValue(2)}
-                    className={
-                      toggleValue === 2
-                        ? "cursor-pointer text-gray-100 border-b-2 border-gray-100"
-                        : "cursor-pointer text-gray-100"
-                    }
-                  >
-                    <p>Group Members</p>
-                  </div>
-                </div>
-                <div>
-                  <p
-                    className={
-                      toggleValue === 1
-                        ? "block h-memberheight overflow-scroll "
-                        : "hidden"
-                    }
-                  >
-                    <Chatmessage
-                      groupID={chatinfo.id}
-                     
-                    />
-                  </p>
-                  <p
-                    className={
-                      toggleValue === 2
-                        ? "block h-memberheight overflow-scroll"
-                        : "hidden"
-                    }
-                  >
-                    <Chatmember
-                      groupID={chatinfo.id}
-                      groupMember={chatinfo.member}
-                    />
-                  </p>
-                </div>
-              </div>
-            </div>
           )}
-          <ChatFooter
-            show={show}
-          
-          />
+
+          {chatmenu.value === "Messages" && (
+            <Chatmessage groupID={chatinfo.id} />
+          )}
+
+          {chatmenu.value === "Members" && (
+            <Chatmember groupID={chatinfo.id} groupMember={chatinfo.member} />
+          )}
+
+          <ChatFooter show={show} />
         </>
       ) : (
-        <p className="pt-72 h-groupHeight pl-72 bg-buttonColor">
+        <p className="pt-72 h-viewHeight pl-72 bg-newchatbackground">
           Click on the group to open the chat.
         </p>
       )}

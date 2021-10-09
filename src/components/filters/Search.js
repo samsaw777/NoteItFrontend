@@ -34,7 +34,7 @@ const Search = () => {
   };
   console.log(search);
   return (
-    <div className="h-groupHeight bg-sideBar">
+    <div className="h-viewHeight bg-newsidebarcolor">
       <div className="w-full p-2">
         <form>
           <input
@@ -42,15 +42,15 @@ const Search = () => {
             value={search}
             placeholder="Search Friends"
             onChange={(e) => searchItem(e.target.value)}
-            className="appearance-none bg-transparent border-b-2 border-buttonColor w-11/12 text-buttonColor mr-3 py-1 px-2 leading-tight focus:outline-none placeholder-buttonColor font-bold"
+            className="appearance-none bg-newchatbackground  rounded-lg w-full text-gray-500  p-3 mx-auto leading-tight focus:outline-none placeholder-gray-500 font-bold"
           />
         </form>
       </div>
       <Users users={searchUser} email={loginuser.email} />
-      <FriendRequest
+      {/* <FriendRequest
         loginUser={loginuser.followRequest}
         loginuserid={loginuser._id}
-      />
+      /> */}
     </div>
   );
 };

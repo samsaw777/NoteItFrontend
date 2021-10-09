@@ -3,6 +3,8 @@ import authuser from "./authReducers";
 import errorreducer from "./errorReducers";
 import notebookreducer from "./notebookreducer";
 import chatreducer from "./chatReducers";
+import menureducer from "./MenuReducers";
+import chatmenureducer from "./chatmenureducer";
 import joined from "./joinedGroup";
 import friends from "./friendsReducer";
 const rootreducer = combineReducers({
@@ -12,6 +14,8 @@ const rootreducer = combineReducers({
   chat: chatreducer,
   joinedgroup: joined,
   friends: friends,
+  menu: menureducer,
+  chatmenu: chatmenureducer,
 });
 
 export default rootreducer;
