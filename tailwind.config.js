@@ -1,9 +1,4 @@
-// const colors = {
-//   groupBackgroundColor: {
-//     color: "#2f3135",
-//   },
-// };
-
+const colors = require("tailwindcss/colors");
 module.exports = {
   purge: ["./src/**/*.js", "./public/index.html", "./src/components/**/*.js"],
   darkMode: false, // or 'media' or 'class'
@@ -26,6 +21,14 @@ module.exports = {
         newchatbackground: "#15191C",
         tabbackgroundcolor: "#3765FC",
         usercolor: "#2C33BE",
+        black: colors.black,
+        white: colors.white,
+        gray: colors.trueGray,
+        indigo: colors.indigo,
+        red: colors.rose,
+        yellow: colors.amber,
+        green: colors.green,
+        blue: colors.blue,
       },
       height: {
         sidebarHeight: "91.2vh",
