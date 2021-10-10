@@ -129,7 +129,7 @@ export const glogin = (token) => {
     const data = { tokenId: token };
     //https://noteitappapi.herokuapp.com/googlelogin
     axios
-      .post("http://localhost:9000/googlelogin", data)
+      .post("https://noteitappapi.herokuapp.com/googlelogin", data)
       .then((res) => {
         dispatch({
           type: LOGIN_SUCCESS,
