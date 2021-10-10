@@ -51,7 +51,7 @@ export const register = ({ name, email, password }) => {
 
     //Request body
     const body = JSON.stringify({ name, email, password });
-
+    //https://noteitappapi.herokuapp.com/signup
     axios
       .post("https://noteitappapi.herokuapp.com/signup", body, config)
       .then((res) => {
@@ -127,9 +127,9 @@ export const glogin = (token) => {
 
     //request body
     const data = { tokenId: token };
-
+    //https://noteitappapi.herokuapp.com/googlelogin
     axios
-      .post("https://noteitappapi.herokuapp.com/googlelogin", data)
+      .post("http://localhost:9000/googlelogin", data)
       .then((res) => {
         dispatch({
           type: LOGIN_SUCCESS,

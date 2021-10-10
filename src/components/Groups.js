@@ -81,7 +81,11 @@ function Notes() {
                   >
                     {notebooks.map((notebook) => (
                       <>
-                        <Notebook id={notebook._id} title={notebook.text} />
+                        <Notebook
+                          id={notebook._id}
+                          title={notebook.text}
+                          image={notebook.image}
+                        />
                       </>
                     ))}
                   </p>

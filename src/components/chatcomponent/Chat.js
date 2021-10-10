@@ -46,6 +46,7 @@ const Chat = () => {
         <>
           <Chatheader
             groupName={chatinfo.chatname}
+            groupImage={chatinfo.image}
             show={setShow}
             groupID={chatinfo.id}
             groupMember={chatinfo.member}

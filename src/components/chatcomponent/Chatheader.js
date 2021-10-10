@@ -1,13 +1,22 @@
 import React from "react";
 import Chatlist from "./Chatlist";
-const Chatheader = ({ groupName, show, groupID, groupMember }) => {
+const Chatheader = ({ groupName, show, groupID, groupMember, groupImage }) => {
   const openModal = () => {
     show(true);
   };
   return (
     <div className="bg-newchatbackground relative">
       <div className="w-full flex justify-between">
-        <p className="p-5 text-xl">#{groupName}</p>
+        <div className="flex ml-2 mt-2">
+          <div className="w-10 h-10  my-auto">
+            <img
+              src={groupImage}
+              alt="Groip"
+              className="w-10 h-10 rounded-full"
+            />
+          </div>
+          <p className="p-3 text-xl">{groupName}</p>
+        </div>
         <Chatlist />
       </div>
     </div>

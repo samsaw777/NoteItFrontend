@@ -23,9 +23,17 @@ const Users = ({ users, email }) => {
             key={user._id}
           >
             <div className="pt-1 mr-3">
-              <p className="rounded-full w-5 h-5 bg-gray-100 block mx-auto"></p>
+              <p className=" w-5 h-5 ">
+                <img
+                  src={user.image}
+                  alt="User"
+                  className="h-5 w-5 rounded-full"
+                />
+              </p>
             </div>
-            <div className="text-gray-200 text-xs max-w-xl">{user.email}</div>
+            <div className="text-gray-200 text-xs max-w-xl pt-1">
+              {user.email}
+            </div>
             <p onClick={() => sendFriendRequest(user._id, email)}>
               <PlusIcon className="w-5 h-5 cursor-pointer text-tabbackgroundcolor rounded  hover:bg-gray-600" />
             </p>
