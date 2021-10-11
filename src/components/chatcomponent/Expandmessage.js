@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Modal from "react-modal";
 //
 
 Modal.setAppElement("#root");
 const Expandmessage = ({ title, description, file, tag, time, postedBy }) => {
+  const [color, setColor] = React.useState("");
+  useEffect(() => {
+    if (tag === "red") {
+      setColor("#F87171");
+    } else if (tag === "green") {
+      setColor("#34D399");
+    } else {
+      setColor("#FBBF24");
+    }
+  }, [tag]);
   const customStyles = {
     content: {
       top: "50%",
-      backgroundColor: "#15191C",
+      backgroundColor: "#1D2127",
       left: "50%",
       right: "auto",
       bottom: "auto",
@@ -16,7 +26,8 @@ const Expandmessage = ({ title, description, file, tag, time, postedBy }) => {
       width: "50%",
       height: "90%",
       color: "#fff",
-      borderTop: `10px solid ${tag}`,
+      borderRadius: "20px",
+      borderTop: `10px solid ${color}`,
     },
   };
   const [modalIsOpen, setIsOpen] = React.useState(false);

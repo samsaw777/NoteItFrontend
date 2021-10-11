@@ -35,6 +35,7 @@ const Notebook = ({ id, title, image }) => {
         </div>
         <p className="text-md w-groupName font-bold pl-3 pt-2">{title}</p>
       </div>
+
       <p onClick={() => dispatchdata(deleteGroup(id))} className="pt-2">
         <TrashIcon className="w-5 h-5 cursor-pointer text-red-500 rounded  hover:bg-gray-600" />
       </p>

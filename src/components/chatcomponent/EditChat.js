@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const customStyles = {
   content: {
     top: "50%",
-    backgroundColor: "#15191C",
+    backgroundColor: "#1D2127",
     left: "50%",
     right: "auto",
     bottom: "auto",
@@ -13,6 +13,7 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
     width: "50%",
     height: "90%",
+    borderRadius: "20px",
     color: "#fff",
   },
 };
@@ -23,7 +24,7 @@ const EditChat = ({ id, refetch, setRefetch }) => {
   const current = new Date().toTimeString();
   const [modalIsOpen, setIsOpen] = useState(false);
   const [fileN, setFileName] = useState("");
-  const [Loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [fileUrl, setFileUrl] = useState("");
   console.log(fileUrl);
   const [title, setTitle] = useState("");
@@ -32,6 +33,8 @@ const EditChat = ({ id, refetch, setRefetch }) => {
   const [time, setTime] = useState("");
   const chatinfo = useSelector((state) => state.chat.chat);
   const user = useSelector((state) => state.auth.user);
+  const [errors, setErrors] = useState("");
+  const [fileName, setFilename] = useState("");
   function openModal() {
     setIsOpen(true);
   }
@@ -55,11 +58,12 @@ const EditChat = ({ id, refetch, setRefetch }) => {
     setTag(getData?.tag);
     setFileUrl(getData?.file);
     setTime(getData?.time);
+    setFilename(getData?.fileName);
   }, [getData]);
 
   const handleInputChnage = async (e) => {
     var file = e.target.files[0];
-
+    setLoading(true);
     setFileName(file);
     // console.log(file);
     // setFileUrl(file);
@@ -67,8 +71,8 @@ const EditChat = ({ id, refetch, setRefetch }) => {
     const fileRef = storageRef.child(file.name);
     console.log(fileRef);
     await fileRef.put(file);
-    setLoading(true);
-    setFileUrl(await fileRef.getDownloadURL());
+    const url = await fileRef.getDownloadURL();
+    setFileUrl(url);
     setLoading(false);
   };
 
@@ -84,6 +88,7 @@ const EditChat = ({ id, refetch, setRefetch }) => {
           postedByEmail: user.email,
           onGroup: chatinfo.id,
           tag: tag,
+          fileName: fileN.name,
           file: fileUrl,
           time: time,
         })
@@ -101,7 +106,7 @@ const EditChat = ({ id, refetch, setRefetch }) => {
           console.error("Error while sending", e);
         });
     } else {
-      console.log("Enter all documents!");
+      setErrors("Enter all documents!");
     }
   };
   return (
@@ -130,6 +135,11 @@ const EditChat = ({ id, refetch, setRefetch }) => {
         style={customStyles}
         contentLabel="Example Modal"
       >
+        {errors && (
+          <div className="w-full text-center bg-red-300 text-black p-3 rounded-lg mb-2">
+            {errors}
+          </div>
+        )}
         <form onSubmit={sendChat}>
           <div className="flex flex-col">
             <h1 className="text-center mb-5">Update Your Task.</h1>
@@ -209,18 +219,41 @@ const EditChat = ({ id, refetch, setRefetch }) => {
                   className="hidden"
                   // value={fileN}
                 />
-                {/* {fileI && <p className="text-md ml-5 mr-5">{fileI}</p>}
-                {fileUrl && <p className="text-md ml-5 mr-5">{fileUrl}</p>} */}
-                {!Loading && <p className="text-md ml-5 mr-5">{fileUrl}</p>}
+                <p className="text-lg ml-5">
+                  {fileN ? fileN.name : fileName || "No File Selected"}
+                </p>
+                <div
+                  className={
+                    loading
+                      ? "w-5 h-5 ml-auto mr-16 animate-spin block"
+                      : "hidden"
+                  }
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                    />
+                  </svg>
+                </div>
               </div>
             </div>
-            <button
-              disabled={Loading}
-              type="submit"
-              className="w-2/4 text-center block mx-auto mt-10 py-3 rounded bg-green-400 text-white hover:bg-green-600 focus:outline-none my-1"
-            >
-              Submit Task
-            </button>
+            {!loading && (
+              <button
+                type="submit"
+                className="w-2/4 text-center block mx-auto mt-10 py-3 rounded bg-green-400 text-white hover:bg-green-600 focus:outline-none my-1"
+              >
+                Submit Task
+              </button>
+            )}
           </div>
         </form>
       </Modal>

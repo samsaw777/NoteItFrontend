@@ -6,14 +6,15 @@ import { useSelector } from "react-redux";
 const customStyles = {
   content: {
     top: "50%",
-    backgroundColor: "#15191C",
+    backgroundColor: "#1D2127",
     left: "50%",
     right: "auto",
     bottom: "auto",
+    borderRadius: "20px",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
     width: "50%",
-    height: "70%",
+    height: "90%",
     color: "#fff",
   },
 };
@@ -26,6 +27,8 @@ const Chatmodel = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [tag, setTag] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState("");
   // console.log(tag);
   console.log(fileUrl);
   const chatinfo = useSelector((state) => state.chat.chat);
@@ -41,12 +44,14 @@ const Chatmodel = () => {
   const handleInputChnage = async (e) => {
     var file = e.target.files[0];
     setFileName(file);
-    console.log(file);
+    setLoading(true);
     const storageRef = store.ref();
     const fileRef = storageRef.child(file.name);
     console.log(fileRef);
     await fileRef.put(file);
-    setFileUrl(await fileRef.getDownloadURL());
+    const url = await fileRef.getDownloadURL();
+    setFileUrl(url);
+    setLoading(false);
   };
 
   const sendChat = (e) => {
@@ -60,6 +65,7 @@ const Chatmodel = () => {
           postedByEmail: user.email,
           onGroup: chatinfo.id,
           tag: tag,
+          fileName: fileN.name,
           file: fileUrl,
           time: current,
           image: user.image,
@@ -92,6 +98,11 @@ const Chatmodel = () => {
         style={customStyles}
         contentLabel="Example Modal"
       >
+        {errors && (
+          <div className="w-full text-center bg-red-300 text-black p-3 rounded-lg mb-2">
+            {errors}
+          </div>
+        )}
         <form onSubmit={sendChat}>
           <div className="flex flex-col">
             <h1 className="text-center mb-5">Enter Your Task</h1>
@@ -172,14 +183,38 @@ const Chatmodel = () => {
                   // value={fileN}
                 />
                 <p className="text-lg ml-5">{fileN?.name}</p>
+                <div
+                  className={
+                    loading
+                      ? "w-5 h-5 ml-auto mr-16 animate-spin block"
+                      : "hidden"
+                  }
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                    />
+                  </svg>
+                </div>
               </div>
             </div>
-            <button
-              type="submit"
-              className="w-2/4 text-center block mx-auto mt-10 py-3 rounded bg-green-400 text-white hover:bg-green-600 focus:outline-none my-1"
-            >
-              Submit Task
-            </button>
+            {!loading && (
+              <button
+                type="submit"
+                className="w-2/4 text-center block mx-auto mt-10 py-3 rounded bg-green-400 text-white hover:bg-green-600 focus:outline-none my-1"
+              >
+                Submit Task
+              </button>
+            )}
           </div>
         </form>
       </Modal>
