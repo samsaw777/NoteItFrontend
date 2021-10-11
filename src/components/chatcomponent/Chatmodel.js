@@ -62,6 +62,7 @@ const Chatmodel = () => {
           tag: tag,
           file: fileUrl,
           time: current,
+          image: user.image,
         })
         .then(() => {
           // alert("Documents added sucessfully");

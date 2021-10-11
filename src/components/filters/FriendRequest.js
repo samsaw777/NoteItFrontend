@@ -6,16 +6,17 @@ import { PlusIcon } from "@heroicons/react/outline";
 import { loaduser } from "../../actions/authtype";
 function FriendRequest({ loginUser, loginuserid }) {
   const user = useSelector((state) => state.auth.user);
+  console.log(user._id);
   const [followRequest, setFollowRequest] = useState([]);
-  console.log(followRequest);
+  // console.log(followRequest);
   const dispatch = useDispatch();
-  const addFriend = (email, id) => {
+  const addFriend = (email) => {
     const body = {
-      userId: id,
+      userId: user._id,
       friendEmail: email,
     };
     axios
-      .post("https://noteitappapi.herokuapp.com/addfriend", body)
+      .post("http://localhost:9000/addfriend", body)
       .then((response) => {
         console.log(response);
       })
@@ -66,7 +67,7 @@ function FriendRequest({ loginUser, loginuserid }) {
                 <p className="rounded-full w-5 h-5 bg-gray-100 block mx-auto"></p>
               </div>
               <div className="text-gray-200">{user}</div>
-              <p onClick={() => addFriend(user, loginuserid)}>
+              <p onClick={() => addFriend(user)}>
                 <PlusIcon className="w-5 h-5 cursor-pointer text-tabbackgroundcolor rounded  hover:bg-newsidebarcolor" />
               </p>
             </div>

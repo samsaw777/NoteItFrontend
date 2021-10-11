@@ -110,7 +110,7 @@ const EditChat = ({ id, refetch, setRefetch }) => {
         <div className="cursor-pointer ml-auto mr-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4 text-tabbackgroundcolor"
+            className="h-5 w-5 text-tabbackgroundcolor"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

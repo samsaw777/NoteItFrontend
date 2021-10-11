@@ -57,7 +57,7 @@ const Chatmessage = () => {
   };
 
   return (
-    <div className="pt-5 mr-1 h-chatheight overflow-y-scroll">
+    <div className="pt-10 mr-1 h-chatheight overflow-y-scroll">
       {chatmessages &&
         chatmessages.map((message) => (
           <div
@@ -72,11 +72,18 @@ const Chatmessage = () => {
             <div
               className={
                 message.postedByEmail === user.email
-                  ? "text-xs mb-1 absolute -top-6 text-gray-100"
-                  : "text-xs mb-1 absolute -top-6 text-gray-100"
+                  ? "text-xs mb-1 absolute -top-9 text-gray-100 flex"
+                  : "text-xs mb-1 absolute -top-9 text-gray-100 flex"
               }
             >
-              {message.postedByEmail}
+              <div className="w-7 h-7 rounded-full">
+                <img
+                  src={message.image}
+                  alt="user avatar"
+                  className="w-7 h-7 rounded-full"
+                />
+              </div>
+              <p className="pl-3 pt-1">{message.postedByEmail}</p>
             </div>
 
             <div className="flex flex-col">
@@ -95,12 +102,12 @@ const Chatmessage = () => {
 
                   {message.postedByEmail === user.email && (
                     <div
-                      className="text-red-600 mr-1 cursor-pointer"
+                      className="text-red-600 mr-3 ml-2 cursor-pointer"
                       onClick={() => deleteChat(message.id)}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-4 w-4"
+                        className="h-5 w-5"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -145,7 +152,9 @@ const Chatmessage = () => {
                   </svg>
                 </p>
               )}
-              <p className="text-sm ml-auto text-gray-100">{message.time}</p>
+              <p className="text-sm ml-auto text-gray-100">
+                {message.time.slice(0, 9)}
+              </p>
             </div>
           </div>
         ))}

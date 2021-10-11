@@ -98,7 +98,11 @@ function Notes() {
                   >
                     {user.joinedGroup &&
                       user.joinedGroup.map((group) => (
-                        <Notebook id={group.Id} title={group.Name} />
+                        <Notebook
+                          id={group.Id}
+                          title={group.Name}
+                          image={group.image}
+                        />
                       ))}
                   </p>
                 </div>

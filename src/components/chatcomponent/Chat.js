@@ -15,10 +15,15 @@ const Chat = () => {
   // console.log(sideref);
   const dispatch = useDispatch();
 
-  const addMemberToGroup = (emial, id, groupname) => {
-    const body = { memberEmail: emial, groupId: id, groupName: groupname };
+  const addMemberToGroup = (emial, id, groupname, image) => {
+    const body = {
+      memberEmail: emial,
+      groupId: id,
+      groupName: groupname,
+      groupImage: image,
+    };
     axios
-      .post("https://noteitappapi.herokuapp.com/addmember", body)
+      .post("http://localhost:9000/addmember", body)
       .then((res) => {
         console.log(res);
       })
@@ -66,7 +71,12 @@ const Chat = () => {
                     <p
                       className="pt-1"
                       onClick={() =>
-                        addMemberToGroup(user, chatinfo.id, chatinfo.chatname)
+                        addMemberToGroup(
+                          user,
+                          chatinfo.id,
+                          chatinfo.chatname,
+                          chatinfo.image
+                        )
                       }
                     >
                       <PlusIcon className="w-5 h-5 cursor-pointer text-green-600 rounded  hover:bg-gray-600" />

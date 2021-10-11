@@ -32,7 +32,7 @@ const Expandmessage = ({ title, description, file, tag, time, postedBy }) => {
       <div className="w-4 h-4 cursor-pointer ml-auto" onClick={openModal}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-4 w-4 text-gray-200"
+          className="h-5 w-5 text-gray-200"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
