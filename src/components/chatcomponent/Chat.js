@@ -23,7 +23,7 @@ const Chat = () => {
       groupImage: image,
     };
     axios
-      .post("http://localhost:9000/addmember", body)
+      .post("https://noteitappapi.herokuapp.com/addmember", body)
       .then((res) => {
         console.log(res);
       })

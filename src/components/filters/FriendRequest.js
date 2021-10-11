@@ -16,7 +16,7 @@ function FriendRequest({ loginUser, loginuserid }) {
       friendEmail: email,
     };
     axios
-      .post("http://localhost:9000/addfriend", body)
+      .post("https://noteitappapi.herokuapp.com/addfriend", body)
       .then((response) => {
         console.log(response);
       })
