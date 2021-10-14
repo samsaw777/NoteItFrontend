@@ -4,6 +4,7 @@ import { Loginauth } from "../../actions/authtype";
 import { useDispatch, useSelector } from "react-redux";
 import GLogin from "./GLogin";
 import { toast } from "react-toastify";
+import Loading from "../loader/Userloading";
 import "react-toastify/dist/ReactToastify.css";
 toast.configure();
 const initialState = {
@@ -57,10 +58,7 @@ function Login() {
   return (
     <>
       {loading ? (
-        <span class="flex h-3 w-3">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-3 w-3 bg-purple-500"></span>
-        </span>
+        <Loading />
       ) : (
         <>
           <div class="h-viewHeight background flex flex-col justify-center sm:py-12">

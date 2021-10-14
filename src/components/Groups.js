@@ -15,8 +15,8 @@ function Notes() {
 
   //dispatching the get method
   useEffect(() => {
-    dispatchdata(getNotebooks());
-    dispatchdata(loaduser());
+    // dispatchdata(getNotebooks());
+    // dispatchdata(loaduser());
     // };
     // return subscribe;
   }, []);

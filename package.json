@@ -27,6 +27,7 @@
     "react-scripts": "4.0.3",
     "react-slug": "^0.1.2",
     "react-slugify": "^2.0.3",
+    "react-spinners": "^0.11.0",
     "react-toastify": "^8.0.2",
     "redux": "^4.1.0-alpha.0",
     "redux-thunk": "^2.3.0",

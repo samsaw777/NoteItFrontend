@@ -19,7 +19,7 @@ export const loaduser = () => {
     dispatch({
       type: USER_LOADING,
     });
-
+    //https://noteitappapi.herokuapp.com
     // fetch the user
     axios
       .get("https://noteitappapi.herokuapp.com/loguser", tokenConfig(getState))
@@ -48,7 +48,9 @@ export const register = ({ name, email, password }) => {
         "Content-Type": "application/json",
       },
     };
-
+    dispatch({
+      type: USER_LOADING,
+    });
     //Request body
     const body = JSON.stringify({ name, email, password });
     //https://noteitappapi.herokuapp.com/signup
@@ -61,7 +63,8 @@ export const register = ({ name, email, password }) => {
         });
       })
       .catch((err) => {
-        dispatch(errors(err.response.data));
+        // console.log(err?.response);
+        dispatch(errors(err?.response.data));
 
         dispatch({
           type: REGISTER_FAILED,
@@ -90,7 +93,7 @@ export const Loginauth = ({ email, password }) => {
 
     //request body
     const body = JSON.stringify({ email, password });
-
+    //https://noteitappapi.herokuapp.com
     //post to route /signin
     axios
       .post("https://noteitappapi.herokuapp.com/signin", body, config)

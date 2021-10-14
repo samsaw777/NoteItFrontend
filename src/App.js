@@ -6,6 +6,7 @@ import Landing from "./components/Landing";
 import ResetLink from "./components/authuser/ResetLink";
 import UpdatePassword from "./components/authuser/Updatepassword";
 import { io } from "socket.io-client";
+import Loading from "./components/loader/Userloading";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 function App() {
   return (
