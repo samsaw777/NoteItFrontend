@@ -22,7 +22,7 @@ export const loaduser = () => {
     //https://noteitappapi.herokuapp.com
     // fetch the user
     axios
-      .get("https://noteitappapi.herokuapp.com", tokenConfig(getState))
+      .get("https://noteitappapi.herokuapp.com/loguser", tokenConfig(getState))
       .then((res) =>
         dispatch({
           type: USER_LOADED,

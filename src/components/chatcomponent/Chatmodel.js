@@ -68,7 +68,7 @@ const Chatmodel = () => {
           postedBy: user.id,
           postedByEmail: user.email,
           tag: tag,
-          fileName: fileN ? fileN?.name : "",
+          fileName: fileN && fileN?.name,
           fileUrl: fileUrl,
           time: current,
           userImage: user.image,

@@ -7,6 +7,7 @@ import Logout from "../authuser/Logout";
 const Userinfo = () => {
   const dispatchdata = useDispatch();
   const user = useSelector((state) => state.auth.user);
+  console.log(user);
   useEffect(() => {
     dispatchdata(loaduser());
   }, []);
