@@ -48,7 +48,7 @@ const notebookreducer = (state = initialState, action) => {
       return {
         ...state,
         notebook: state.notebook.filter(
-          (notebook) => notebook._id !== action.payload
+          (notebook) => notebook.id !== action.payload
         ),
       };
     case DELETING_GROUP:

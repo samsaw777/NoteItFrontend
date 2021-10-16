@@ -13,7 +13,6 @@ const Chatfooter = ({ show, fetchData, setFetchData }) => {
             : "relative top-chattop  text-gray-100 h-footerHeight  bg-newchatbackground"
         }
       >
-        <Chatmodal setFetchData={setFetchData} fetchData={fetchData} />
         {/* <div className="w-3/6 pl-5">
           <form
             className="flex justify-between w-full pt-3"

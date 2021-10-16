@@ -3,13 +3,15 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { PlusIcon } from "@heroicons/react/outline";
 import { sendRequest } from "../../actions/friendsType";
-const Users = ({ users, email }) => {
+const Users = ({ users, email, image, loginId }) => {
   const dispatch = useDispatch();
   console.log(email);
   const sendFriendRequest = (id, userEmail) => {
     const body = {
       userEmail: userEmail,
       friendId: id,
+      image,
+      loginId,
     };
     dispatch(sendRequest(body));
   };
@@ -34,7 +36,7 @@ const Users = ({ users, email }) => {
             <div className="text-gray-200 text-xs max-w-xl pt-1">
               {user.email}
             </div>
-            <p onClick={() => sendFriendRequest(user._id, email)}>
+            <p onClick={() => sendFriendRequest(user.id, email)}>
               <PlusIcon className="w-5 h-5 cursor-pointer text-tabbackgroundcolor rounded  hover:bg-gray-600" />
             </p>
           </div>

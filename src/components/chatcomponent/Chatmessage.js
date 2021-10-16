@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import Pusher from "pusher-js";
 import { useSelector } from "react-redux";
 import { db } from "../../firebase";
 import Expand from "./Expandmessage";
@@ -11,6 +10,7 @@ const Chatmessage = () => {
   const sideref = useRef();
   const [deletChat, setDeletChat] = useState(true);
   const [chatmessages, setChatMessages] = useState([]);
+  console.log(chatmessages);
   const chatinfo = useSelector((state) => state.chat.chat);
   console.log(chatinfo.id);
   const user = useSelector((state) => state.auth.user);
@@ -18,19 +18,18 @@ const Chatmessage = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const getMessages = [];
-      const citiesRef = db.collection("task");
-      await citiesRef
+      db.collection("groups")
+        .doc(`${chatinfo.id}`)
+        .collection("messages")
         .orderBy("time", "asc")
-        .where("onGroup", "==", chatinfo.id)
-        .onSnapshot((snapshot) =>
+        .onSnapshot((snapshot) => {
           setChatMessages(
             snapshot.docs.map((group) => ({
               ...group.data(),
               ["id"]: group.id,
             }))
-          )
-        );
+          );
+        });
     };
     getData();
   }, [chatinfo.id, deletChat]);
@@ -40,18 +39,23 @@ const Chatmessage = () => {
   }, [chatmessages]);
 
   const deleteChat = (id) => {
-    const getTaskId = id;
+    const body = {
+      messageId: id,
+      groupId: chatinfo.id,
+    };
 
     if (window.confirm("Are you sure you want to delete this data?")) {
-      db.collection("task")
-        .doc(`${getTaskId}`)
+      db.collection("groups")
+        .doc(`${body.groupId}`)
+        .collection("messages")
+        .doc(`${body.messageId}`)
         .delete()
-        .then(function () {
-          console.log("Document successfully deleted!");
+        .then(() => {
+          console.log("Document Deleted Sucessfully!");
           setDeletChat(!deletChat);
         })
-        .catch(function (error) {
-          console.error("Error removing document: ", error);
+        .catch((err) => {
+          console.log(err);
         });
     }
   };
@@ -78,7 +82,7 @@ const Chatmessage = () => {
             >
               <div className="w-7 h-7 rounded-full">
                 <img
-                  src={message.image}
+                  src={message.userImage}
                   alt="user avatar"
                   className="w-7 h-7 rounded-full"
                 />
@@ -124,7 +128,7 @@ const Chatmessage = () => {
                   <Expand
                     title={message.title}
                     description={message.description}
-                    file={message.file}
+                    file={message.fileUrl}
                     tag={message.tag}
                     time={message.time}
                     postedBy={message.postedByEmail}
@@ -134,7 +138,7 @@ const Chatmessage = () => {
               <p className="text-sm mt-1 w-full h-10 overflow-hidden text-gray-100">
                 {message.description}
               </p>
-              {message.file && (
+              {message.fileUrl && (
                 <p className="w-full text-gray-100">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

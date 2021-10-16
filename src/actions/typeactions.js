@@ -14,6 +14,7 @@ import axios from "axios";
 export const getNotebooks = () => {
   return (dispatch, getState) => {
     dispatch(setloading());
+    //https://noteitappapi.herokuapp.com/
     axios
       .get("https://noteitappapi.herokuapp.com/getnotes", tokenConfig(getState))
       .then((res) => {
@@ -52,8 +53,9 @@ export const addNotebook = (notebook) => {
 
 //delete group dispatch method
 export const deleteGroup = (id) => (dispatch) => {
+  //https://noteitappapi.herokuapp.com/
   axios
-    .delete(`https://noteitappapi.herokuapp.com/deletegroup/${id}`)
+    .delete(`https://noteitappapi.herokuapp.com/${id}`)
     .then((res) => {
       dispatch({
         type: DELETION_SUCESS,

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
+import axios from "axios";
 import { store, db } from "../../firebase";
 import { useSelector } from "react-redux";
 import Loading from "../loader/Fileloading";
@@ -30,9 +31,10 @@ const Chatmodel = () => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState("");
   // console.log(tag);
-  console.log(fileUrl);
+  console.log(fileN);
   const chatinfo = useSelector((state) => state.chat.chat);
   const user = useSelector((state) => state.auth.user);
+  console.log(user);
   function openModal() {
     setIsOpen(true);
   }
@@ -57,18 +59,19 @@ const Chatmodel = () => {
   const sendChat = (e) => {
     e.preventDefault();
     if (title && description && tag) {
-      db.collection("task")
+      db.collection("groups")
+        .doc(`${chatinfo.id}`)
+        .collection("messages")
         .add({
           title: title,
           description: description,
-          postedBy: user._id,
+          postedBy: user.id,
           postedByEmail: user.email,
-          onGroup: chatinfo.id,
           tag: tag,
-          fileName: fileN.name,
-          file: fileUrl,
+          fileName: fileN && fileN?.name,
+          fileUrl: fileUrl,
           time: current,
-          image: user.image,
+          userImage: user.image,
         })
         .then(() => {
           // alert("Documents added sucessfully");
@@ -89,7 +92,10 @@ const Chatmodel = () => {
   };
   return (
     <>
-      <button onClick={openModal} className="bg-sideBar text-buttonColor p-2">
+      <button
+        onClick={openModal}
+        className="bg-tabbackgroundcolor text-white p-2  h-10 mt-2 rounded-lg"
+      >
         Create Task
       </button>
       <Modal
@@ -221,3 +227,15 @@ export default Chatmodel;
         setFileUrl(await fileRef.getDownloadURL())
     }
     */
+
+/*
+    title: title,
+          description: description,
+          postedBy: user._id,
+          postedByEmail: user.email,
+          tag: tag,
+          fileName: fileN.name,
+          fileUrl: fileUrl,
+          time: current,
+          userImage: user.image,
+          */

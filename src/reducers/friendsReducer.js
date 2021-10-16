@@ -4,6 +4,7 @@ const initialState = {
   friendsRequest: [],
   loading: false,
   friends: [],
+  msg: "",
 };
 
 const friendReducer = (state = initialState, action) => {
@@ -11,7 +12,8 @@ const friendReducer = (state = initialState, action) => {
     case SENT_REQUEST:
       return {
         ...state,
-        friendsRequest: [action.payload, ...state.friendsRequest],
+        msg: action.payload,
+        // friendsRequest: [action.payload, ...state.friendsRequest],
       };
     case ADD_FRIEND:
       return {

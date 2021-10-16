@@ -98,8 +98,6 @@ const Chat = () => {
           {chatmenu.value === "Members" && (
             <Chatmember groupID={chatinfo.id} groupMember={chatinfo.member} />
           )}
-
-          <ChatFooter show={show} />
         </>
       ) : (
         <p className="pt-72 h-viewHeight pl-72 bg-newchatbackground">

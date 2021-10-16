@@ -8,7 +8,7 @@ const Fileloading = () => {
   const [color, setColor] = useState("#3765FC");
   return (
     <div className="w-5 h-5 ml-auto mr-16 block">
-      <ClipLoader color={color} size={150} />
+      <ClipLoader color={color} size={30} />
     </div>
   );
 };

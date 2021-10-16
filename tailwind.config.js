@@ -35,7 +35,7 @@ module.exports = {
         viewHeight: "100vh",
         groupHeight: "85vh",
         searchHeight: "40vh",
-        chatheight: "80vh",
+        chatheight: "90vh",
         footerHeight: "7vh",
         memberheight: "75vh",
         chatHeight: "76vh",

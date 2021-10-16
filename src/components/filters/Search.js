@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 const Search = () => {
   const [users, setUsers] = useState([]);
   const [searchUser, setSearchUser] = useState([]);
+  console.log(users);
   const [search, setSearch] = useState();
   const [showRequest, setShowRequest] = useState([]);
   console.log(showRequest);
@@ -46,7 +47,12 @@ const Search = () => {
           />
         </form>
       </div>
-      <Users users={searchUser} email={loginuser.email} />
+      <Users
+        users={searchUser}
+        email={loginuser.email}
+        image={loginuser.image}
+        loginId={loginuser.id}
+      />
       {/* <FriendRequest
         loginUser={loginuser.followRequest}
         loginuserid={loginuser._id}

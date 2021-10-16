@@ -14,7 +14,7 @@ export const sendRequest = (body) => {
       .then((result) => {
         dispatch({
           type: SENT_REQUEST,
-          payload: result.data.followRequest,
+          payload: result,
         });
       })
       .catch((err) => {

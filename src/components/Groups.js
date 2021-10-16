@@ -15,7 +15,7 @@ function Notes() {
 
   //dispatching the get method
   useEffect(() => {
-    // dispatchdata(getNotebooks());
+    dispatchdata(getNotebooks());
     // dispatchdata(loaduser());
     // };
     // return subscribe;
@@ -24,7 +24,7 @@ function Notes() {
   //loading the state
   const notebooks = useSelector((state) => state.notebook.notebook);
   const menu = useSelector((state) => state.menu.menu);
-  // console.log(notebooks);
+  console.log(notebooks);
   //Load the user
   const user = useSelector((state) => state.auth.user);
   console.log(user.joinedGroup);
@@ -82,8 +82,8 @@ function Notes() {
                     {notebooks.map((notebook) => (
                       <>
                         <Notebook
-                          id={notebook._id}
-                          title={notebook.text}
+                          id={notebook.id}
+                          title={notebook.groupName}
                           image={notebook.image}
                         />
                       </>

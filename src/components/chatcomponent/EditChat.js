@@ -20,13 +20,12 @@ const customStyles = {
 const EditChat = ({ id, refetch, setRefetch }) => {
   console.log(id);
   const [getData, setGetData] = useState();
-  console.log(getData);
-  const current = new Date().toTimeString();
+
   const [modalIsOpen, setIsOpen] = useState(false);
   const [fileN, setFileName] = useState("");
   const [loading, setLoading] = useState(false);
   const [fileUrl, setFileUrl] = useState("");
-  console.log(fileUrl);
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [tag, setTag] = useState("");
@@ -44,11 +43,16 @@ const EditChat = ({ id, refetch, setRefetch }) => {
   }
 
   useEffect(() => {
-    db.collection("task")
+    db.collection("groups")
+      .doc(`${chatinfo.id}`)
+      .collection("messages")
       .doc(`${id}`)
       .get()
       .then((snapshot) => {
-        setGetData({ ...snapshot.data() });
+        setGetData(snapshot.data());
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }, [id]);
 
@@ -56,7 +60,7 @@ const EditChat = ({ id, refetch, setRefetch }) => {
     setDescription(getData?.description);
     setTitle(getData?.title);
     setTag(getData?.tag);
-    setFileUrl(getData?.file);
+    setFileUrl(getData?.fileUrl);
     setTime(getData?.time);
     setFilename(getData?.fileName);
   }, [getData]);
@@ -79,18 +83,20 @@ const EditChat = ({ id, refetch, setRefetch }) => {
   const sendChat = (e) => {
     e.preventDefault();
     if (title && description && tag) {
-      db.collection("task")
+      db.collection("groups")
+        .doc(`${chatinfo.id}`)
+        .collection("messages")
         .doc(`${id}`)
         .update({
           title: title,
           description: description,
-          postedBy: user._id,
+          postedBy: user.id,
           postedByEmail: user.email,
-          onGroup: chatinfo.id,
           tag: tag,
-          fileName: fileN.name,
-          file: fileUrl,
+          fileName: fileN && fileN?.name,
+          fileUrl: fileUrl,
           time: time,
+          userImage: user.image,
         })
         .then(() => {
           // alert("Documents added sucessfully");

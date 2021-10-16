@@ -1,5 +1,6 @@
 import React from "react";
 import Chatlist from "./Chatlist";
+import Chatmodal from "./Chatmodel";
 const Chatheader = ({ groupName, show, groupID, groupMember, groupImage }) => {
   const openModal = () => {
     show(true);
@@ -15,9 +16,13 @@ const Chatheader = ({ groupName, show, groupID, groupMember, groupImage }) => {
               className="w-10 h-10 rounded-full"
             />
           </div>
+
           <p className="p-3 text-xl">{groupName}</p>
         </div>
-        <Chatlist />
+        <div className="flex">
+          <Chatmodal />
+          <Chatlist />
+        </div>
       </div>
     </div>
   );
