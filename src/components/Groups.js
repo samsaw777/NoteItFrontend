@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import dotenv from "dotenv";
 import { useSelector, useDispatch } from "react-redux";
 import { getNotebooks, addNotebook } from "../actions/typeactions";
-import { loaduser } from "../actions/authtype";
+import { loaduser, loadUserGroup } from "../actions/authtype";
 import Notebook from "./Groupinfo";
 import Modal from "./notebookComponent/Modal";
 import Logout from "./authuser/Logout";
@@ -16,6 +16,7 @@ function Notes() {
   //dispatching the get method
   useEffect(() => {
     dispatchdata(getNotebooks());
+    dispatchdata(loadUserGroup());
     // dispatchdata(loaduser());
     // };
     // return subscribe;
@@ -27,7 +28,8 @@ function Notes() {
   console.log(notebooks);
   //Load the user
   const user = useSelector((state) => state.auth.user);
-  console.log(user.joinedGroup);
+  const joinedGroup = useSelector((state) => state.auth.joinedGroups);
+  // console.log(user.joinedGroup);
   const chatinfo = useSelector((state) => state.chat.chat);
   //posting the data to database
   const [toggleValue, setToggleValue] = useState(1);
@@ -96,12 +98,12 @@ function Notes() {
                         : "hidden"
                     }
                   >
-                    {user.joinedGroup &&
-                      user.joinedGroup.map((group) => (
+                    {joinedGroup &&
+                      joinedGroup.map((group) => (
                         <Notebook
-                          id={group.Id}
-                          title={group.Name}
-                          image={group.image}
+                          id={group.groupId}
+                          title={group.groupName}
+                          image={group.groupImage}
                         />
                       ))}
                   </p>

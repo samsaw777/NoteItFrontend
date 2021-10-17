@@ -10,7 +10,29 @@ import {
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
   REGISTER_FAILED,
+  LOAD_GROUPS_JOINED,
 } from "./types";
+
+//Load joined group
+export const loadUserGroup = () => {
+  return (dispatch, getState) => {
+    dispatch({
+      type: USER_LOADING,
+    });
+
+    axios
+      .get(
+        "https://noteitappapi.herokuapp.com/logusergroups",
+        tokenConfig(getState)
+      )
+      .then((res) => {
+        dispatch({ type: LOAD_GROUPS_JOINED, payload: res.data });
+      })
+      .catch((err) => {
+        dispatch(errors(err));
+      });
+  };
+};
 
 //Check token & load user data
 export const loaduser = () => {

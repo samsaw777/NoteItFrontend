@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import Pusher from "pusher-js";
-import { PlusIcon } from "@heroicons/react/outline";
+import { PlusIcon, MinusIcon } from "@heroicons/react/outline";
 import { loaduser } from "../../actions/authtype";
 function FriendRequest({ loginUser, loginuserid }) {
   const user = useSelector((state) => state.auth.user);
@@ -20,15 +20,29 @@ function FriendRequest({ loginUser, loginuserid }) {
       });
   }, [user.id]);
 
-  const addFriend = (email) => {
+  const addFriend = (email, image, id) => {
     const body = {
-      userId: user._id,
+      userId: user.id,
       friendEmail: email,
+      friendId: id,
+      friendImage: image,
     };
     axios
       .post("https://noteitappapi.herokuapp.com/addfriend", body)
       .then((response) => {
-        console.log(response);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const cancelRequest = (userId, friendId) => {
+    const body = { userId, friendId };
+    axios
+      .post("https://noteitappapi.herokuapp.com/cancelrequest", body)
+      .then((response) => {
+        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -47,22 +61,31 @@ function FriendRequest({ loginUser, loginuserid }) {
           </div>
         </div>
         {followRequest ? (
-          followRequest.map((user) => (
+          followRequest.map((friend) => (
             <div
               className=" bg-newchatbackground w-11/12 mx-auto p-3 flex mb-2 justify-between rounded-lg"
-              key={user.id}
+              key={friend.id}
             >
               <div className="pt-1 mr-2">
                 <img
-                  src={user.image}
-                  alt="user"
+                  src={friend.image}
+                  alt="friend"
                   className="rounded-full w-5 h-5 block mx-auto"
                 />
               </div>
-              <div className="text-gray-200">{user.userEmail}</div>
-              <p onClick={() => addFriend(user.userEmail)}>
-                <PlusIcon className="w-5 h-5 cursor-pointer text-tabbackgroundcolor rounded  hover:bg-newsidebarcolor" />
-              </p>
+              <div className="text-gray-200">{friend.userEmail}</div>
+              <div className="flex">
+                <p
+                  onClick={() =>
+                    addFriend(friend.userEmail, friend.image, friend.id)
+                  }
+                >
+                  <PlusIcon className="w-5 h-5 cursor-pointer text-tabbackgroundcolor rounded  hover:bg-newsidebarcolor" />
+                </p>
+                <p onClick={() => cancelRequest(user.id, friend.id)}>
+                  <MinusIcon className="w-5 h-5 cursor-pointer text-red-400 rounded  hover:bg-newsidebarcolor" />
+                </p>
+              </div>
             </div>
           ))
         ) : (

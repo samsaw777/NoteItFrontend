@@ -2,35 +2,52 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { MinusIcon } from "@heroicons/react/outline";
-const FriendList = ({ friends, userid }) => {
-  const [Friends, setFriends] = useState([]);
+const FriendList = ({ Friends, userid }) => {
+  const [friends, setFriends] = useState([]);
   console.log(friends);
-  const removeUser = (id, email) => {
-    const body = { userId: id, friendEmail: email };
+  const removeUser = (id, friendId) => {
+    const body = { userId: id, friendId };
     axios
       .post("https://noteitappapi.herokuapp.com/removefriend", body)
       .then((response) => {
-        console.log(response);
+        console.log(response.data);
       })
       .catch((err) => console.log(err));
   };
   const user = useSelector((state) => state.auth.user);
+  useEffect(() => {
+    axios
+      .get(`https://noteitappapi.herokuapp.com/showfriends/${user.id}`)
+      .then((response) => {
+        setFriends(response.data);
+      });
+  }, []);
+
   return (
     <div className="h-viewHeight overflow-y-scroll">
       <div className="text-center text-lg text-gray-300 mt-2 mb-3 p-2 w-11/12 rounded mx-auto bg-tabbackgroundcolor">
         Friends
       </div>
-      {user?.friends && user?.friends?.length ? (
-        user?.friends?.map((user) => (
+      {friends && friends?.length ? (
+        friends?.map((friend) => (
           <div
             className=" bg-newchatbackground w-11/12 mx-auto rounded-lg p-3 flex mb-2 justify-between"
-            key={user}
+            key={friend.friendId}
           >
             <div className="pt-1 mr-3">
-              <p className="rounded-full w-5 h-5 bg-gray-100 block mx-auto"></p>
+              <img
+                src={friend.friendImage}
+                alt="Friend"
+                className="rounded-full w-5 h-5  block mx-auto"
+              />
             </div>
-            <div className="text-gray-200 text-xs max-w-xl">{user}</div>
-            <p className="pt-1" onClick={() => removeUser(userid, user)}>
+            <div className="text-gray-200 text-xs max-w-xl">
+              {friend.friendEmail}
+            </div>
+            <p
+              className="pt-1"
+              onClick={() => removeUser(user.id, friend.friendId)}
+            >
               <MinusIcon className="w-5 h-5 cursor-pointer text-red-600 rounded  hover:bg-gray-600" />
             </p>
           </div>

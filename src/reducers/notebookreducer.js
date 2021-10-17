@@ -11,6 +11,7 @@ import {
 
 const initialState = {
   notebook: [],
+  members: [],
   loading: false,
   color: [],
 };
@@ -28,12 +29,12 @@ const notebookreducer = (state = initialState, action) => {
         notebook: action.payload,
         loading: false,
       };
-    // case GET_MEMBERS:
-    //   return {
-    //     ...state,
-    //     notebook: action.payload,
-    //     loading: false,
-    //   };
+    case GET_MEMBERS:
+      return {
+        ...state,
+        members: action.payload,
+        loading: false,
+      };
     case GET_RANDOM_COLOR:
       return {
         ...state,

@@ -34,7 +34,7 @@ const Chatmodel = () => {
   console.log(fileN);
   const chatinfo = useSelector((state) => state.chat.chat);
   const user = useSelector((state) => state.auth.user);
-  console.log(user);
+  // console.log(user);
   function openModal() {
     setIsOpen(true);
   }

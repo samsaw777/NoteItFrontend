@@ -11,6 +11,25 @@ import {
 import errors from "./errortype";
 import { tokenConfig } from "./authtype";
 import axios from "axios";
+
+export const getGroupsMembers = (id) => {
+  return (dispatch, getState) => {
+    dispatch(setloading());
+    axios
+      .get(
+        `https://noteitappapi.herokuapp.com/getgroupmembers/${id}`,
+        tokenConfig(getState)
+      )
+      .then((res) => {
+        dispatch({ type: GET_MEMBERS, payload: res.data });
+      })
+      .catch((err) => {
+        dispatch(errors(err));
+      });
+  };
+};
+
+//get the notebooks
 export const getNotebooks = () => {
   return (dispatch, getState) => {
     dispatch(setloading());

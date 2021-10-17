@@ -8,6 +8,7 @@ import {
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
   REGISTER_FAILED,
+  LOAD_GROUPS_JOINED,
 } from "../actions/types";
 
 //initial state
@@ -15,6 +16,7 @@ const initialState = {
   token: localStorage.getItem("token"),
   isAuthenticated: null,
   user: {},
+  joinedGroups: [],
   loading: false,
 };
 
@@ -31,6 +33,12 @@ const authuser = (state = initialState, action) => {
         isAuthenticated: true,
         loading: false,
         user: action.payload,
+      };
+    case LOAD_GROUPS_JOINED:
+      return {
+        ...state,
+        joinedGroups: action.payload,
+        loading: false,
       };
     case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Chatheader from "./Chatheader";
 import { toast } from "react-toastify";
 import { PlusIcon } from "@heroicons/react/outline";
+import { getGroupsMembers } from "../../actions/typeactions";
 import Chatmessage from "./Chatmessage";
 import Chatmember from "./Groupmembers";
 import axios from "axios";
@@ -10,14 +11,24 @@ import ChatFooter from "./Chatfooter";
 
 import { joingroup } from "../../actions/joinedGroup";
 const Chat = () => {
-  const [getMessages, setGetMessage] = useState([]);
+  const [friends, setFriends] = useState([]);
+  console.log(friends);
   // const sideref = useRef();
   // console.log(sideref);
   const dispatch = useDispatch();
 
-  const addMemberToGroup = (emial, id, groupname, image) => {
+  const addMemberToGroup = (
+    email,
+    memberId,
+    memberImage,
+    id,
+    groupname,
+    image
+  ) => {
     const body = {
-      memberEmail: emial,
+      memberId,
+      memberImage,
+      memberEmail: email,
       groupId: id,
       groupName: groupname,
       groupImage: image,
@@ -25,12 +36,25 @@ const Chat = () => {
     axios
       .post("https://noteitappapi.herokuapp.com/addmember", body)
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+  const user = useSelector((state) => state.auth.user);
+  useEffect(() => {
+    axios
+      .get(`https://noteitappapi.herokuapp.com/showfriends/${user.id}`)
+      .then((response) => {
+        setFriends(response.data);
+      });
+  }, [user.id]);
+
+  useEffect(() => {
+    dispatch(getGroupsMembers(chatinfo.id));
+  });
+
   const [toggleValue, setToggleValue] = useState(1);
   console.log(toggleValue);
   const changeToggleValue = (value) => {
@@ -39,7 +63,8 @@ const Chat = () => {
   const [show, setShow] = useState(false);
   const chatinfo = useSelector((state) => state.chat.chat);
   // console.log(chatinfo.id);
-  const user = useSelector((state) => state.auth.user);
+
+  const members = useSelector((state) => state.notebook.members);
   const chatmenu = useSelector((state) => state.chatmenu.menu);
   // console.log(user);
   // useEffect(() => {
@@ -58,21 +83,27 @@ const Chat = () => {
           />
           {chatmenu.value === "AddMembers" && (
             <div className=" grid  grid-cols-2 gap-2">
-              {user.friends?.length ? (
-                user.friends.map((user) => (
+              {friends?.length ? (
+                friends.map((friend) => (
                   <div
                     className="rounded-lg bg-newsidebarcolor  w-11/12 mx-auto p-3 flex mb-2 justify-between"
-                    key={user}
+                    key={friend.friendId}
                   >
                     <div className="pt-1 mr-3">
-                      <p className="rounded-full w-5 h-5 bg-gray-100 block mx-auto"></p>
+                      <img
+                        src={friend.friendImage}
+                        alt="friend"
+                        className="rounded-full w-5 h-5  block mx-auto"
+                      />
                     </div>
-                    <div className="text-gray-200">{user}</div>
+                    <div className="text-gray-200">{friend.friendEmail}</div>
                     <p
                       className="pt-1"
                       onClick={() =>
                         addMemberToGroup(
-                          user,
+                          friend.friendEmail,
+                          friend.friendId,
+                          friend.friendImage,
                           chatinfo.id,
                           chatinfo.chatname,
                           chatinfo.image
@@ -96,7 +127,7 @@ const Chat = () => {
           )}
 
           {chatmenu.value === "Members" && (
-            <Chatmember groupID={chatinfo.id} groupMember={chatinfo.member} />
+            <Chatmember groupID={chatinfo.id} groupMember={members} />
           )}
         </>
       ) : (
