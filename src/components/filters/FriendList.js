@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { GroupLoader } from "../loader/Skeleton";
 import { MinusIcon } from "@heroicons/react/outline";
 const FriendList = ({ Friends, userid }) => {
   const [friends, setFriends] = useState([]);
   console.log(friends);
+  const [Loading, setLoading] = useState(false);
   const removeUser = (id, friendId) => {
     const body = { userId: id, friendId };
     axios
@@ -16,18 +18,26 @@ const FriendList = ({ Friends, userid }) => {
   };
   const user = useSelector((state) => state.auth.user);
   useEffect(() => {
+    setLoading(true);
     axios
       .get(`https://noteitappapi.herokuapp.com/showfriends/${user.id}`)
       .then((response) => {
         setFriends(response.data);
+        setLoading(false);
       });
-  }, []);
+  }, [user.id]);
 
   return (
     <div className="h-viewHeight overflow-y-scroll">
       <div className="text-center text-lg text-gray-300 mt-2 mb-3 p-2 w-11/12 rounded mx-auto bg-tabbackgroundcolor">
         Friends
       </div>
+      {Loading && (
+        <>
+          <GroupLoader />
+          <GroupLoader />
+        </>
+      )}
       {friends && friends?.length ? (
         friends?.map((friend) => (
           <div

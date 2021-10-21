@@ -13,3 +13,19 @@
 .background {
   background-image: linear-gradient(115deg, #89ff74 0%, #00ffff 100%);
 }
+
+.circle {
+  width: 90% !important;
+}
+
+.user {
+  width: 30% !important;
+}
+
+.message {
+  width: 50% !important;
+}
+
+.group {
+  width: 95% !important;
+}

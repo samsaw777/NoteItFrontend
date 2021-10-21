@@ -3,11 +3,12 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { db } from "../../firebase";
 import Expand from "./Expandmessage";
-
+import { MessageLoader } from "../loader/Skeleton";
 import EditChat from "./EditChat";
 
 const Chatmessage = () => {
   const sideref = useRef();
+  const [Loading, setLoading] = useState(false);
   const [deletChat, setDeletChat] = useState(true);
   const [chatmessages, setChatMessages] = useState([]);
   console.log(chatmessages);
@@ -18,7 +19,9 @@ const Chatmessage = () => {
 
   useEffect(() => {
     const getData = async () => {
-      db.collection("groups")
+      setLoading(true);
+      await db
+        .collection("groups")
         .doc(`${chatinfo.id}`)
         .collection("messages")
         .orderBy("time", "asc")
@@ -29,6 +32,7 @@ const Chatmessage = () => {
               ["id"]: group.id,
             }))
           );
+          setLoading(false);
         });
     };
     getData();
@@ -62,7 +66,8 @@ const Chatmessage = () => {
 
   return (
     <div className="pt-10 mr-1 h-chatheight overflow-y-scroll">
-      {chatmessages &&
+      {/* {Loading && <MessageLoader />} */}
+      {chatmessages.length ? (
         chatmessages.map((message) => (
           <div
             ref={sideref}
@@ -161,7 +166,15 @@ const Chatmessage = () => {
               </p>
             </div>
           </div>
-        ))}
+        ))
+      ) : (
+        <>
+          <MessageLoader />
+          <MessageLoader />
+          <MessageLoader />
+        </>
+      )}
+      {/* <MessageLoader /> */}
     </div>
   );
 };

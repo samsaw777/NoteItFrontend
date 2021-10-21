@@ -13,6 +13,7 @@ import { joingroup } from "../../actions/joinedGroup";
 const Chat = () => {
   const [friends, setFriends] = useState([]);
   console.log(friends);
+  const chatinfo = useSelector((state) => state.chat.chat);
   // const sideref = useRef();
   // console.log(sideref);
   const dispatch = useDispatch();
@@ -53,7 +54,7 @@ const Chat = () => {
 
   useEffect(() => {
     dispatch(getGroupsMembers(chatinfo.id));
-  });
+  }, [chatinfo.id]);
 
   const [toggleValue, setToggleValue] = useState(1);
   console.log(toggleValue);
@@ -61,7 +62,7 @@ const Chat = () => {
     setToggleValue(value);
   };
   const [show, setShow] = useState(false);
-  const chatinfo = useSelector((state) => state.chat.chat);
+
   // console.log(chatinfo.id);
 
   const members = useSelector((state) => state.notebook.members);

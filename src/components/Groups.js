@@ -8,6 +8,7 @@ import Modal from "./notebookComponent/Modal";
 import Logout from "./authuser/Logout";
 import FriendList from "../components/filters/FriendList";
 import SearchFriend from "../components/filters/Search";
+import { GroupLoader } from "./loader/Skeleton";
 import FriendRequest from "../components/filters/FriendRequest";
 function Notes() {
   //initialize the dispatch method with
@@ -81,15 +82,24 @@ function Notes() {
                         : "hidden"
                     }
                   >
-                    {notebooks.map((notebook) => (
+                    {notebooks.length ? (
+                      notebooks.map((notebook) => (
+                        <>
+                          <Notebook
+                            id={notebook.id}
+                            title={notebook.groupName}
+                            image={notebook.image}
+                          />
+                        </>
+                      ))
+                    ) : (
                       <>
-                        <Notebook
-                          id={notebook.id}
-                          title={notebook.groupName}
-                          image={notebook.image}
-                        />
+                        <GroupLoader />
+                        <GroupLoader />
+                        <GroupLoader />
+                        <GroupLoader />
                       </>
-                    ))}
+                    )}
                   </p>
                   <p
                     className={
