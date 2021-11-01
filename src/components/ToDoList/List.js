@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Heading";
 const List = () => {
-  return <div className="text-gray-200">To do List</div>;
+  return <Header />;
 };
 
 export default List;
