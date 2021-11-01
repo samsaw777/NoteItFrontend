@@ -16,7 +16,7 @@ const Userinfo = () => {
   }, []);
   return (
     <>
-      <div className="bg-newsidebarcolor h-viewHeight pt-2 flex flex-col">
+      <div className=" pt-2 flex flex-col">
         {loading ? (
           <UserLoader />
         ) : (
@@ -54,9 +54,6 @@ const Userinfo = () => {
             </div>
           </div>
         )}
-        <div className="mt-auto">
-          <Logout />
-        </div>
       </div>
     </>
   );
