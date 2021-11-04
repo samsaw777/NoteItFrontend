@@ -30,3 +30,6 @@ export const MENU_LOADING = "MENU_LOADING";
 export const CHATMENU_INFO = "CHATMENU_INFO";
 export const CHATMENU_INFO_LOADING = "CHATMENU_INFO_LOADING";
 export const LOAD_GROUPS_JOINED = "LOAD_GROUPS_JOINED";
+export const GET_TODO = "GET_TODO";
+export const ADD_TODO = "ADD_TODO";
+export const REMOVE_TODO = "REMOVE_TODO";
