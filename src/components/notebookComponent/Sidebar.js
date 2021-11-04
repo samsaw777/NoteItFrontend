@@ -5,6 +5,7 @@ import Chat from "../chatcomponent/Chat";
 import Search from "../filters/Search";
 import Tab from "../filters/Tabs";
 import Userinfo from "../authuser/Userinfo";
+import ToDoList from "../ToDoList/List";
 const Sidebar = () => {
   return (
     <div className="h-viewHeight flex">
@@ -15,8 +16,9 @@ const Sidebar = () => {
         {/*  */}
         <Chat />
       </div>
-      <div className="flex-4">
+      <div className="flex-4 h-viewHeight bg-newsidebarcolor">
         <Userinfo />
+        <ToDoList />
       </div>
     </div>
   );

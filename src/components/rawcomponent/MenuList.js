@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { menuinfo } from "../../actions/menuinfo";
 import { useDispatch } from "react-redux";
+import Logout from "../authuser/Logout";
 const MenuList = ({ options }) => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
@@ -55,6 +56,7 @@ const MenuList = ({ options }) => {
               {option.name}
             </div>
           ))}
+          <Logout />
         </p>
       </div>
     </div>
