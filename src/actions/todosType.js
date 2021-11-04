@@ -13,7 +13,7 @@ export const getTodos = () => {
   return (dispatch, getState) => {
     dispatch(setloading());
     axios
-      .get("http://localhost:9000/getToDo", tokenConfig(getState))
+      .get("https://noteitappapi.herokuapp.com/getToDo", tokenConfig(getState))
       .then((response) => {
         dispatch({
           type: GET_TODO,
@@ -29,7 +29,11 @@ export const getTodos = () => {
 export const addTodos = (todo) => {
   return (dispatch, getState) => {
     axios
-      .post("http://localhost:9000/addToDo", todo, tokenConfig(getState))
+      .post(
+        "https://noteitappapi.herokuapp.com/addToDo",
+        todo,
+        tokenConfig(getState)
+      )
       .then((response) => {
         dispatch({
           type: ADD_TODO,
@@ -44,7 +48,7 @@ export const addTodos = (todo) => {
 
 export const removeTodos = (todoId) => (dispatch) => {
   axios
-    .delete(`http://localhost:9000/deleteTodo/${todoId}`)
+    .delete(`https://noteitappapi.herokuapp.com/deleteTodo/${todoId}`)
     .then((res) => {
       dispatch({ type: REMOVE_TODO, payload: todoId });
     })
