@@ -74,7 +74,7 @@ export const addNotebook = (notebook) => {
 export const deleteGroup = (id) => (dispatch) => {
   //https://noteitappapi.herokuapp.com/
   axios
-    .delete(`https://noteitappapi.herokuapp.com/${id}`)
+    .delete(`https://noteitappapi.herokuapp.com/deletegroup/${id}`)
     .then((res) => {
       dispatch({
         type: DELETION_SUCESS,
