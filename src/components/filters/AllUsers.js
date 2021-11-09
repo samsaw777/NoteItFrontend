@@ -5,7 +5,7 @@ import { PlusIcon } from "@heroicons/react/outline";
 import { sendRequest } from "../../actions/friendsType";
 const Users = ({ users, email, image, loginId }) => {
   const dispatch = useDispatch();
-  console.log(email);
+  console.log(users);
   const sendFriendRequest = (id, userEmail) => {
     const body = {
       userEmail: userEmail,
@@ -22,7 +22,7 @@ const Users = ({ users, email, image, loginId }) => {
         users.map((user) => (
           <div
             className="bg-newchatbackground w-11/12 p-3 flex mb-2 justify-between mx-auto rounded-lg"
-            key={user._id}
+            key={user.id}
           >
             <div className="pt-1 mr-3">
               <p className=" w-5 h-5 ">

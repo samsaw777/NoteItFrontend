@@ -21,7 +21,7 @@ const TodoItem = () => {
         <div className="w-11/12 rounded-lg mx-auto mt-1 bg-newchatbackground p-3 flex justify-between">
           <p className="text-gray-500">{todo.work}</p>
           <div className="flex mr-2">
-            <p>
+            <p onClick={() => deleteTodo(todo.id)}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="w-5 h-5 cursor-pointer mr-2  text-green-500 rounded  hover:bg-gray-600"

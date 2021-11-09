@@ -34,6 +34,7 @@ const Chat = () => {
       groupName: groupname,
       groupImage: image,
     };
+    console.log(memberId);
     axios
       .post("https://noteitappapi.herokuapp.com/addmember", body)
       .then((res) => {

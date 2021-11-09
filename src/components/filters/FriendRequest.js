@@ -20,11 +20,12 @@ function FriendRequest({ loginUser, loginuserid }) {
       });
   }, [user.id]);
 
-  const addFriend = (email, image, id) => {
+  const addFriend = (email, image, id, rId) => {
     const body = {
       userId: user.id,
       friendEmail: email,
       friendId: id,
+      removeId: rId,
       friendImage: image,
     };
     axios
@@ -77,7 +78,12 @@ function FriendRequest({ loginUser, loginuserid }) {
               <div className="flex">
                 <p
                   onClick={() =>
-                    addFriend(friend.userEmail, friend.image, friend.id)
+                    addFriend(
+                      friend.userEmail,
+                      friend.image,
+                      friend.loginId,
+                      friend.id
+                    )
                   }
                 >
                   <PlusIcon className="w-5 h-5 cursor-pointer text-tabbackgroundcolor rounded  hover:bg-newsidebarcolor" />

@@ -54,10 +54,7 @@ const FriendList = ({ Friends, userid }) => {
             <div className="text-gray-200 text-xs max-w-xl">
               {friend.friendEmail}
             </div>
-            <p
-              className="pt-1"
-              onClick={() => removeUser(user.id, friend.friendId)}
-            >
+            <p className="pt-1" onClick={() => removeUser(user.id, friend.id)}>
               <MinusIcon className="w-5 h-5 cursor-pointer text-red-600 rounded  hover:bg-gray-600" />
             </p>
           </div>

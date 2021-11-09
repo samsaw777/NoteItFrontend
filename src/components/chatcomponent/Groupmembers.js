@@ -1,6 +1,20 @@
 import React from "react";
+import axios from "axios";
 import { MinusIcon } from "@heroicons/react/outline";
-const Groupmembers = ({ groupMember }) => {
+const Groupmembers = ({ groupMember, groupID }) => {
+  const removeMember = (memberId, removeId) => {
+    const body = {
+      userId: memberId,
+      groupId: groupID,
+      userdocId: removeId,
+    };
+    axios
+      .post("https://noteitappapi.herokuapp.com/removemember", body)
+      .then((res) => {
+        console.log("Member removes");
+      })
+      .catch((err) => console.error(err));
+  };
   return (
     <div className="h-chatheight  overflow-y-scroll">
       <div className="grid-cols-2 grid  gap-2">
@@ -17,7 +31,10 @@ const Groupmembers = ({ groupMember }) => {
               />
             </div>
             <div className="text-gray-200">{member.memberEmail}</div>
-            <p className="pt-1">
+            <p
+              className="pt-1"
+              onClick={() => removeMember(member.memberId, member.id)}
+            >
               <MinusIcon className="w-5 h-5 cursor-pointer text-red-600 rounded  hover:bg-gray-600" />
             </p>
           </div>
