@@ -22,6 +22,7 @@ const customStyles = {
 Modal.setAppElement("#root");
 const Chatmodel = () => {
   const current = new Date().toTimeString();
+  const currentDate = new Date().toDateString();
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [fileN, setFileName] = useState("");
   const [fileUrl, setFileUrl] = useState(null);
@@ -71,6 +72,7 @@ const Chatmodel = () => {
           fileName: fileN && fileN?.name,
           fileUrl: fileUrl,
           time: current,
+          date: currentDate,
           userImage: user.image,
         })
         .then(() => {

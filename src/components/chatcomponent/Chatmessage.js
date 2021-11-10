@@ -23,6 +23,7 @@ const Chatmessage = () => {
         .collection("groups")
         .doc(`${chatinfo.id}`)
         .collection("messages")
+        .orderBy("date", "asc")
         .orderBy("time", "asc")
         .onSnapshot((snapshot) => {
           setChatMessages(
