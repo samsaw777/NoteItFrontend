@@ -1,15 +1,15 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Chatheader from "./Chatheader";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import { PlusIcon } from "@heroicons/react/outline";
 import { getGroupsMembers } from "../../actions/typeactions";
 import Chatmessage from "./Chatmessage";
 import Chatmember from "./Groupmembers";
 import axios from "axios";
-import ChatFooter from "./Chatfooter";
+// import ChatFooter from "./Chatfooter";
 
-import { joingroup } from "../../actions/joinedGroup";
+// import { joingroup } from "../../actions/joinedGroup";
 const Chat = () => {
   const [friends, setFriends] = useState([]);
   // console.log(friends);
@@ -57,11 +57,11 @@ const Chat = () => {
     dispatch(getGroupsMembers(chatinfo.id));
   }, [chatinfo.id]);
 
-  const [toggleValue, setToggleValue] = useState(1);
+  // const [toggleValue, setToggleValue] = useState(1);
   // console.log(toggleValue);
-  const changeToggleValue = (value) => {
-    setToggleValue(value);
-  };
+  // const changeToggleValue = (value) => {
+  //   setToggleValue(value);
+  // };
   const [show, setShow] = useState(false);
 
   // console.log(chatinfo.id);

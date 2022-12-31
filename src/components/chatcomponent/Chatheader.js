@@ -2,9 +2,9 @@ import React from "react";
 import Chatlist from "./Chatlist";
 import Chatmodal from "./Chatmodel";
 const Chatheader = ({ groupName, show, groupID, groupMember, groupImage }) => {
-  const openModal = () => {
-    show(true);
-  };
+  // const openModal = () => {
+  //   show(true);
+  // };
   return (
     <div className="bg-newchatbackground relative">
       <div className="w-full flex justify-between">

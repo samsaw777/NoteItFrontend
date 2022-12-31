@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { loaduser } from "../../actions/authtype";
 import { useSelector, useDispatch } from "react-redux";
 import { sidebarDropDown } from "../../Assets/Data";
 import MenuList from "../rawcomponent/MenuList";
-import Logout from "../authuser/Logout";
+// import Logout from "../authuser/Logout";
 import { UserLoader } from "../loader/Skeleton";
 const Userinfo = () => {
   const dispatchdata = useDispatch();
@@ -12,7 +12,7 @@ const Userinfo = () => {
 
   useEffect(() => {
     dispatchdata(loaduser());
-  }, []);
+  }, [dispatchdata]);
   return (
     <>
       <div className=" pt-2 flex flex-col">
