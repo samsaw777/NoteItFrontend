@@ -47,6 +47,7 @@ const FriendList = ({ Friends, userid }) => {
             <div className="pt-1 mr-3">
               <img
                 src={friend.friendImage}
+                referrerpolicy="no-referrer"
                 alt="Friend"
                 className="rounded-full w-5 h-5  block mx-auto"
               />

@@ -28,6 +28,7 @@ const Users = ({ users, email, image, loginId }) => {
               <p className=" w-5 h-5 ">
                 <img
                   src={user.image}
+                  referrerpolicy="no-referrer"
                   alt="User"
                   className="h-5 w-5 rounded-full"
                 />

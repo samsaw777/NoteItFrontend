@@ -12,6 +12,7 @@ const Chatheader = ({ groupName, show, groupID, groupMember, groupImage }) => {
           <div className="w-10 h-10  my-auto">
             <img
               src={groupImage}
+              referrerpolicy="no-referrer"
               alt="Groip"
               className="w-10 h-10 rounded-full"
             />
