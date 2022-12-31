@@ -9,7 +9,7 @@ const Groupmembers = ({ groupMember, groupID }) => {
       userdocId: removeId,
     };
     axios
-      .post("https://noteitappapi.herokuapp.com/removemember", body)
+      .post("https://remotetracker.onrender.com/removemember", body)
       .then((res) => {
         console.log("Member removes");
       })

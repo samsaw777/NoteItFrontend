@@ -20,7 +20,7 @@ const UpdatePassword = () => {
     } else {
       const data = { password, token };
       axios
-        .post("https://noteitappapi.herokuapp.com/resetpassword", data)
+        .post("https://remotetracker.onrender.com/resetpassword", data)
         .then((response) => {
           console.log(response);
           if (response) {

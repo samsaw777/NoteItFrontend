@@ -36,7 +36,7 @@ const Chat = () => {
     };
     console.log(memberId);
     axios
-      .post("https://noteitappapi.herokuapp.com/addmember", body)
+      .post("https://remotetracker.onrender.com/addmember", body)
       .then((res) => {
         console.log(res.data);
       })
@@ -47,7 +47,7 @@ const Chat = () => {
   const user = useSelector((state) => state.auth.user);
   useEffect(() => {
     axios
-      .get(`https://noteitappapi.herokuapp.com/showfriends/${user.id}`)
+      .get(`https://remotetracker.onrender.com/showfriends/${user.id}`)
       .then((response) => {
         setFriends(response.data);
       });

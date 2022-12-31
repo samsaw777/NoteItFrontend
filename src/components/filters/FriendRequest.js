@@ -11,7 +11,7 @@ function FriendRequest({ loginUser, loginuserid }) {
   console.log(followRequest);
   useEffect(() => {
     axios
-      .get(`https://noteitappapi.herokuapp.com/showrequest/${user.id}`)
+      .get(`https://remotetracker.onrender.com/showrequest/${user.id}`)
       .then((response) => {
         setFollowRequest(response.data);
       })
@@ -29,7 +29,7 @@ function FriendRequest({ loginUser, loginuserid }) {
       friendImage: image,
     };
     axios
-      .post("https://noteitappapi.herokuapp.com/addfriend", body)
+      .post("https://remotetracker.onrender.com/addfriend", body)
       .then((response) => {
         console.log(response.data);
       })
@@ -41,7 +41,7 @@ function FriendRequest({ loginUser, loginuserid }) {
   const cancelRequest = (userId, friendId) => {
     const body = { userId, friendId };
     axios
-      .post("https://noteitappapi.herokuapp.com/cancelrequest", body)
+      .post("https://remotetracker.onrender.com/cancelrequest", body)
       .then((response) => {
         console.log(response.data);
       })

@@ -11,7 +11,7 @@ export const getMembers = (body) => {
   return (dispatch) => {
     dispatch({ type: JOINED_GROUP_LOADING });
     axios
-      .get("https://noteitappapi.herokuapp.com/getmembers", body)
+      .get("https://remotetracker.onrender.com/getmembers", body)
       .then((res) => {
         dispatch({ type: GET_MEMBERS, payload: res });
       })
@@ -30,7 +30,7 @@ export const joingroup = (body) => {
     dispatch({ type: JOINED_GROUP_LOADING });
 
     axios
-      .post("https://noteitappapi.herokuapp.com/addmember", body)
+      .post("https://remotetracker.onrender.com/addmember", body)
       .then((res) => {
         dispatch({ type: JOINED_GROUP, payload: res.data[0].members });
       })

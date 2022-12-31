@@ -22,7 +22,7 @@ export const loadUserGroup = () => {
 
     axios
       .get(
-        "https://noteitappapi.herokuapp.com/logusergroups",
+        "https://remotetracker.onrender.com/logusergroups",
         tokenConfig(getState)
       )
       .then((res) => {
@@ -44,7 +44,7 @@ export const loaduser = () => {
     //https://noteitappapi.herokuapp.com
     // fetch the user
     axios
-      .get("https://noteitappapi.herokuapp.com/loguser", tokenConfig(getState))
+      .get("https://remotetracker.onrender.com/loguser", tokenConfig(getState))
       .then((res) =>
         dispatch({
           type: USER_LOADED,
@@ -75,9 +75,9 @@ export const register = ({ name, email, password }) => {
     });
     //Request body
     const body = JSON.stringify({ name, email, password });
-    //https://noteitappapi.herokuapp.com/signup
+    //https://remotetracker.onrender.com/signup
     axios
-      .post("https://noteitappapi.herokuapp.com/signup", body, config)
+      .post("https://remotetracker.onrender.com/signup", body, config)
       .then((res) => {
         dispatch({
           type: REGISTER_SUCCESS,
@@ -118,7 +118,7 @@ export const Loginauth = ({ email, password }) => {
     //https://noteitappapi.herokuapp.com
     //post to route /signin
     axios
-      .post("https://noteitappapi.herokuapp.com/signin", body, config)
+      .post("https://remotetracker.onrender.com/signin", body, config)
       .then((res) => {
         dispatch({
           type: LOGIN_SUCCESS,
@@ -152,9 +152,9 @@ export const glogin = (token) => {
 
     //request body
     const data = { tokenId: token };
-    //https://noteitappapi.herokuapp.com/googlelogin
+    //https://remotetracker.onrender.com/googlelogin
     axios
-      .post("https://noteitappapi.herokuapp.com/googlelogin", data)
+      .post("https://remotetracker.onrender.com/googlelogin", data)
       .then((res) => {
         dispatch({
           type: LOGIN_SUCCESS,

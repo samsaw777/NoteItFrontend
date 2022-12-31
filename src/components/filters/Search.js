@@ -14,7 +14,7 @@ const Search = () => {
 
   useEffect(() => {
     axios
-      .get("https://noteitappapi.herokuapp.com/allusers")
+      .get("https://remotetracker.onrender.com/allusers")
       .then((users) => {
         setUsers(users.data);
       })

@@ -10,7 +10,7 @@ const FriendList = ({ Friends, userid }) => {
   const removeUser = (id, friendId) => {
     const body = { userId: id, friendId };
     axios
-      .post("https://noteitappapi.herokuapp.com/removefriend", body)
+      .post("https://remotetracker.onrender.com/removefriend", body)
       .then((response) => {
         console.log(response.data);
       })
@@ -20,7 +20,7 @@ const FriendList = ({ Friends, userid }) => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`https://noteitappapi.herokuapp.com/showfriends/${user.id}`)
+      .get(`https://remotetracker.onrender.com/showfriends/${user.id}`)
       .then((response) => {
         setFriends(response.data);
         setLoading(false);

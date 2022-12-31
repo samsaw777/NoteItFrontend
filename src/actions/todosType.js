@@ -13,7 +13,7 @@ export const getTodos = () => {
   return (dispatch, getState) => {
     dispatch(setloading());
     axios
-      .get("https://noteitappapi.herokuapp.com/getToDo", tokenConfig(getState))
+      .get("https://remotetracker.onrender.com/getToDo", tokenConfig(getState))
       .then((response) => {
         dispatch({
           type: GET_TODO,
@@ -30,7 +30,7 @@ export const addTodos = (todo) => {
   return (dispatch, getState) => {
     axios
       .post(
-        "https://noteitappapi.herokuapp.com/addToDo",
+        "https://remotetracker.onrender.com/addToDo",
         todo,
         tokenConfig(getState)
       )
@@ -48,7 +48,7 @@ export const addTodos = (todo) => {
 
 export const removeTodos = (todoId) => (dispatch) => {
   axios
-    .delete(`https://noteitappapi.herokuapp.com/deleteTodo/${todoId}`)
+    .delete(`https://remotetracker.onrender.com/deleteTodo/${todoId}`)
     .then((res) => {
       dispatch({ type: REMOVE_TODO, payload: todoId });
     })

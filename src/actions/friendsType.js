@@ -7,7 +7,7 @@ export const sendRequest = (body) => {
   return (dispatch, getState) => {
     axios
       .post(
-        "https://noteitappapi.herokuapp.com/sendrequest",
+        "https://remotetracker.onrender.com/sendrequest",
         body,
         tokenConfig(getState)
       )
@@ -27,7 +27,7 @@ export const addFriend = (body) => {
   return (dispatch, getState) => {
     axios
       .post(
-        "https://noteitappapi.herokuapp.com/addfriend",
+        "https://remotetracker.onrender.com/addfriend",
         body,
         tokenConfig(getState)
       )
@@ -46,7 +46,7 @@ export const addFriend = (body) => {
 export const removeFriend = (body) => {
   return (dispatch) => {
     axios
-      .post("https://noteitappapi.herokuapp.com/removefriend", body)
+      .post("https://remotetracker.onrender.com/removefriend", body)
       .then((response) => {
         dispatch({
           type: REMOVE_FRIEND,

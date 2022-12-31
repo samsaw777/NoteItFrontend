@@ -17,7 +17,7 @@ export const getGroupsMembers = (id) => {
     dispatch(setloading());
     axios
       .get(
-        `https://noteitappapi.herokuapp.com/getgroupmembers/${id}`,
+        `https://remotetracker.onrender.com/getgroupmembers/${id}`,
         tokenConfig(getState)
       )
       .then((res) => {
@@ -33,9 +33,9 @@ export const getGroupsMembers = (id) => {
 export const getNotebooks = () => {
   return (dispatch, getState) => {
     dispatch(setloading());
-    //https://noteitappapi.herokuapp.com/
+    //https://remotetracker.onrender.com/
     axios
-      .get("https://noteitappapi.herokuapp.com/getnotes", tokenConfig(getState))
+      .get("https://remotetracker.onrender.com/getnotes", tokenConfig(getState))
       .then((res) => {
         dispatch({
           type: GET_NOTEBOOK,
@@ -50,10 +50,10 @@ export const getNotebooks = () => {
 
 export const addNotebook = (notebook) => {
   return (dispatch, getState) => {
-    //https://noteitappapi.herokuapp.com/savenotes
+    //https://remotetracker.onrender.com/savenotes
     axios
       .post(
-        "https://noteitappapi.herokuapp.com/savenotes",
+        "https://remotetracker.onrender.com/savenotes",
         notebook,
         tokenConfig(getState)
       )
@@ -72,9 +72,9 @@ export const addNotebook = (notebook) => {
 
 //delete group dispatch method
 export const deleteGroup = (id) => (dispatch) => {
-  //https://noteitappapi.herokuapp.com/
+  //https://remotetracker.onrender.com/
   axios
-    .delete(`https://noteitappapi.herokuapp.com/deletegroup/${id}`)
+    .delete(`https://remotetracker.onrender.com/deletegroup/${id}`)
     .then((res) => {
       dispatch({
         type: DELETION_SUCESS,

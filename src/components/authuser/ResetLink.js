@@ -17,7 +17,7 @@ const ResetLink = () => {
     } else {
       const data = { email };
       axios
-        .post("https://noteitappapi.herokuapp.com/resetp", data)
+        .post("https://remotetracker.onrender.com/resetp", data)
         .then((res) => {
           if (res) {
             toast.info(
