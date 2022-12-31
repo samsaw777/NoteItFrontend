@@ -12,7 +12,7 @@ import ChatFooter from "./Chatfooter";
 import { joingroup } from "../../actions/joinedGroup";
 const Chat = () => {
   const [friends, setFriends] = useState([]);
-  console.log(friends);
+  // console.log(friends);
   const chatinfo = useSelector((state) => state.chat.chat);
   // const sideref = useRef();
   // console.log(sideref);
@@ -34,11 +34,11 @@ const Chat = () => {
       groupName: groupname,
       groupImage: image,
     };
-    console.log(memberId);
+    // console.log(memberId);
     axios
       .post("https://remotetracker.onrender.com/addmember", body)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -58,7 +58,7 @@ const Chat = () => {
   }, [chatinfo.id]);
 
   const [toggleValue, setToggleValue] = useState(1);
-  console.log(toggleValue);
+  // console.log(toggleValue);
   const changeToggleValue = (value) => {
     setToggleValue(value);
   };
@@ -94,7 +94,7 @@ const Chat = () => {
                     <div className="pt-1 mr-3">
                       <img
                         src={friend.friendImage}
-                        referrerpolicy="no-referrer"
+                        referrerPolicy="no-referrer"
                         alt="friend"
                         className="rounded-full w-5 h-5  block mx-auto"
                       />

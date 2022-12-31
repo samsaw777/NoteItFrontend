@@ -5,14 +5,14 @@ import { GroupLoader } from "../loader/Skeleton";
 import { MinusIcon } from "@heroicons/react/outline";
 const FriendList = ({ Friends, userid }) => {
   const [friends, setFriends] = useState([]);
-  console.log(friends);
+  // console.log(friends);
   const [Loading, setLoading] = useState(false);
   const removeUser = (id, friendId) => {
     const body = { userId: id, friendId };
     axios
       .post("https://remotetracker.onrender.com/removefriend", body)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((err) => console.log(err));
   };
@@ -22,7 +22,7 @@ const FriendList = ({ Friends, userid }) => {
     axios
       .get(`https://remotetracker.onrender.com/showfriends/${user.id}`)
       .then((response) => {
-        setFriends(response.data);
+        // setFriends(response.data);
         setLoading(false);
       });
   }, [user.id]);
@@ -47,7 +47,7 @@ const FriendList = ({ Friends, userid }) => {
             <div className="pt-1 mr-3">
               <img
                 src={friend.friendImage}
-                referrerpolicy="no-referrer"
+                referrerPolicy="no-referrer"
                 alt="Friend"
                 className="rounded-full w-5 h-5  block mx-auto"
               />

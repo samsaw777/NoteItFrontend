@@ -18,7 +18,7 @@ function classNames(...classes) {
 
 export default function Example() {
   const user = useSelector((state) => state.auth.user);
-  console.log(user);
+  // console.log(user);
   const history = useHistory();
   const dispatch = useDispatch();
   const Logout = () => {

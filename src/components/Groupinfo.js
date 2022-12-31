@@ -12,7 +12,7 @@ const Notebook = ({ id, title, image }) => {
   const groupMember = useSelector((state) => state.notebook.notebook);
   const member = groupMember.filter((member) => member._id === id);
   const chatinfo = useSelector((state) => state.chat.chat);
-  console.log(chatinfo);
+  // console.log(chatinfo);
   const dispatchdata = useDispatch();
   const sendchatinfo = (id, name, member, image) => {
     dispatchdata(chatinfodata(id, name, member, image));

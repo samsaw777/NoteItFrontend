@@ -32,7 +32,7 @@ function Login() {
     e.preventDefault();
     setRedirectuser(!redirectuser);
     const { email, password } = formdetails;
-    console.log(formdetails);
+    // console.log(formdetails);
     if (!email && !password) {
       setErrors("All fields are required");
     } else if (!email) {

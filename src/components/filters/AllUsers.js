@@ -5,7 +5,7 @@ import { PlusIcon } from "@heroicons/react/outline";
 import { sendRequest } from "../../actions/friendsType";
 const Users = ({ users, email, image, loginId }) => {
   const dispatch = useDispatch();
-  console.log(users);
+  // console.log(users);
   const sendFriendRequest = (id, userEmail) => {
     const body = {
       userEmail: userEmail,
@@ -28,7 +28,7 @@ const Users = ({ users, email, image, loginId }) => {
               <p className=" w-5 h-5 ">
                 <img
                   src={user.image}
-                  referrerpolicy="no-referrer"
+                  referrerPolicy="no-referrer"
                   alt="User"
                   className="h-5 w-5 rounded-full"
                 />

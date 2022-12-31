@@ -58,7 +58,7 @@ export const addNotebook = (notebook) => {
         tokenConfig(getState)
       )
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         dispatch({
           type: ADD_NOTEBOOK,
           payload: res.data,

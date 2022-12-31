@@ -25,9 +25,9 @@ function ModalNotebook() {
   const dispatchdata = useDispatch();
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const colors = useSelector((state) => state.notebook.color);
-  console.log(colors);
+  // console.log(colors);
   const user = useSelector((state) => state.auth.user);
-  console.log(user);
+  // console.log(user);
   function openModal() {
     setIsOpen(true);
     const random = RandomColor();
@@ -50,7 +50,7 @@ function ModalNotebook() {
     setIsOpen(!modalIsOpen);
   };
   const [val, setval] = useState("");
-  console.log(val);
+  // console.log(val);
   return (
     <div>
       <p onClick={openModal} className="pr-2.5 pt-2.5">

@@ -18,7 +18,7 @@ const customStyles = {
   },
 };
 const EditChat = ({ id, refetch, setRefetch }) => {
-  console.log(id);
+  // console.log(id);
   const [getData, setGetData] = useState();
 
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -73,7 +73,7 @@ const EditChat = ({ id, refetch, setRefetch }) => {
     // setFileUrl(file);
     const storageRef = store.ref();
     const fileRef = storageRef.child(file.name);
-    console.log(fileRef);
+    // console.log(fileRef);
     await fileRef.put(file);
     const url = await fileRef.getDownloadURL();
     setFileUrl(url);

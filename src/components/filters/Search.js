@@ -6,10 +6,10 @@ import { useSelector } from "react-redux";
 const Search = () => {
   const [users, setUsers] = useState([]);
   const [searchUser, setSearchUser] = useState([]);
-  console.log(users);
+  // console.log(users);
   const [search, setSearch] = useState();
   const [showRequest, setShowRequest] = useState([]);
-  console.log(showRequest);
+  // console.log(showRequest);
   const loginuser = useSelector((state) => state.auth.user);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const Search = () => {
       setSearchUser();
     }
   };
-  console.log(search);
+  // console.log(search);
   return (
     <div className="h-viewHeight bg-newsidebarcolor">
       <div className="w-full p-2">

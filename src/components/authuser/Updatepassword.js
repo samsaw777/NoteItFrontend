@@ -22,7 +22,7 @@ const UpdatePassword = () => {
       axios
         .post("https://remotetracker.onrender.com/resetpassword", data)
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           if (response) {
             toast.success("Password Changed!", {
               position: "top-center",
@@ -38,7 +38,7 @@ const UpdatePassword = () => {
           }
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
         });
     }
   };

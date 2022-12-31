@@ -11,7 +11,7 @@ const Groupmembers = ({ groupMember, groupID }) => {
     axios
       .post("https://remotetracker.onrender.com/removemember", body)
       .then((res) => {
-        console.log("Member removes");
+        // console.log("Member removes");
       })
       .catch((err) => console.error(err));
   };

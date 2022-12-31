@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 const Tab = () => {
   const loginuser = useSelector((state) => state.auth.user);
   const [toggleValue, setToggleValue] = useState(1);
-  console.log(toggleValue);
+  // console.log(toggleValue);
   const changeToggleValue = (value) => {
     setToggleValue(value);
   };

@@ -9,8 +9,7 @@ const Userinfo = () => {
   const dispatchdata = useDispatch();
   const user = useSelector((state) => state.auth.user);
   const loading = useSelector((state) => state.auth.loading);
-  console.log(user);
-  console.log(user);
+
   useEffect(() => {
     dispatchdata(loaduser());
   }, []);
@@ -25,7 +24,7 @@ const Userinfo = () => {
               <div className="mr-2 pt-1 w-10 h-10">
                 <img
                   src={user.image}
-                  referrerpolicy="no-referrer"
+                  referrerPolicy="no-referrer"
                   alt="User"
                   className="w-10 h-10 rounded-full"
                 />

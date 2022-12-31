@@ -8,7 +8,7 @@ function FriendRequest({ loginUser, loginuserid }) {
   const user = useSelector((state) => state.auth.user);
 
   const [followRequest, setFollowRequest] = useState([]);
-  console.log(followRequest);
+  // console.log(followRequest);
   useEffect(() => {
     axios
       .get(`https://remotetracker.onrender.com/showrequest/${user.id}`)
@@ -31,7 +31,7 @@ function FriendRequest({ loginUser, loginuserid }) {
     axios
       .post("https://remotetracker.onrender.com/addfriend", body)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -43,7 +43,7 @@ function FriendRequest({ loginUser, loginuserid }) {
     axios
       .post("https://remotetracker.onrender.com/cancelrequest", body)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((error) => {
         console.log(error);

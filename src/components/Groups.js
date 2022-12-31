@@ -26,7 +26,7 @@ function Notes() {
   //loading the state
   const notebooks = useSelector((state) => state.notebook.notebook);
   const menu = useSelector((state) => state.menu.menu);
-  console.log(notebooks);
+  // console.log(notebooks);
   //Load the user
   const user = useSelector((state) => state.auth.user);
   const joinedGroup = useSelector((state) => state.auth.joinedGroups);
@@ -34,7 +34,7 @@ function Notes() {
   const chatinfo = useSelector((state) => state.chat.chat);
   //posting the data to database
   const [toggleValue, setToggleValue] = useState(1);
-  console.log(toggleValue);
+  // console.log(toggleValue);
   const changeToggleValue = (value) => {
     setToggleValue(value);
   };

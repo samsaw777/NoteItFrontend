@@ -11,11 +11,11 @@ const Chatmessage = () => {
   const [Loading, setLoading] = useState(false);
   const [deletChat, setDeletChat] = useState(true);
   const [chatmessages, setChatMessages] = useState([]);
-  console.log(chatmessages);
+  // console.log(chatmessages);
   const chatinfo = useSelector((state) => state.chat.chat);
-  console.log(chatinfo.id);
+  // console.log(chatinfo.id);
   const user = useSelector((state) => state.auth.user);
-  console.log(chatmessages);
+  // console.log(chatmessages);
   useEffect(() => {
     const getData = async () => {
       setLoading(true);
@@ -74,7 +74,7 @@ const Chatmessage = () => {
         .doc(`${body.messageId}`)
         .delete()
         .then(() => {
-          console.log("Document Deleted Sucessfully!");
+          // console.log("Document Deleted Sucessfully!");
           setDeletChat(!deletChat);
         })
         .catch((err) => {
