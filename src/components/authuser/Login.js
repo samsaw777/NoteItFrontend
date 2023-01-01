@@ -61,27 +61,27 @@ function Login() {
         <Loading />
       ) : (
         <>
-          <div class="h-viewHeight background flex flex-col justify-center sm:py-12">
-            <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
-              <h1 class="font-bold text-center text-2xl mb-5 text-buttonColor">
+          <div className="h-viewHeight background flex flex-col justify-center sm:py-12">
+            <div className="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
+              <h1 className="font-bold text-center text-2xl mb-5 text-buttonColor">
                 Note IT
               </h1>
 
-              <div class="bg-buttonColor shadow w-full rounded-lg divide-y divide-gray-200">
-                <div class="px-5 py-7">
-                  <h1 class="mb-8 text-3xl text-center text-gray-100">
+              <div className="bg-buttonColor shadow w-full rounded-lg divide-y divide-gray-200">
+                <div className="px-5 py-7">
+                  <h1 className="mb-8 text-3xl text-center text-gray-100">
                     Sign In
                   </h1>
                   <form onSubmit={loginin}>
                     {errors ? (
-                      <div class="w-full text-center bg-red-300 text-black p-3 rounded-lg mb-2">
+                      <div className="w-full text-center bg-red-300 text-black p-3 rounded-lg mb-2">
                         {errors}
                       </div>
                     ) : (
                       <div></div>
                     )}
                     {error ? (
-                      <div class="w-full text-center bg-red-300 text-black p-3 rounded-lg mb-2">
+                      <div className="w-full text-center bg-red-300 text-black p-3 rounded-lg mb-2">
                         {error}
                       </div>
                     ) : (
@@ -89,7 +89,7 @@ function Login() {
                     )}
                     <input
                       type="text"
-                      class="border border-grey-light rounded-lg px-3 py-3 mt-1 mb-5 text-sm w-full"
+                      className="border border-grey-light rounded-lg px-3 py-3 mt-1 mb-5 text-sm w-full"
                       onChange={handleInput}
                       value={formdetails.email}
                       name="email"
@@ -97,7 +97,7 @@ function Login() {
                     />
                     <input
                       type="password"
-                      class="border border-grey-light rounded-lg px-3 py-3 mt-1 mb-5 text-sm w-full"
+                      className="border border-grey-light rounded-lg px-3 py-3 mt-1 mb-5 text-sm w-full"
                       onChange={handleInput}
                       value={formdetails.password}
                       name="password"
@@ -105,15 +105,15 @@ function Login() {
                     />
                     <button
                       type="submit"
-                      class="transition duration-200 bg-green-400 hover:bg-green-600 focus:bg-green-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block"
+                      className="transition duration-200 bg-green-400 hover:bg-green-600 focus:bg-green-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block"
                     >
-                      <span class="inline-block mr-2">Login</span>
+                      <span className="inline-block mr-2">Login</span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
-                        class="w-4 h-4 inline-block"
+                        className="w-4 h-4 inline-block"
                       >
                         <path
                           stroke-linecap="round"
@@ -124,19 +124,21 @@ function Login() {
                       </svg>
                     </button>
                   </form>
-                  <p className="text-center w-full mt-2 text-gray-100">OR</p>
+                  <p classNameName="text-center w-full mt-2 text-gray-100">
+                    OR
+                  </p>
                   <GLogin />
                 </div>
-                <div class="py-5">
-                  <div class="grid grid-cols-2 gap-1">
-                    <div class="text-center sm:text-left whitespace-nowrap group">
-                      <button class="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-100 group-hover:bg-gray-200 group-hover:text-black focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
+                <div className="py-5">
+                  <div className="grid grid-cols-2 gap-1">
+                    <div className="text-center sm:text-left whitespace-nowrap group">
+                      <button className="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-100 group-hover:bg-gray-200 group-hover:text-black focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
-                          class="w-4 h-4 inline-block align-text-top"
+                          className="w-4 h-4 inline-block align-text-top"
                         >
                           <path
                             stroke-linecap="round"
@@ -146,28 +148,28 @@ function Login() {
                           />
                         </svg>
                         <Link to="/reset">
-                          <span class="inline-block ml-1 text-gray-100 group-hover:text-black">
+                          <span className="inline-block ml-1 text-gray-100 group-hover:text-black">
                             Forgot Password
                           </span>
                         </Link>
                       </button>
                     </div>
-                    <div class="text-center sm:text-right  whitespace-nowrap">
-                      <button class="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset"></button>
+                    <div className="text-center sm:text-right  whitespace-nowrap">
+                      <button className="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset"></button>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="py-5">
-                <div class="grid grid-cols-2 gap-1">
-                  <div class="text-center sm:text-left whitespace-nowrap">
-                    <button class="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-500 hover:bg-gray-200 focus:outline-none focus:bg-gray-300 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
+              <div className="py-5">
+                <div className="grid grid-cols-2 gap-1">
+                  <div className="text-center sm:text-left whitespace-nowrap">
+                    <button className="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-500 hover:bg-gray-200 focus:outline-none focus:bg-gray-300 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
-                        class="w-4 h-4 inline-block align-text-top"
+                        classNameName="w-4 h-4 inline-block align-text-top"
                       >
                         <path
                           stroke-linecap="round"
@@ -176,7 +178,7 @@ function Login() {
                           d="M10 19l-7-7m0 0l7-7m-7 7h18"
                         />
                       </svg>
-                      <Link to="/" class="inline-block ml-1">
+                      <Link to="/" className="inline-block ml-1">
                         Back to the app.
                       </Link>
                     </button>
