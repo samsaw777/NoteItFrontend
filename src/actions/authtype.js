@@ -187,7 +187,6 @@ export const tokenConfig = (getState) => {
     headers: {
       "Content-type": "application/json",
       "Access-Control-Allow-Origin": "https://remoteworktracker.onrender.com",
-      " Access-Control-Allow-Credentials": true,
     },
   };
 
